@@ -9,72 +9,72 @@
 
 """ GENERAL """""""""""""""""""""""""""""
 
-	set nocompatible					" enter current millenium
+    set nocompatible                    " enter current millenium
     
-	set encoding=utf-8					" set encoding
-	set fileencoding=utf-8
-	set termencoding=utf-8
+    set encoding=utf-8                  " set encoding
+    set fileencoding=utf-8
+    set termencoding=utf-8
 
-	let mapleader=","					" define mapleader
-	
-	filetype plugin on					" enable filetype specific settings
-	
+    let mapleader=","                   " define mapleader
+ 
+    filetype plugin on                  " enable filetype specific settings
+ 
     set lazyredraw                      " dont redraw when not neccessary
 
 """ PLUGINS """""""""""""""""""""""""""""
 
-"set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+    "set the runtime path to include Vundle and initialize
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
 
-"let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+    "let Vundle manage Vundle, required
+    Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'scrooloose/syntastic'
-Plugin 'scrooloose/nerdtree'
+    Plugin 'scrooloose/syntastic'
+    Plugin 'scrooloose/nerdtree'
 
-call vundle#end()
+    call vundle#end()
 
 
 """ VISUAL & UI """""""""""""""""""""""""
-	
-	set background=dark					" use colors that are visible on dark background
+ 
+    set background=dark                 " use colors that are visible on dark background
 
-	syntax on							" enable syntax highlighting
-	
-	set number relativenumber			" set relative and absolute line numbering
-	
-	set shortmess=I						" disable spalsh screen
-	
-	set so=8							" set scroll offset to 8 lines
+    syntax on                           " enable syntax highlighting
+ 
+    set number relativenumber           " set relative and absolute line numbering
+ 
+    set shortmess=I                     " disable spalsh screen
+    
+    set so=8                            " set scroll offset to 8 lines
    
-    set laststatus=2	
+    set laststatus=2
 
     set guicursor=                      " block cursor in terminal nvim
-	
-	set showcmd							" show command in buttom bar	
+ 
+    set showcmd                         " show command in buttom bar 
 
-	highlight VisualGuide80 ctermbg=235					" visual guide 1 color
-	highlight VisualGuide100 ctermbg=238				" visual guide 2 color
-	highlight VisualGuide120 ctermbg=241 ctermfg=0		" visual guide 3 color
-	call matchadd('VisualGuide80', '\(\%>80v\)')		" visual guide starting @ 81
-	call matchadd('VisualGuide100', '\(\%>100v\)')		" visual guide starting @ 101
-	call matchadd('VisualGuide120', '\(\%>120v\)')		" visual guide starting @ 121
+    highlight VisualGuide80 ctermbg=235             " visual guide 1 color
+    highlight VisualGuide100 ctermbg=238            " visual guide 2 color
+    highlight VisualGuide120 ctermbg=241 ctermfg=0  " visual guide 3 color
+    call matchadd('VisualGuide80', '\(\%>80v\)')    " visual guide starting @ 81
+    call matchadd('VisualGuide100', '\(\%>100v\)')  " visual guide starting @ 101
+    call matchadd('VisualGuide120', '\(\%>120v\)')  " visual guide starting @ 121
 
-	set wildmenu						" enable wildmenu
-	
-	set showmatch						" show matching brackets
+    set wildmenu                        " enable wildmenu
+ 
+    set showmatch                       " show matching brackets
     set mat=0                           " dont move curser back
 
-	set visualbell						" disable visual bells
-	set t_vb=
+    set visualbell                      " disable visual bells
+    set t_vb=
 
-	set splitbelow splitright			" better splitting behavior 
+    set splitbelow splitright           " better splitting behavior 
 
-	map <C-h> <C-w>h					" better split navigation
-	map <C-j> <C-w>j
-	map <C-k> <C-w>k
-	map <C-l> <C-w>l
+    map <C-h> <C-w>h                    " better split navigation
+    map <C-j> <C-w>j
+    map <C-k> <C-w>k
+    map <C-l> <C-w>l
 
 """ STATUS LINE """""""""""""""""""""""""
 
@@ -87,7 +87,7 @@ call vundle#end()
 
     "display a warning if file encoding isnt utf-8
     set statusline+=%#warningmsg#
-        set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
+    set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
     set statusline+=%*
 
     "read only flag
@@ -246,60 +246,56 @@ call vundle#end()
 
 """ AUTOMATIC BEHAVIOR """"""""""""""""""
 
-	set autoread						" auto read file if it is changed from the outside
+    set autoread                        " auto read file if it is changed from the outside
 
-	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o      " disable auto comment on newline 
-	
-	autocmd FileType gitcommit set spell                                                " turn on spell check in git commits 
+    autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o      " disable auto comment on newline 
+ 
+    autocmd FileType gitcommit set spell                                                " turn on spell check in git commits 
 
-	autocmd Filetype css,scss,sass setlocal iskeyword+=-								" treat dashed strings as words in stylesheets
+    autocmd Filetype css,scss,sass setlocal iskeyword+=-                                " treat dashed strings as words in stylesheets
 
 
 """ BACKSPACING """""""""""""""""""""""""
 
-	set backspace=indent,eol,start		" backspace behavior that makes sense
-	
+    set backspace=indent,eol,start      " backspace behavior that makes sense
+ 
 
 """ INDENTATION """""""""""""""""""""""""
 
-	set autoindent						" automatic indentation on newlines
-	
-	set smartindent						" smart indentation
-	
-	set smarttab						" smart tabs
+    set autoindent                      " automatic indentation on newlines
+ 
+    set  smartindent                    " smart indentation
+ 
+    set smarttab                        " smart tabs
 
-	set expandtab						" tabs are spaces
+    set expandtab                       " tabs are spaces
 
-	set shiftwidth=4					" tab = 4 spaces
-	set tabstop=4
-	set softtabstop=4
+    set shiftwidth=4                    " tab = 4 spaces
+    set tabstop=4
+    set softtabstop=4
 
 
 """ SEARCH """"""""""""""""""""""""""""""
 
-	set hlsearch						" highlight search
+    set hlsearch                        " highlight search
 
-	set incsearch						" instant highlighting
+    set incsearch                       " instant highlighting
 
-	set ignorecase						" case insensitive search
-	set smartcase						" except when query contains uppercase
+    set ignorecase                      " case insensitive search
+    set smartcase                       " except when query contains uppercase
 
 
 """ MISC """"""""""""""""""""""""""""""""
 
-	runtime macros/matchit.vim			" enable matching (use % key)
- 
-	autocmd Filetype css,scss,sass setlocal iskeyword+=-								" treat dashed strings as words in stylesheets
+    
+    runtime macros/matchit.vim          " enable matching (use % key)      
 
+    autocmd Filetype css,scss,sass setlocal iskeyword+=-        " treat dashed strings as words in stylesheets
 
-    " toggle spellcheck to english
-	map <leader>e :setlocal spell! spelllang=en_us<CR>
+    map <leader>e :setlocal spell! spelllang=en_us<CR>          " toggle spellcheck to english
 
-    "toggle spell chek to german
-	map <leader>g :setlocal spell! spelllang=de_de<CR>
+    map <leader>g :setlocal spell! spelllang=de_de<CR>          "toggle spell chek to german
 
-    " map replace to S
-	nnoremap S :%s//g<Left><Left>
+    nnoremap S :%s//g<Left><Left>                               " map replace to S
 
-    " reload vimrc
-    nnoremap <leader>sv :source $MYVIMRC<CR>
+    nnoremap <leader>sv :source $MYVIMRC<CR>                    " reload vimrc
