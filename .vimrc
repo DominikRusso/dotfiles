@@ -9,7 +9,7 @@
 
 """ GENERAL """""""""""""""""""""""""""""
 
-    set nocompatible                    " enter current millenium
+    set nocompatible                    " enter current millennium
     
     set encoding=utf-8                  " set encoding
     set fileencoding=utf-8
@@ -17,9 +17,9 @@
 
     let mapleader=","                   " define mapleader
  
-    filetype plugin on                  " enable filetype specific settings
+    filetype plugin on                  " enable file type specific settings
  
-    set lazyredraw                      " dont redraw when not neccessary
+    set lazyredraw                      " dont redraw when not necessary
 
 """ PLUGINS """""""""""""""""""""""""""""
 
@@ -44,7 +44,7 @@
  
     set number relativenumber           " set relative and absolute line numbering
  
-    set shortmess=I                     " disable spalsh screen
+    set shortmess=I                     " disable splash screen
     
     set so=8                            " set scroll offset to 8 lines
    
@@ -52,7 +52,7 @@
 
     set guicursor=                      " block cursor in terminal nvim
  
-    set showcmd                         " show command in buttom bar 
+    set showcmd                         " show command in bottom bar 
 
     highlight VisualGuide80 ctermbg=235             " visual guide 1 color
     highlight VisualGuide100 ctermbg=238            " visual guide 2 color
@@ -64,7 +64,7 @@
     set wildmenu                        " enable wildmenu
  
     set showmatch                       " show matching brackets
-    set mat=0                           " dont move curser back
+    set mat=0                           " dont move cursor back
 
     set visualbell                      " disable visual bells
     set t_vb=
@@ -80,7 +80,7 @@
 
     set statusline=%t\   "tail of the filename
 
-    "display a warning if fileformat isnt unix
+    "display a warning if file format isnt unix
     set statusline+=%#warningmsg#
     set statusline+=%{&ff!='unix'?'['.&ff.']':''}
     set statusline+=%*
@@ -294,7 +294,7 @@
 
     map <leader>e :setlocal spell! spelllang=en_us<CR>          " toggle spellcheck to english
 
-    map <leader>g :setlocal spell! spelllang=de_de<CR>          "toggle spell chek to german
+    map <leader>g :setlocal spell! spelllang=de_de<CR>          " toggle spellcheck to german
 
     nnoremap S :%s//g<Left><Left>                               " map replace to S
 
