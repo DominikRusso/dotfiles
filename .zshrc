@@ -79,6 +79,8 @@ alias chmod="chmod -v"
 alias chown="chown -v"
 alias mkdir="mkdir -v"
 
+alias gitdir="cd ~/Documents/Computer_Science/git"
+
 
 # clear terminal
 printf "\033c"
