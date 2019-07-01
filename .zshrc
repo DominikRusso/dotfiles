@@ -71,15 +71,14 @@ export VISUAL="$EDITOR"
 alias v="nvim"
 alias vim="nvim"
 alias ls="ls -G"
-alias ll='ls -alFh'
-alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
-alias cp='cp -iv'
-alias chmod='chmod -v'
+alias ll="ls -alFh"
+alias grep="grep --color=auto"
+alias egrep="egrep --color=auto"
+alias cp="cp -iv"
+alias chmod="chmod -v"
 alias chown="chown -v"
 alias mkdir="mkdir -v"
 
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # clear terminal
 printf "\033c"
