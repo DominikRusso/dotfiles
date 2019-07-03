@@ -3,6 +3,8 @@
 # install homebrew
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
+# install cask
+brew install cask
 
 # install useful utilities like `sponge`.
 brew install moreutils
@@ -40,6 +42,9 @@ brew install python
 brew install r
 brew install watch
 brew install youtube-dl
+
+# install haskell platform
+brew install ghc cabal-install
 
 # install hacking and CTF tools
 brwe install afl-fuzz
