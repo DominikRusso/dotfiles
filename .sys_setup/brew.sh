@@ -40,6 +40,7 @@ brew install open-mpi
 brew install pandoc
 brew install python
 brew install r
+brew install screenfetch
 brew install watch
 brew install youtube-dl
 
