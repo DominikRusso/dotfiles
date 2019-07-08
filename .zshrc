@@ -85,10 +85,6 @@ alias mkdir="mkdir -v"
 alias gitdir="cd ~/Documents/Computer_Science/git"
 
 
-# clear terminal
-printf "\033c"
-
-
 # set up colors
 red='\033[0;38;5;9m'
 RED='\033[1;38;5;9m'
