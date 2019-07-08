@@ -8,6 +8,7 @@ pip3 install scipy
 # install hacking and CTF libraries
 pip3 install capstone
 pip3 install cryptography
+pip install fake-useragent
 pip3 install pwntools
 pip3 install ropgadget
 
