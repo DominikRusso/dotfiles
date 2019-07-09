@@ -6,20 +6,12 @@
 # install cask
 brew install cask
 
-# install useful utilities like `sponge`.
+# install utilities
 brew install moreutils
-
-# install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
-brew install findutils
-
-# install GNU `sed`, overwriting the built-in `sed`.
-brew install gnu-sed --with-default-names
-
-# install `wget` with IRI support.
-brew install wget --with-iri
+brew install wget
 
 # install more recent versions of some macOS tools.
-brew install vim --with-override-system-vi
+brew install vim
 brew install git
 brew install grep
 brew install openssh
@@ -28,7 +20,9 @@ brew install php
 brew install gmp
 
 # install general stuff
+brew cask install basictex
 brew install cmake
+brew install ffmpeg
 brew install gcc
 brew install geoip
 brew install git-lfs
@@ -68,4 +62,7 @@ brew install tcpflow
 brew install tcpreplay
 brew install tcptrace
 brew install z3
+
+# install some gui stuff
+brew cask install cutter
 
