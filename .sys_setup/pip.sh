@@ -1,5 +1,6 @@
 # install general python libraries
 pip3 install --user ggplot
+pip3 install gitpython
 pip3 install matplotlib
 pip3 install numpy
 pip3 install pendulum
