@@ -6,11 +6,7 @@
 # install cask
 brew install cask
 
-# install utilities
-brew install moreutils
-brew install wget
-
-# install more recent versions of some macOS tools.
+# install more recent versions of some macOS tools
 brew install vim
 brew install git
 brew install grep
@@ -29,6 +25,7 @@ brew install git-lfs
 brew install htop
 brew install imagemagick
 brew install libomp
+brew install moreutils
 brew install neovim
 brew install open-mpi
 brew install pandoc
@@ -37,6 +34,7 @@ brew install python
 brew install r
 brew install screenfetch
 brew install watch
+brew install wget
 brew install youtube-dl
 
 # install haskell platform
