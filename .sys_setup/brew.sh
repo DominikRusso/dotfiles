@@ -32,6 +32,7 @@ brew install libomp
 brew install neovim
 brew install open-mpi
 brew install pandoc
+brew install proselint
 brew install python
 brew install r
 brew install screenfetch
