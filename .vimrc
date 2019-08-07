@@ -302,8 +302,8 @@
     " toggle spellcheck to german
     map <leader>g :setlocal spell! spelllang=de_de<CR>
 
-    " map replace to S
-    nnoremap S :%s//g<Left><Left>
+    " map substitute to S
+    nnoremap S :%s///g<Left><Left><Left>
 
     " reload vimrc
     nnoremap <leader>sv :source $MYVIMRC<CR>
