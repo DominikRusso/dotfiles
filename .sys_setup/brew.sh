@@ -22,6 +22,7 @@ brew install ffmpeg
 brew install gcc
 brew install geoip
 brew install git-lfs
+brew install go
 brew install htop
 brew install imagemagick
 brew install libomp
