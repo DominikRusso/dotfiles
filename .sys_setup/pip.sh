@@ -20,5 +20,6 @@ pip3 install lightgbm
 pip3 install nltk
 pip3 install opencv-python
 pip3 install pandas
+pip3 install scikit-learn
 pip3 install torch
 pip3 install tensorflow
