@@ -1,4 +1,5 @@
 # install general python libraries
+pip3 install cloudpickle
 pip3 install gitpython
 pip3 install matplotlib
 pip3 install numpy
@@ -15,6 +16,7 @@ pip3 install ropgadget
 
 # install machine learning libraries
 pip3 install eli5
+pip3 install gym
 pip3 install keras
 pip3 install lightgbm
 pip3 install nltk
