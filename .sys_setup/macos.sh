@@ -305,4 +305,12 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false
 
 
+###############################################################################
+# Other                                                                       #
+###############################################################################
+
+# disable "warning" when running python GUIs
+defaults write org.python.python ApplePersistenceIgnoreState NO
+
+
 echo "Done. Restart computer for all changes to take effect."
