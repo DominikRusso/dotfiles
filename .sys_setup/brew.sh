@@ -13,7 +13,6 @@ brew install grep
 brew install openssh
 brew install screen
 brew install php
-brew install gmp
 
 # install general stuff
 brew cask install basictex
@@ -42,7 +41,7 @@ brew install youtube-dl
 brew install ghc cabal-install
 
 # install hacking and CTF tools
-brwe install afl-fuzz
+brew install afl-fuzz
 brew install binwalk
 brew install cifer
 brew install gdb
