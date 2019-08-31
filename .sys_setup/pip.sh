@@ -1,5 +1,6 @@
 # install general python libraries
 pip3 install cloudpickle
+pip3 install colorama
 pip3 install gitpython
 pip3 install matplotlib
 pip3 install numpy
