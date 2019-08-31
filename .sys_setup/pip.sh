@@ -1,4 +1,5 @@
 # install general python libraries
+pip3 install beautifulsoup4
 pip3 install cloudpickle
 pip3 install colorama
 pip3 install gitpython
