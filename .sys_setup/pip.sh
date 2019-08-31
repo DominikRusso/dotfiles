@@ -8,6 +8,7 @@ pip3 install numpy
 pip3 install pendulum
 pip3 install requests
 pip3 install scipy
+pip3 install lxml
 
 # install hacking and CTF libraries
 pip3 install capstone
