@@ -158,12 +158,6 @@ defaults write com.apple.dock show-process-indicators -bool false
 # don’t group windows by application in Mission Control
 defaults write com.apple.dock expose-group-by-app -bool false
 
-# disable Dashboard
-defaults write com.apple.dashboard mcx-disabled -bool true
-
-# don’t show Dashboard as a Space
-defaults write com.apple.dock dashboard-in-overlay -bool true
-
 # don’t automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
 
