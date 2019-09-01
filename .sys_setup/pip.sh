@@ -2,6 +2,7 @@
 pip3 install beautifulsoup4
 pip3 install cloudpickle
 pip3 install colorama
+pip3 install eventlet
 pip3 install gitpython
 pip3 install matplotlib
 pip3 install numpy
