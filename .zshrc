@@ -73,6 +73,7 @@ export VISUAL="$EDITOR"
 
 # aliases
 alias v="nvim"
+alias vi="nvim"
 alias vim="nvim"
 alias ls="ls -G"
 alias ll="ls -alFh"
@@ -121,7 +122,7 @@ cd() {
 
 
 # reload shell
-reload () {
+reload() {
     exec "${SHELL}" "$@"
 }
 
@@ -165,4 +166,3 @@ precmd() {
 preexec() {
     termtitle preexec "${(V)1}"
 }
-
