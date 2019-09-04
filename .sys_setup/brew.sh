@@ -32,6 +32,7 @@ brew install pandoc
 brew install proselint
 brew install python
 brew install r
+brew install rust
 brew install screenfetch
 brew install watch
 brew install wget
