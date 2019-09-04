@@ -1,33 +1,33 @@
 # install general python libraries
-pip3 install beautifulsoup4
-pip3 install cloudpickle
-pip3 install colorama
-pip3 install eventlet
-pip3 install gitpython
-pip3 install matplotlib
-pip3 install numpy
-pip3 install pendulum
-pip3 install requests
-pip3 install scipy
-pip3 install lxml
+pip3 install -U beautifulsoup4
+pip3 install -U cloudpickle
+pip3 install -U colorama
+pip3 install -U eventlet
+pip3 install -U gitpython
+pip3 install -U matplotlib
+pip3 install -U numpy
+pip3 install -U pendulum
+pip3 install -U requests
+pip3 install -U scipy
+pip3 install -U lxml
 
 # install hacking and CTF libraries
-pip3 install capstone
-pip3 install cryptography
-pip3 install fake-useragent
-pip3 install pwntools
-pip3 install ropgadget
+pip3 install -U capstone
+pip3 install -U cryptography
+pip3 install -U fake-useragent
+pip3 install -U pwntools
+pip3 install -U ropgadget
 
 # install machine learning libraries
-pip3 install eli5
-pip3 install gym
-pip3 install keras
-pip3 install lightgbm
-pip3 install nltk
-pip3 install opencv-python
-pip3 install pandas
-pip3 install scikit-learn
-pip3 install torch
-pip3 install tensorboard
-pip3 install tensorflow
-pip3 install tflearn
+pip3 install -U eli5
+pip3 install -U gym
+pip3 install -U keras
+pip3 install -U lightgbm
+pip3 install -U nltk
+pip3 install -U opencv-python
+pip3 install -U pandas
+pip3 install -U scikit-learn
+pip3 install -U torch
+pip3 install -U tensorboard
+pip3 install -U tensorflow
+pip3 install -U tflearn
