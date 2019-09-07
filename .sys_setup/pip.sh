@@ -3,6 +3,7 @@ pip3 install -U beautifulsoup4
 pip3 install -U cloudpickle
 pip3 install -U colorama
 pip3 install -U eventlet
+pip3 install -U fuckit
 pip3 install -U gitpython
 pip3 install -U matplotlib
 pip3 install -U numpy
