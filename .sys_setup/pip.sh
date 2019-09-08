@@ -1,3 +1,6 @@
+# install jupyter
+pip3 install -U jupyterlab
+
 # install general python libraries
 pip3 install -U beautifulsoup4
 pip3 install -U cloudpickle
