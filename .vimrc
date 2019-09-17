@@ -38,6 +38,8 @@
 
 """ VISUAL & UI """""""""""""""""""""""""
 
+    set guifont=Menlo:h12               " readable font size in macvim
+
     set background=dark                 " use colors that are visible on dark background
 
     syntax on                           " enable syntax highlighting
