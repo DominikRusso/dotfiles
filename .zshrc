@@ -53,6 +53,9 @@ setopt COMPLETE_ALIASES
 setopt extendedGlob
 setopt promptsubst
 
+# include hidden files
+_comp_options+=(globdots)
+
 zstyle ':completion:*' completer _expand _complete _ignored _approximate
 zstyle ':completion::complete:*' use-cache 1
 
