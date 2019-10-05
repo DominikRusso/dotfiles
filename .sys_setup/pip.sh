@@ -14,6 +14,7 @@ pip3 install -U pendulum
 pip3 install -U pyenchant
 pip3 install -U requests
 pip3 install -U scipy
+pip3 install -U tqdm
 pip3 install -U lxml
 
 # install hacking and CTF libraries
