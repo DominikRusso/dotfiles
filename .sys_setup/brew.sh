@@ -23,6 +23,7 @@ brew install geoip
 brew install git-lfs
 brew install go
 brew install htop
+brew install id3lib
 brew install imagemagick
 brew install libomp
 brew install moreutils
@@ -65,4 +66,3 @@ brew install z3
 
 # install some gui stuff
 brew cask install cutter
-
