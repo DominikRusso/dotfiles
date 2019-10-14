@@ -65,3 +65,4 @@ brew install z3
 
 # install some gui stuff
 brew cask install cutter
+brew cask install macvim	# "gui"
