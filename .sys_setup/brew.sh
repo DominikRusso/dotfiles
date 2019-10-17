@@ -21,6 +21,7 @@ brew install geoip
 brew install ghc cabal-install
 brew install git
 brew install git-lfs
+brew install gnupg
 brew install go
 brew install grep
 brew install hashpump
