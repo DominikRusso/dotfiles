@@ -14,7 +14,11 @@ brew install afl-fuzz
 brew install binwalk
 brew install cifer
 brew install cmake
+brew install cmatrix
+brew install cowsay
 brew install ffmpeg
+brew install figlet
+brew install fortune
 brew install gcc
 brew install gdb
 brew install geoip
@@ -32,6 +36,7 @@ brew install imagemagick
 brew install john
 brew install knock
 brew install libomp
+brew install lolcat
 brew install moreutils
 brew install neovim
 brew install netpbm
