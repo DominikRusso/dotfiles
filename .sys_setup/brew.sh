@@ -55,6 +55,7 @@ brew install sqlmap
 brew install tcpflow
 brew install tcpreplay
 brew install tcptrace
+brew install transmission
 brew install watch
 brew install wget
 brew install youtube-dl
