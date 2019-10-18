@@ -56,13 +56,6 @@
 
     set showcmd                         " show command in bottom bar
 
-    highlight VisualGuide80 ctermbg=235             " visual guide 1 color
-    highlight VisualGuide100 ctermbg=238            " visual guide 2 color
-    highlight VisualGuide120 ctermbg=241 ctermfg=0  " visual guide 3 color
-    call matchadd('VisualGuide80', '\(\%>80v\)')    " visual guide starting @ 81
-    call matchadd('VisualGuide100', '\(\%>100v\)')  " visual guide starting @ 101
-    call matchadd('VisualGuide120', '\(\%>120v\)')  " visual guide starting @ 121
-
     set wildmenu                        " enable wildmenu
 
     set showmatch                       " show matching brackets
