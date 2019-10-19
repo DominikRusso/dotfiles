@@ -163,7 +163,7 @@ toolbarbutton.bookmark-item:hover {
 
 /* set max tab width */
 .tabbrowser-tab[fadein]:not([pinned]) {
-    max-width: 300px !important;
+    max-width: 8192px !important;
 }
 
 
