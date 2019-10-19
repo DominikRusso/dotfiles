@@ -155,12 +155,9 @@ toolbarbutton.bookmark-item:hover {
 }
 
 
-/* only show tab close buttons on hover */
-.tabbrowser-tab:not(:hover) .tab-close-button {
+/* hide tab close button */
+.tabbrowser-tab .tab-close-button {
     display:none;
-}
-.tabbrowser-tab:not([pinned]):hover .tab-close-button {
-    display:block !important;
 }
 
 
