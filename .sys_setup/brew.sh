@@ -56,6 +56,7 @@ brew install rust
 brew install screen
 brew install shellcheck
 brew install socat
+brew install speedtest-cli
 brew install sqlmap
 brew install tcpflow
 brew install tcpreplay
