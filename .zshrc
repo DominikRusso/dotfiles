@@ -75,20 +75,7 @@ export VISUAL="$EDITOR"
 
 
 # aliases
-alias v="nvim"
-alias vi="nvim"
-alias vim="nvim"
-alias ls="ls -G"
-alias ll="ls -alFh"
-alias grep="grep --color=auto"
-alias egrep="egrep --color=auto"
-alias cp="cp -iv"
-alias chmod="chmod -v"
-alias chown="chown -v"
-alias mkdir="mkdir -v"
-
-alias gitdir="cd ~/Documents/Computer_Science/git"
-
+source $HOME/.aliases
 
 # set up colors
 red='\033[0;38;5;9m'
