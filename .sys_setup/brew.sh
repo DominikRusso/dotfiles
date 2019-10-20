@@ -38,6 +38,7 @@ brew install knock
 brew install libomp
 brew install lolcat
 brew install moreutils
+brew install neofetch
 brew install neovim
 brew install netpbm
 brew install nikto
@@ -53,7 +54,6 @@ brew install r
 brew install radare2
 brew install rust
 brew install screen
-brew install screenfetch
 brew install shellcheck
 brew install socat
 brew install sqlmap
