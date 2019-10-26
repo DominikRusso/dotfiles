@@ -15,6 +15,7 @@ brew install binwalk
 brew install cifer
 brew install cmake
 brew install cmatrix
+brew install cmus
 brew install cowsay
 brew install ffmpeg
 brew install figlet
