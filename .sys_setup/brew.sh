@@ -32,7 +32,6 @@ brew install grep
 brew install hashpump
 brew install htop
 brew install hydra
-brew install id3lib
 brew install imagemagick
 brew install john
 brew install knock
