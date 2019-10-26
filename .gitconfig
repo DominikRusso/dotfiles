@@ -1,7 +1,7 @@
 [alias]
 
     # View full tree
-    tree = git log --graph --abbrev-commit --pretty=format:"%C(auto)%h -%d %s %C(green)(%ci) %C(bold blue)<%aN>"
+    tree = log --graph --abbrev-commit --pretty=format:'%C(auto)%h -%d %s %C(green)(%ci) %C(bold blue)<%aN>'
 
     # View abbreviated SHA, description, and history graph of latest 20 commits
     l = log --pretty=oneline -n 20 --graph --abbrev-commit
