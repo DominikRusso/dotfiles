@@ -8,7 +8,6 @@ brew install cask
 
 # install packages
 brew cask install basictex
-brew cask install cutter
 brew cask install macvim
 brew install afl-fuzz
 brew install binwalk
