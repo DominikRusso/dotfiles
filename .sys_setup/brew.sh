@@ -16,6 +16,7 @@ brew install cmake
 brew install cmatrix
 brew install cmus
 brew install cowsay
+brew install entr
 brew install ffmpeg
 brew install figlet
 brew install fortune
