@@ -1,4 +1,3 @@
-#
 #            _              
 #    _______| |__  _ __ ___ 
 #   |_  / __| '_ \| '__/ __|
@@ -46,7 +45,7 @@ zle -N down-line-or-beginning-search
 [[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
 
 
-# command completion
+# completion
 autoload -Uz compinit
 compinit
 setopt COMPLETE_ALIASES
@@ -58,6 +57,9 @@ _comp_options+=(globdots)
 
 zstyle ':completion:*' completer _expand _complete _ignored _approximate
 zstyle ':completion::complete:*' use-cache 1
+
+# completion case insensitive
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 
 # force emacs keybindings
@@ -155,3 +157,4 @@ precmd() {
 preexec() {
     termtitle preexec "${(V)1}"
 }
+
