@@ -53,6 +53,7 @@ brew install python
 brew install r
 brew install radare2
 brew install rust
+brew install sendemail
 brew install shellcheck
 brew install socat
 brew install speedtest-cli
