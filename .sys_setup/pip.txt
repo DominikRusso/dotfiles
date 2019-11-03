@@ -13,6 +13,7 @@ matplotlib
 numpy
 pendulum
 pyenchant
+pylint
 requests
 scipy
 seaborn
