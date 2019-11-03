@@ -1,0 +1,40 @@
+# envs
+jupyterlab
+
+# general
+beautifulsoup4
+cloudpickle
+colorama
+eventlet
+fuckit
+gitpython
+lxml
+matplotlib
+numpy
+pendulum
+pyenchant
+requests
+scipy
+seaborn
+tqdm
+
+# hacking / ctf
+capstone
+cryptography
+fake-useragent
+pwntools
+ropgadget
+
+# ml
+eli5
+gym
+keras
+lightgbm
+nltk
+opencv-python
+pandas
+scikit-learn
+tensorboard
+tensorflow
+tflearn
+torch
