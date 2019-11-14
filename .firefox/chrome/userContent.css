@@ -1,0 +1,4 @@
+/* make about:blank page black */
+@-moz-document url-prefix(about:blank) {
+    *{background-color:#000000;}
+}
