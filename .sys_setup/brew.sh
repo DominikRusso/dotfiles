@@ -9,6 +9,8 @@ brew install cask
 # install packages
 brew cask install basictex
 brew cask install macvim
+brew cask install vagrant
+brew cask install virtualbox
 brew install afl-fuzz
 brew install binwalk
 brew install cifer
@@ -37,6 +39,7 @@ brew install john
 brew install knock
 brew install libomp
 brew install lolcat
+brew install mitmproxy
 brew install moreutils
 brew install neofetch
 brew install neovim
