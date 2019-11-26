@@ -7,21 +7,64 @@
 "
 
 
-""" GENERAL """""""""""""""""""""""""""""
+""" GENERAL """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-    set nocompatible                    " enter current millennium
+    set nocompatible                    " disable vi compatibility -> enter current millennium
+
+    let mapleader=","                   " set mapleader
 
     set encoding=utf-8                  " set encoding
     set fileencoding=utf-8
     set termencoding=utf-8
 
-    let mapleader=","                   " define mapleader
+    set autoread                        " auto read file if it is changed from the outside
+    set lazyredraw                      " don't redraw when not necessary
+
+    autocmd BufEnter * set fo-=c fo-=r fo-=o    " disable auto-comment on newline 
+
+
+" backspacing
+
+    set backspace=indent,eol,start      " backspace over autoindentation, lines, previously inserted text
+
+
+" indenting
+
+    set autoindent                      " add/remove indentation level in special cases
+    set expandtab                       " tabs are spaces
+    set shiftwidth=4                    " tab = 4 spaces
+    set smartindent                     " copy indentation level onto next level
+    set smarttab                        " different tab behaviour in different cases
+    set softtabstop=4                   " softtab stop every 4 spaces
+    set tabstop=4                       " tab = 4 spaces
+
+
+" searching
+
+    set hlsearch                        " highlight search
+    set incsearch                       " instant highlighting
+    set ignorecase                      " case insensitive search
+    set smartcase                       " except when query contains uppercase
+
+
+" wrapping
+
+    set tw=0                            " stop text being broken at 80
+
+
+" splitting
+
+    set splitbelow splitright           " better splitting behavior
+
+    map <C-h> <C-w>h                    " better split navigation
+    map <C-j> <C-w>j
+    map <C-k> <C-w>k
+    map <C-l> <C-w>l
+
+
+""" PLUGINS """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
     filetype plugin on                  " enable file type specific settings
-
-    set lazyredraw                      " dont redraw when not necessary
-
-""" PLUGINS """""""""""""""""""""""""""""
 
     " set the runtime path to include Vundle and initialize
     set rtp+=~/.vim/bundle/Vundle.vim
@@ -29,7 +72,7 @@
 
     " let Vundle manage Vundle, required
     Plugin 'VundleVim/Vundle.vim'
-
+    
     Plugin 'scrooloose/syntastic'
     Plugin 'scrooloose/nerdtree'
 
@@ -38,7 +81,8 @@
 
 """ VISUAL & UI """""""""""""""""""""""""
 
-    set guifont=Menlo:h12               " readable font size in macvim
+    set guifont=Menlo:h13               " readable font size in gvim
+    set guicursor=                      " default gui cursor
 
     set background=dark                 " use colors that are visible on dark background
 
@@ -49,31 +93,29 @@
     set shortmess=I                     " disable splash screen
 
     set so=8                            " set scroll offset to 8 lines
-
-    set laststatus=2
-
-    set guicursor=                      " block cursor in terminal nvim
-
-    set showcmd                         " show command in bottom bar
-
+    
     set wildmenu                        " enable wildmenu
+    set wildmode=longest,list           " complete longest common string, then list alternatives
 
     set showmatch                       " show matching brackets
     set mat=0                           " dont move cursor back
-
-    set visualbell                      " disable visual bells
+    
+    set noerrorbells                    " disable error bells
+    set visualbell
     set t_vb=
 
-    set splitbelow splitright           " better splitting behavior
+    set guioptions-=r                   " disable scrollbars
+    set guioptions-=R
+    set guioptions-=l
+    set guioptions-=L
 
-    map <C-h> <C-w>h                    " better split navigation
-    map <C-j> <C-w>j
-    map <C-k> <C-w>k
-    map <C-l> <C-w>l
 
 """ STATUS LINE """""""""""""""""""""""""
 
-    set statusline=%t\   "tail of the filename
+    set showcmd                         " show command in bottom bar
+
+    " tail of the filename
+    set statusline=%t\
 
     " display a warning if file format isnt unix
     set statusline+=%#warningmsg#
@@ -120,7 +162,8 @@
     set statusline+=%c,                                 " cursor column
     set statusline+=%l/%L                               " cursor line/total lines
     set statusline+=\ %P                                " percent through file
-    set laststatus=2
+    
+    set laststatus=2                                    " always display status bar
 
     " recalculate the trailing whitespace warning when idle, and after saving
     autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
@@ -239,13 +282,28 @@
     endfunction
 
 
-""" AUTOMATIC BEHAVIOR """"""""""""""""""
+""" COMMANDS """"""""""""""""""""""""""""
 
-    " auto read file if it is changed from the outside
-    set autoread
+    " enable matching (use % key)
+    runtime macros/matchit.vim
 
-    " disable auto comment on newline
-    autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+    " treat dashed strings as words in stylesheets
+    autocmd Filetype css,scss,sass setlocal iskeyword+=-
+
+    " toggle spellcheck to english
+    map <leader>e :setlocal spell! spelllang=en_us<CR>
+
+    " toggle spellcheck to german
+    map <leader>d :setlocal spell! spelllang=de_de<CR>
+
+    " map substitute to S
+    nnoremap S :%s///g<Left><Left><Left>
+
+    " reload vimrc
+    nnoremap <leader>sv :source $MYVIMRC<CR>
+
+
+""" FILE TYPE SPECIFIC STUFF """"""""""""
 
     " turn on spell check in git commits
     autocmd FileType gitcommit set spell
@@ -253,52 +311,3 @@
     " treat dashed strings as words in stylesheets
     autocmd Filetype css,scss,sass setlocal iskeyword+=-
 
-
-""" BACKSPACING """""""""""""""""""""""""
-
-    set backspace=indent,eol,start      " backspace behavior that makes sense
-
-
-""" INDENTATION """""""""""""""""""""""""
-
-    set autoindent                      " automatic indentation on newlines
-
-    set  smartindent                    " smart indentation
-
-    set smarttab                        " smart tabs
-
-    set expandtab                       " tabs are spaces
-
-    set shiftwidth=4                    " tab = 4 spaces
-    set tabstop=4
-    set softtabstop=4
-
-
-""" SEARCH """"""""""""""""""""""""""""""
-
-    set hlsearch                        " highlight search
-
-    set incsearch                       " instant highlighting
-
-    set ignorecase                      " case insensitive search
-    set smartcase                       " except when query contains uppercase
-
-
-""" MISC """"""""""""""""""""""""""""""""
-
-
-    runtime macros/matchit.vim                                  " enable matching (use % key)
-
-    autocmd Filetype css,scss,sass setlocal iskeyword+=-        " treat dashed strings as words in stylesheets
-
-    " toggle spellcheck to english
-    map <leader>e :setlocal spell! spelllang=en_us<CR>
-
-    " toggle spellcheck to german
-    map <leader>g :setlocal spell! spelllang=de_de<CR>
-
-    " map substitute to S
-    nnoremap S :%s///g<Left><Left><Left>
-
-    " reload vimrc
-    nnoremap <leader>sv :source $MYVIMRC<CR>
