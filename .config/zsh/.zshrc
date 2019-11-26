@@ -66,7 +66,8 @@ preexec() {                         # use beam shape cursor for new prompts
 autoload -Uz compinit
 
 setopt extendedglob                                     # enable more globbing
-_comp_options+=(globdots)                               # complete hidden files
+setopt no_nomatch                                       # when globbing fails use cmd as is
+setopt globdots                                         # complete hidden files
 
 compinit -d "$ZSHCACHE/zcompdump"                       # specify comppdump loc
 zstyle ':completion::complete:*' use-cache 1
