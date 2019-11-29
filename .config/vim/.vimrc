@@ -67,7 +67,7 @@
     filetype plugin on                  " enable file type specific settings
 
     " set the runtime path to include Vundle and initialize
-    set rtp+=~/.vim/bundle/Vundle.vim
+    set rtp+=~/.config/vim/bundle/Vundle.vim
     call vundle#begin()
 
     " let Vundle manage Vundle, required
