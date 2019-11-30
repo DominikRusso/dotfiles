@@ -7,11 +7,13 @@ cloudpickle
 colorama
 eventlet
 fuckit
+gitinspector
 gitpython
 lxml
 matplotlib
 numpy
 pendulum
+proselint
 pyenchant
 pylint
 requests
