@@ -76,11 +76,13 @@ zstyle ':completion::complete:*' cache-path $ZSH_CACHE
 zstyle ':completion:*' rehash true                      # auto update for new programs
 
 zstyle ':completion:*' completer \
-    _complete _ignored _approximate                     # enable approximate completion
+    _complete _approximate                              # enable approximate completion
 
 zstyle ':completion:*' matcher-list \
     '' 'm:{a-zA-Z}={A-Za-z}' \
     'r:|[._-]=* r:|=*' 'l:|=* r:|=*'                    # case insensitive completion
+
+zstyle ':completion:*:*:-command-:*:*' ignored-patterns '_*'    # don't suggest completion functions
 
 zstyle ':completion:*' insert-tab false                 # don't tab on empty buffer
 zstyle -e ':completion:*' hosts 'reply=()'              # don't complete hosts from /etc/hosts
