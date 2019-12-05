@@ -118,8 +118,8 @@
     " enable matching (use % key)
     runtime macros/matchit.vim
 
-    " treat dashed strings as words in stylesheets
-    autocmd Filetype css,scss,sass setlocal iskeyword+=-
+    " check file in shellcheck
+    map <leader>s :w \| !clear && shellcheck %<CR>
 
     " toggle spellcheck to english
     map <leader>e :setlocal spell! spelllang=en_us<CR>
@@ -131,7 +131,10 @@
     nnoremap S :%s///g<Left><Left><Left>
 
     " reload vimrc
-    nnoremap <leader>sv :source $MYVIMRC<CR>
+    nnoremap <leader>v :source $MYVIMRC<CR>
+
+    " automatically delete trailing whitespace on save
+    autocmd BufWritePre * silent! %s/\s\+$//e
 
 
 """ FILE TYPE SPECIFIC STUFF """"""""""""
