@@ -91,6 +91,7 @@
     augroup END
 
     set shortmess=I                     " disable splash screen
+    set shortmess+=a                    " use abbreviations in file messages
 
     set so=8                            " set scroll offset to 8 lines
     
