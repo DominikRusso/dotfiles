@@ -9,7 +9,7 @@
 
 """ GENERAL """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-    set nocompatible                    " disable vi compatibility -> enter current millennium
+    set nocompatible                    " disable vi compatibility
 
     let mapleader=","                   " set mapleader
 
@@ -17,15 +17,15 @@
     set fileencoding=utf-8
     set termencoding=utf-8
 
-    set autoread                        " auto read file if it is changed from the outside
+    set autoread                        " auto read external file changes
     set lazyredraw                      " don't redraw when not necessary
 
-    autocmd BufEnter * set fo-=c fo-=r fo-=o    " disable auto-comment on newline 
+    autocmd BufEnter * set fo-=c fo-=r fo-=o    " disable auto-comment on newline
 
 
 " backspacing
 
-    set backspace=indent,eol,start      " backspace over autoindentation, lines, previously inserted text
+    set backspace=indent,eol,start      " backspace over autoindents, lines, previous insertions
 
 
 " indenting
@@ -56,7 +56,7 @@
 
     set splitbelow splitright           " better splitting behavior
 
-    map <C-h> <C-w>h                    " better split navigation
+    map <C-h> <C-w>h
     map <C-j> <C-w>j
     map <C-k> <C-w>k
     map <C-l> <C-w>l
@@ -94,13 +94,13 @@
     set shortmess+=a                    " use abbreviations in file messages
 
     set so=8                            " set scroll offset to 8 lines
-    
+
     set wildmenu                        " enable wildmenu
     set wildmode=longest,list           " complete longest common string, then list alternatives
 
     set showmatch                       " show matching brackets
     set mat=0                           " dont move cursor back
-    
+
     set noerrorbells                    " disable error bells
     set visualbell
     set t_vb=
