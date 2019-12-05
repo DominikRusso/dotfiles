@@ -7,6 +7,7 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 
 # clean up ~
-export VIMINIT="source $HOME/.config/vim/.vimrc"
+export MYVIMRC="$HOME/.config/vim/.vimrc"
+export VIMINIT="source $MYVIMRC"
 export ZDOTDIR="$HOME/.config/zsh"
 export ZSHCACHE="$HOME/.cache/zsh"
