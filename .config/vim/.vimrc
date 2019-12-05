@@ -105,6 +105,8 @@
     set visualbell
     set t_vb=
 
+    set guioptions-=m                   " disable menu bar
+
     set guioptions-=r                   " disable scrollbars
     set guioptions-=R
     set guioptions-=l
