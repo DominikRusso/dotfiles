@@ -64,20 +64,13 @@
 
 """ PLUGINS """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-    filetype plugin on                  " enable file type specific settings
-
-    " set the runtime path to include Vundle and initialize
-    set rtp+=~/.config/vim/bundle/Vundle.vim
-    call vundle#begin()
-
-    " let Vundle manage Vundle, required
-    Plugin 'VundleVim/Vundle.vim'
-    
-    Plugin 'scrooloose/syntastic'
-    Plugin 'scrooloose/nerdtree'
-
-    call vundle#end()
-
+    call plug#begin('~/.config/vim/plugged')
+    Plug 'bling/vim-airline'    " status line
+    Plug 'scrooloose/nerdtree'  " file explorer
+    Plug 'scrooloose/syntastic' " syntax checking
+    Plug 'tpope/vim-commentary' " commenting lines
+    Plug 'tpope/vim-surround'   " parens brackets quotes etc
+    call plug#end()
 
 """ VISUAL & UI """""""""""""""""""""""""
 
