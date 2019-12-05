@@ -81,7 +81,14 @@
 
     syntax on                           " enable syntax highlighting
 
-    set number relativenumber           " set relative and absolute line numbering
+    set number relativenumber           " hybrid line numbering
+
+    " use absolute line numbering when not in focus
+    augroup numbertoggle
+        autocmd!
+        autocmd BufEnter,FocusGained * set relativenumber
+        autocmd BufLeave,FocusLost   * set norelativenumber
+    augroup END
 
     set shortmess=I                     " disable splash screen
 
