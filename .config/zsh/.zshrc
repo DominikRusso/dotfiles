@@ -141,7 +141,7 @@ cdf() {
         location=$1
         name=$2
     fi
-    builtin cd $(find $location -name $name 2> /dev/null)
+    builtin cd $(find $location -type d -name $name 2> /dev/null)
 }
 
 # reload shell
