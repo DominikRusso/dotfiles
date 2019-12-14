@@ -133,6 +133,17 @@ cd() {
     fi
 }
 
+cdf() {
+    location=~/Documents
+    if [ -z $2 ]; then
+        name=$1
+    else
+        location=$1
+        name=$2
+    fi
+    builtin cd $(find $location -name $name 2> /dev/null)
+}
+
 # reload shell
 reload() {
     exec "${SHELL}" "$@"
