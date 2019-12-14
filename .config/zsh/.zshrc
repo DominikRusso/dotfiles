@@ -1,8 +1,8 @@
 #
-#            _              
-#    _______| |__  _ __ ___ 
+#            _
+#    _______| |__  _ __ ___
 #   |_  / __| '_ \| '__/ __|
-#    / /\__ \ | | | | | (__ 
+#    / /\__ \ | | | | | (__
 #   /___|___/_| |_|_|  \___|
 #
 #
@@ -39,7 +39,7 @@ function zle-keymap-select {        # change cursor for different vi modes
        [[ $1 = 'block' ]]
     then
         echo -ne '\e[1 q'
-    elif [[ ${KEYMAP} == main  ]] || 
+    elif [[ ${KEYMAP} == main  ]] ||
          [[ ${KEYMAP} == viins ]] ||
          [[ ${KEYMAP} = '' ]] ||
          [[ $1 = 'beam' ]]
@@ -91,11 +91,11 @@ zstyle -e ':completion:*' hosts 'reply=()'              # don't complete hosts f
 # keybindings ----------------------------------------------------------------
 typeset -g -A key
 
-key[Up]="${terminfo[kcuu1]}"     
+key[Up]="${terminfo[kcuu1]}"
 key[Down]="${terminfo[kcud1]}"
 
 [[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
-[[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search 
+[[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
 
 if [[ ${+terminfo[smkx]} && ${+terminfo[rmkx]} ]]
 then
