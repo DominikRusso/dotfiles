@@ -7,25 +7,26 @@
 "
 
 
-""" GENERAL """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" GENERAL """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
     set nocompatible                    " disable vi compatibility
 
     let mapleader=","                   " set mapleader
 
-    set encoding=utf-8                  " set encoding
-    set fileencoding=utf-8
-    set termencoding=utf-8
-
     set autoread                        " auto read external file changes
     set lazyredraw                      " don't redraw when not necessary
-
-    autocmd BufEnter * set fo-=c fo-=r fo-=o    " disable auto-comment on newline
 
 
 " backspacing
 
     set backspace=indent,eol,start      " backspace over autoindents, lines, previous insertions
+
+
+" encoding
+
+    set encoding=utf-8
+    set fileencoding=utf-8
+    set termencoding=utf-8
 
 
 " indenting
@@ -34,7 +35,7 @@
     set expandtab                       " tabs are spaces
     set shiftwidth=4                    " tab = 4 spaces
     set smartindent                     " copy indentation level onto next level
-    set smarttab                        " different tab behaviour in different cases
+    set smarttab                        " different tab behavior in different cases
     set softtabstop=4                   " softtab stop every 4 spaces
     set tabstop=4                       " tab = 4 spaces
 
@@ -47,48 +48,41 @@
     set smartcase                       " except when query contains uppercase
 
 
-" wrapping
-
-    set tw=0                            " stop text being broken at 80
-
-
 " splitting
 
     set splitbelow splitright           " better splitting behavior
-
     map <C-h> <C-w>h
     map <C-j> <C-w>j
     map <C-k> <C-w>k
     map <C-l> <C-w>l
 
 
-""" PLUGINS """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" wrapping
+
+    set tw=0                            " stop text being broken at 80
+
+
+""" PLUGINS """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
     call plug#begin('~/.config/vim/plugged')
     Plug 'bling/vim-airline'    " status line
     Plug 'scrooloose/nerdtree'  " file explorer
     Plug 'scrooloose/syntastic' " syntax checking
     Plug 'tpope/vim-commentary' " commenting lines
-    Plug 'tpope/vim-surround'   " parens brackets quotes etc
+    Plug 'tpope/vim-surround'   " fancy stuff with pairs of things
     call plug#end()
 
-""" VISUAL & UI """""""""""""""""""""""""
+
+""" VISUAL & UI """""""""""""""""""""""""""""""""""""""""""""""""""""
 
     set guifont=Menlo:h13               " readable font size in gvim
     set guicursor=                      " default gui cursor
 
     set background=dark                 " use colors that are visible on dark background
 
-    syntax on                           " enable syntax highlighting
-
     set number relativenumber           " hybrid line numbering
 
-    " use absolute line numbering when not in focus
-    augroup numbertoggle
-        autocmd!
-        autocmd BufEnter,FocusGained * set relativenumber
-        autocmd BufLeave,FocusLost   * set norelativenumber
-    augroup END
+    syntax on                           " enable syntax highlighting
 
     set shortmess=I                     " disable splash screen
     set shortmess+=a                    " use abbreviations in file messages
@@ -99,7 +93,7 @@
     set wildmode=longest,list           " complete longest common string, then list alternatives
 
     set showmatch                       " show matching brackets
-    set mat=0                           " dont move cursor back
+    set mat=0                           " don't move cursor back
 
     set noerrorbells                    " disable error bells
     set visualbell
@@ -113,9 +107,9 @@
     set guioptions-=L
 
 
-""" COMMANDS """"""""""""""""""""""""""""
+""" BEHAVIOR & COMMANDS """""""""""""""""""""""""""""""""""""""""""""
 
-    " enable matching (use % key)
+    " matching using % key
     runtime macros/matchit.vim
 
     " check file in shellcheck
@@ -136,8 +130,18 @@
     " automatically delete trailing whitespace on save
     autocmd BufWritePre * silent! %s/\s\+$//e
 
+    " no auto-commenting on newline
+    autocmd BufEnter * set fo-=c fo-=r fo-=o
 
-""" FILE TYPE SPECIFIC STUFF """"""""""""
+    " absolute line numbering when not in focus
+    augroup numbertoggle
+        autocmd!
+        autocmd BufEnter,FocusGained * set relativenumber
+        autocmd BufLeave,FocusLost   * set norelativenumber
+    augroup END
+
+
+""" FILE TYPE SPECIFIC STUFF """"""""""""""""""""""""""""""""""""""""
 
     " turn on spell check in git commits
     autocmd FileType gitcommit set spell
