@@ -8,6 +8,7 @@ export VISUAL="nvim"
 
 # clean up ~
 export MYVIMRC="$HOME/.config/vim/.vimrc"
+export TASKRC="$HOME/.config/task/.taskrc"
 export VIMINIT="source $MYVIMRC"
 export ZDOTDIR="$HOME/.config/zsh"
 export ZSHCACHE="$HOME/.cache/zsh"
