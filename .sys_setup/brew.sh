@@ -7,7 +7,7 @@
 brew install cask
 
 # install packages
-brew cask install basictex
+brew cask install mactex-no-gui
 brew cask install macvim
 brew cask install vagrant
 brew cask install virtualbox
@@ -44,6 +44,7 @@ brew install moreutils
 brew install neofetch
 brew install neovim
 brew install netpbm
+brew install newsboat
 brew install nikto
 brew install nmap
 brew install open-mpi
