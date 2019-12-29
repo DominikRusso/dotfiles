@@ -1,10 +1,17 @@
 data.location=~/.local/share/task
 
-weekstart = monday
-search.case.sensitive = false
+
+## BEHAVIOUR ##########################
+
+default.command         = next
+recurrence.limit        = 2
+search.case.sensitive   = false
+weekstart               = monday
 
 # verbose for everything except header (annoying warnings like taskrc override)
 verbose = blank,footnote,label,new-id,affected,edit,special,project,sync,filter
+
+## priority #####
 
 uda.priority.values                 = H,M,,L
 
@@ -25,8 +32,19 @@ urgency.tags.coefficient            = 0.8   # has tags
 urgency.waiting.coefficient         = -2.0  # waiting task
 urgency.blocked.coefficient         = -6.0  # blocked by other tasks
 
-report.list.labels  = ID,Urg,Active,D,P,Project,Tags,R,Sch,Due,Until,Description,Age
-report.list.columns = id,urgency,start.age,depends.indicator,priority,project,tags,recur.indicator,scheduled.countdown,due,until.remaining,description.count,entry.age
 
-report.next.labels  = ID,Urg,Active,D,P,Project,Tags,R,Sch,Due,Until,Description,Age
-report.next.columns = id,urgency,start.age,depends.indicator,priority,project,tags,recur.indicator,scheduled.countdown,due,until.remaining,description.count,entry.age
+## APPEARANCE #########################
+
+column.padding          = 2
+row.padding             = 1
+
+## columns #####
+
+print.empty.columns     = true
+
+report.next.labels  = ID,D,P,Project,Tags,R,Due,Description,Urg
+report.next.columns = id,depends.count,priority,project,tags,recur.indicator,due.remaining,description.count,urgency
+
+report.list.labels  = ID,Urg, D,P,Project,Tags,R,Sched,Due,Until,Description,Age
+report.list.columns = id,urgency,depends.count,priority,project,tags,recur.indicator,scheduled,due,until.remaining,description.count,entry.age
+
