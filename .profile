@@ -7,6 +7,7 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 
 # clean up ~
+export CTCDIR="$HOME/.local/share/contacts"
 export MYVIMRC="$HOME/.config/vim/.vimrc"
 export TASKRC="$HOME/.config/task/.taskrc"
 export VIMINIT="source $MYVIMRC"
