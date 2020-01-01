@@ -16,3 +16,6 @@ export TASKRC="$HOME/.config/task/.taskrc"
 export VIMINIT="source $MYVIMRC"
 export ZDOTDIR="$HOME/.config/zsh"
 export ZSHCACHE="$HOME/.cache/zsh"
+
+# program settings
+export FZF_DEFAULT_OPTS="--layout=reverse --height 50%"
