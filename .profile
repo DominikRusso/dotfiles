@@ -6,6 +6,9 @@ export LC_ALL=en_US.UTF-8
 export EDITOR="nvim"
 export VISUAL="nvim"
 
+# path
+PATH=~/.local/bin:$PATH
+
 # clean up ~
 export CTCDIR="$HOME/.local/share/contacts"
 export MYVIMRC="$HOME/.config/vim/.vimrc"
