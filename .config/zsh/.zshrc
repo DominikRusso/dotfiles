@@ -11,8 +11,8 @@
 PS1="%B%F{red}[%F{green}%n%F{white}@%F{green}%M%F{white}:%F{cyan}%3~%F{red}]%F{white}%#%b "
 
 
-# load aliases and shortcuts -------------------------------------------------
-[ -f "$HOME/.config/shortcuts" ] && source "$HOME/.config/shortcuts"
+# load aliases and shell procedures ------------------------------------------
+[ -f "$HOME/.config/procedures" ] && source "$HOME/.config/procedures"
 [ -f "$HOME/.config/aliases" ] && source "$HOME/.config/aliases"
 
 
@@ -114,38 +114,4 @@ autoload -Uz up-line-or-beginning-search    # up searches history upwards based 
 autoload -Uz down-line-or-beginning-search  # down searches history downwards based on buffer
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-
-
-# functions ------------------------------------------------------------------
-
-# cd into parent dir if trying to cd into file
-cd() {
-    if (( $+2 )); then
-        builtin cd "$@"
-        return 0
-    fi
-
-    if [ -f "$1" ]; then
-        echo "cd ${1:h}" >&2
-        builtin cd "${1:h}"
-    else
-        builtin cd "${@}"
-    fi
-}
-
-cdf() {
-    location=~/Documents
-    if [ -z $2 ]; then
-        name=$1
-    else
-        location=$1
-        name=$2
-    fi
-    builtin cd $(find $location -type d -name $name 2> /dev/null)
-}
-
-# reload shell
-reload() {
-    exec "${SHELL}" "$@"
-}
 
