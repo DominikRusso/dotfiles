@@ -50,3 +50,8 @@ report.next.columns = id,depends.count,priority,project,tags,recur.indicator,due
 report.list.labels  = ID,Urg, D,P,Project,Tags,R,Sched,Due,Until,Description,Age
 report.list.columns = id,urgency,depends.count,priority,project,tags,recur.indicator,scheduled,due,until.remaining,description.count,entry.age
 
+
+## SECURITY ###########################
+
+taskd.trust     = strict
+taskd.ciphers   = PFS       # perfect forward secrecy
