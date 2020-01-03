@@ -1,64 +1,107 @@
+## BEHAVIOR #########################
+
 data.location=~/.local/share/task
 
-
-## BEHAVIOUR ##########################
-
 default.command         = next
-recurrence.limit        = 2
-search.case.sensitive   = false
+
+recurrence.limit        = 2         # generated future entries for recurring tasks
+search.case.sensitive   = off
 weekstart               = monday
 
-# verbose for everything except header (annoying warnings like taskrc override)
-verbose = blank,footnote,label,new-id,affected,edit,special,project,sync,filter
+## completion #####
+
+complete.all.tags       = on        # autocomplete all tags, not just tags on pending tasks
+
+
+## verbosity #####
+
+verbose = blank,label,footnote,new-id,affected,edit,special,sync
+
+list.all.tags           = on        # list all tags, not just tags on pending tasks
+list.all.projects       = on        # list all projects, not just uncompleted projects
+
+
+## aliases #####
+
+alias.bdd = burndown.daily
+alias.bdw = burndown.weekly
+alias.bdm = burndown.monthly
+
+
+## dateformat #####
+
+dateformat.edit = Y-M-D H:N
+dateformat.info = Y-M-D H:N
+
 
 ## priority #####
 
-uda.priority.values                 = H,M,,L
+uda.priority.values                 = H,M,,L # high, medium, none, low
 
-urgency.uda.priority.H.coefficient  =  6.0   # high priority
-urgency.uda.priority.M.coefficient  =  4.0   # medium priority
+urgency.uda.priority.H.coefficient  =  7.0   # high priority
+urgency.uda.priority.M.coefficient  =  3.0   # medium priority
 urgency.uda.priority..coefficient   =  0.0   # no priority
-urgency.uda.priority.L.coefficient  = -5.0   # low priority
+urgency.uda.priority.L.coefficient  = -4.0   # low priority
 
-urgency.inherit                     = true
+
+## urgency #####
+
+urgency.inherit                     = on     # blockings task gets highest urgency in chain
 
 urgency.user.tag.next.coefficient   = 15.0   # +next tag
 urgency.due.coefficient             = 12.0   # overdue or near due date
 urgency.active.coefficient          =  6.0   # already started tasks
-urgency.scheduled.coefficient       =  5.0   # scheduled tasks
-urgency.blocking.coefficient        =  3.0   # blocking other tasks
+urgency.scheduled.coefficient       =  4.0   # scheduled tasks
+urgency.blocking.coefficient        =  2.5   # blocking other tasks
 urgency.age.coefficient             =  1.5   # coefficient for age
 urgency.annotations.coefficient     =  1.0   # has annotations
 urgency.project.coefficient         =  0.9   # assigned to any project
 urgency.tags.coefficient            =  0.8   # has tags
 urgency.blocked.coefficient         =  0.0   # blocked by other tasks
-urgency.waiting.coefficient         = -2.0   # waiting task
+urgency.waiting.coefficient         = -5.0   # waiting task
 
 
-## APPEARANCE #########################
 
-column.padding          = 2
-row.padding             = 1
+## APPEARANCE ###################
+
+detection            = on       # use ioctl to determine window dimentions
+defaultwidth         = 100
+defaultheight        = 30
+
+_forcecolor           = on      # color even when piping
+
+column.padding        = 2       # spaces around columns
+row.padding           = 1       # spaces around table
+
 
 ## columns #####
 
-print.empty.columns  = true
+print.empty.columns   = on
 
-report.list.labels   = ID,Urg, D,P,Project,Tags,R,Sched,Due,Until,Description,Age
-report.list.columns  = id,urgency,depends.count,priority,project,tags,recur.indicator,scheduled,due,until.remaining,description.count,entry.age
+report.completed.sort = end-    # most recent first
 
-report.next.labels   = ID, D,P,Project,Tags,R,Due,Description,Urg
-report.next.columns  = id,depends.count,priority,project,tags,recur.indicator,due.remaining,description.count,urgency
-report.next.filter   = status:pending limit:page (scheduled.before:1w or due.before:1m)
-report.next.sort     = urgency-,due+
+report.list.labels    = ID,Urg,Dep,P,Project,Tags,R,Sched,Due,Until,Description,Age
+report.list.columns   = id,urgency,depends.count,priority,project,tags,recur.indicator,scheduled,due,until.remaining,description.count,entry.age
 
-report.ready.labels  = ID,P,Project,R,Due,Description,Urg
-report.ready.columns = id,priority,project,recur.indicator,due.remaining,description.count,urgency
-report.ready.filter  = +READY
-report.ready.sort    = due+,urgency-
+report.next.labels    = ID,Dep,P,Project,Tags,R,Due,Description,Urg
+report.next.columns   = id,depends.count,priority,project,tags,recur.indicator,due.remaining,description.count,urgency
+report.next.filter    = status:pending limit:page (scheduled.before:1w or due.before:1m)
+report.next.sort      = urgency-,due+
+
+report.newest.filter  = status:pending or status:waiting limit:page
+report.newest.sort    = entry-,modified-
+
+report.oldest.filter  = status:pending or status:waiting limit:page
+report.oldest.sort    = entry+,modified+
+
+report.ready.labels   = ID,P,Project,R,Due,Description,Urg
+report.ready.columns  = id,priority,project,recur.indicator,due.remaining,description.count,urgency
+report.ready.filter   = +READY
+report.ready.sort     = due+,urgency-
 
 
-## SECURITY ###########################
 
-taskd.trust     = strict
+## SECURITY #################
+
+taskd.trust     = strict    # always perform server verification
 taskd.ciphers   = PFS       # perfect forward secrecy
