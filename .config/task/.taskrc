@@ -42,13 +42,20 @@ row.padding             = 1
 
 ## columns #####
 
-print.empty.columns     = true
+print.empty.columns  = true
 
-report.next.labels  = ID,D,P,Project,Tags,R,Due,Description,Urg
-report.next.columns = id,depends.count,priority,project,tags,recur.indicator,due.remaining,description.count,urgency
+report.list.labels   = ID,Urg, D,P,Project,Tags,R,Sched,Due,Until,Description,Age
+report.list.columns  = id,urgency,depends.count,priority,project,tags,recur.indicator,scheduled,due,until.remaining,description.count,entry.age
 
-report.list.labels  = ID,Urg, D,P,Project,Tags,R,Sched,Due,Until,Description,Age
-report.list.columns = id,urgency,depends.count,priority,project,tags,recur.indicator,scheduled,due,until.remaining,description.count,entry.age
+report.next.labels   = ID, D,P,Project,Tags,R,Due,Description,Urg
+report.next.columns  = id,depends.count,priority,project,tags,recur.indicator,due.remaining,description.count,urgency
+report.next.filter   = status:pending limit:page (scheduled.before:1w or due.before:1m)
+report.next.sort     = urgency-,due+
+
+report.ready.labels  = ID,P,Project,R,Due,Description,Urg
+report.ready.columns = id,priority,project,recur.indicator,due.remaining,description.count,urgency
+report.ready.filter  = +READY
+report.ready.sort    = due+,urgency-
 
 
 ## SECURITY ###########################
