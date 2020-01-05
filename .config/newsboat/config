@@ -2,10 +2,12 @@
 
 auto-reload      yes
 reload-threads   8
-reload-time      120
+reload-time      15
 
 download-retries 2
 download-timeout 15
+
+max-items        999
 
 
 # UI
@@ -20,6 +22,8 @@ color info              red    black   bold
 
 
 # navigation
+
+browser "open -a 'Brave Browser' %u"
 
 bind-key h quit
 bind-key j down
