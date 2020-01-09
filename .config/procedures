@@ -15,10 +15,10 @@ export cd() {
 }
 
 # cd with fzf
-cf() { cd $(find ~/.config ~/.local ~/Documents 2>/dev/null | fzf) }
+cdf() { find ~/.config ~/.local ~/Documents 2>/dev/null | fzf | xargs cd }
 
-# open file in vim
-vf() { vim $(find ~/.config ~/.local ~/Documents -type f 2>/dev/null | fzf) }
+# find file and open in vim
+vf() { find ~/.config ~/.local ~/Documents -type f 2>/dev/null | fzf | xargs $EDITOR }
 
 # reload shell
 reload() { exec "${SHELL}" "$@" }
