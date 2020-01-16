@@ -14,6 +14,8 @@ max-items        999
 
 text-width 80
 
+show-keymap-hint no
+
 color listnormal        white  default
 color listfocus         black  yellow  standout bold
 color listnormal_unread cyan   default bold
@@ -24,6 +26,37 @@ color info              red    black   bold
 # navigation
 
 browser "open -a 'Brave Browser' %u"
+
+unbind-key $
+unbind-key A
+unbind-key C
+unbind-key D
+unbind-key DOWN
+unbind-key END
+unbind-key ENTER
+unbind-key F
+unbind-key G
+unbind-key HOME
+unbind-key LEFT
+unbind-key N
+unbind-key PAGEDOWN
+unbind-key PAGEUP
+unbind-key RIGHT
+unbind-key T
+unbind-key UP
+unbind-key ^K
+unbind-key ^L
+unbind-key f
+unbind-key g
+unbind-key h
+unbind-key j
+unbind-key k
+unbind-key l
+unbind-key n
+unbind-key p
+unbind-key s
+unbind-key t
+
 
 bind-key h quit
 bind-key j down
@@ -42,3 +75,8 @@ bind-key g home
 bind-key n next-unread
 bind-key N prev-unread
 
+bind-key T set-tag
+bind-key t select-tag
+
+bind-key F set-filter
+bind-key f select-filter
