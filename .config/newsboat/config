@@ -84,4 +84,5 @@ bind-key t select-tag
 bind-key F set-filter
 bind-key f select-filter
 
-bind-key o open-in-browser-and-mark-read
+bind-key o open-in-browser-and-mark-read articlelist
+bind-key o open-in-browser article
