@@ -16,11 +16,18 @@ text-width 80
 
 show-keymap-hint no
 
-color listnormal        white  default
-color listfocus         black  yellow  standout bold
-color listnormal_unread cyan   default bold
+color listnormal        cyan default
+color listfocus         black yellow standout bold
+color listnormal_unread blue default
 color listfocus_unread  yellow default bold
-color info              red    black   bold
+color info              red black bold
+color article           white default
+
+# color listnormal        white  default
+# color listfocus         black  yellow  standout bold
+# color listnormal_unread cyan   default bold
+# color listfocus_unread  yellow default bold
+# color info              red    black   bold
 
 
 # navigation
@@ -39,6 +46,7 @@ unbind-key G
 unbind-key HOME
 unbind-key LEFT
 unbind-key N
+unbind-key O
 unbind-key PAGEDOWN
 unbind-key PAGEUP
 unbind-key RIGHT
@@ -53,6 +61,7 @@ unbind-key j
 unbind-key k
 unbind-key l
 unbind-key n
+unbind-key o
 unbind-key p
 unbind-key s
 unbind-key t
@@ -80,3 +89,5 @@ bind-key t select-tag
 
 bind-key F set-filter
 bind-key f select-filter
+
+bind-key o open-in-browser-and-mark-read
