@@ -7,7 +7,7 @@ reload-time      15
 download-retries 2
 download-timeout 15
 
-max-items        999
+max-items        9999
 
 
 # UI
