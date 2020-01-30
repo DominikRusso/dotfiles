@@ -8,37 +8,42 @@ brew install cask
 
 # install packages
 brew cask install mactex-no-gui
-brew cask install macvim
-brew cask install vagrant
-brew cask install virtualbox
+brew install ack
 brew install afl-fuzz
 brew install binwalk
+brew install calcurse
 brew install cifer
 brew install cmake
 brew install cmatrix
 brew install cmus
-brew install cowsay
+brew install coreutils
+brew install dash
+brew install editorconfig
 brew install entr
+brew install eye-d3
 brew install ffmpeg
 brew install figlet
-brew install fortune
+brew install findutils
+brew install fzf
 brew install gcc
 brew install gdb
 brew install geoip
 brew install ghc cabal-install
 brew install git
 brew install git-lfs
+brew install gnu-sed
 brew install gnupg
 brew install go
 brew install grep
 brew install hashpump
 brew install htop
+brew install hugo
 brew install hydra
 brew install imagemagick
+brew install inetutils
 brew install john
 brew install knock
 brew install libomp
-brew install lolcat
 brew install mitmproxy
 brew install moreutils
 brew install neofetch
@@ -47,26 +52,30 @@ brew install netpbm
 brew install newsboat
 brew install nikto
 brew install nmap
+brew install onefetch
 brew install open-mpi
 brew install openssh
 brew install pandoc
-brew install php
 brew install pngcheck
 brew install proselint
 brew install python
-brew install r
 brew install radare2
 brew install rust
-brew install sendemail
 brew install shellcheck
 brew install socat
 brew install speedtest-cli
 brew install sqlmap
+brew install task
+brew install tasksh
 brew install tcpflow
 brew install tcpreplay
 brew install tcptrace
+brew install the_silver_searcher
+brew install tmux
+brew install tor
 brew install transmission
 brew install watch
 brew install wget
 brew install youtube-dl
 brew install z3
+brew install zsh
