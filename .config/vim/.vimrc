@@ -75,9 +75,6 @@
 
 """ VISUAL & UI """""""""""""""""""""""""""""""""""""""""""""""""""""
 
-    set guifont=Menlo:h13               " readable font size in gvim
-    set guicursor=                      " default gui cursor
-
     set background=dark                 " use colors that are visible on dark background
 
     set number relativenumber           " hybrid line numbering
@@ -99,12 +96,9 @@
     set visualbell
     set t_vb=
 
-    set guioptions-=m                   " disable menu bar
-
-    set guioptions-=r                   " disable scrollbars
-    set guioptions-=R
-    set guioptions-=l
-    set guioptions-=L
+    let &t_SI = "\<Esc>[6 q"            " solid vertical bar in insert mode
+    let &t_SR = "\<Esc>[4 q"            " solid underscore cursor in replace mode
+    let &t_EI = "\<Esc>[2 q"            " solid block cursor in normal mode
 
 
 """ BEHAVIOR & COMMANDS """""""""""""""""""""""""""""""""""""""""""""
