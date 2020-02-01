@@ -39,6 +39,9 @@
     set softtabstop=4                   " softtab stop every 4 spaces
     set tabstop=4                       " tab = 4 spaces
 
+" mouse
+
+    set mouse=a                         " enable mouse in terminal vim
 
 " searching
 
