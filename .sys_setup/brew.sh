@@ -13,8 +13,6 @@ brew install afl-fuzz
 brew install binwalk
 brew install calcurse
 brew install cifer
-brew install cmake
-brew install cmatrix
 brew install cmus
 brew install coreutils
 brew install dash
@@ -31,7 +29,6 @@ brew install geoip
 brew install ghc cabal-install
 brew install git
 brew install git-lfs
-brew install gnu-sed
 brew install gnupg
 brew install go
 brew install grep
@@ -72,7 +69,6 @@ brew install tcpreplay
 brew install tcptrace
 brew install the_silver_searcher
 brew install tmux
-brew install tor
 brew install transmission
 brew install watch
 brew install wget
