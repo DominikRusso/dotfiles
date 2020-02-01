@@ -119,7 +119,7 @@
     map <leader>d :setlocal spell! spelllang=de_de<CR>
 
     " map substitute to S
-    nnoremap S :%s///g<Left><Left><Left>
+    nnoremap S :%s//g<Left><Left>
 
     " reload vimrc
     nnoremap <leader>v :source $MYVIMRC<CR>
