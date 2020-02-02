@@ -72,6 +72,7 @@ brew install tmux
 brew install transmission
 brew install watch
 brew install wget
+brew install wireshark
 brew install youtube-dl
 brew install z3
 brew install zsh
