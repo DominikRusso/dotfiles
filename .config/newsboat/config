@@ -1,12 +1,5 @@
 # feeds
 
-auto-reload      yes
-reload-threads   8
-reload-time      15
-
-download-retries 2
-download-timeout 15
-
 max-items        9999
 
 
