@@ -11,6 +11,7 @@ brew cask install mactex-no-gui
 brew install ack
 brew install afl-fuzz
 brew install binwalk
+brew install broot
 brew install calcurse
 brew install cifer
 brew install cmus
