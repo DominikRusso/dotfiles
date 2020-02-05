@@ -1,5 +1,10 @@
 # feeds
 
+reload-threads   4
+
+download-retries 2
+download-timeout 15
+
 max-items        9999
 
 

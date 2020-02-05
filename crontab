@@ -1,1 +1,1 @@
-*/30 * * * * /usr/local/bin/newsboat -x reload
+*/15 * * * * /usr/local/bin/newsboat -x reload
