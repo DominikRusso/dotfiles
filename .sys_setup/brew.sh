@@ -58,6 +58,7 @@ brew install pngcheck
 brew install proselint
 brew install python
 brew install radare2
+brew install ripgrep
 brew install rust
 brew install shellcheck
 brew install socat
