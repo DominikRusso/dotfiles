@@ -69,15 +69,19 @@
 """ PLUGINS """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
     call plug#begin('~/.config/vim/plugged')
-    Plug 'vim-airline/vim-airline'          " status line
-    Plug 'vim-airline/vim-airline-themes'   " status line themes
-    Plug 'scrooloose/nerdtree'              " file explorer
-    Plug 'scrooloose/syntastic'             " syntax checking
-    Plug 'tpope/vim-commentary'             " commenting lines
-    Plug 'tpope/vim-surround'               " fancy stuff with pairs of things
-    Plug 'tpope/vim-fugitive'               " git wrapper for vim
+    Plug '/usr/local/opt/fzf'             " use already installed fzf
+    Plug 'junegunn/fzf.vim'               " fzf scripts
+    Plug 'junegunn/vim-easy-align'        " algining things
+    Plug 'junegunn/vim-slash'             " better in-buffer search experience
+    Plug 'scrooloose/nerdtree'            " file explorer
+    Plug 'scrooloose/syntastic'           " syntax checking
+    Plug 'tpope/vim-commentary'           " commenting lines
+    Plug 'tpope/vim-fugitive'             " git wrapper for vim
+    Plug 'tpope/vim-surround'             " fancy stuff with pairs of things
+    Plug 'vim-airline/vim-airline'        " status line
+    Plug 'vim-airline/vim-airline-themes' " status line themes
 
-    Plug 'ryanoasis/vim-devicons'           " file type icons (load last)
+    Plug 'ryanoasis/vim-devicons'         " file type icons (load last)
     call plug#end()
 
 
