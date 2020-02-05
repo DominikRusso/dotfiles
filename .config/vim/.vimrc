@@ -75,6 +75,7 @@
     Plug 'scrooloose/syntastic'             " syntax checking
     Plug 'tpope/vim-commentary'             " commenting lines
     Plug 'tpope/vim-surround'               " fancy stuff with pairs of things
+    Plug 'tpope/vim-fugitive'               " git wrapper for vim
 
     Plug 'ryanoasis/vim-devicons'           " file type icons (load last)
     call plug#end()
