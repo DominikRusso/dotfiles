@@ -112,6 +112,11 @@
     let &t_SR = "\<Esc>[4 q"            " solid underscore cursor in replace mode
     let &t_EI = "\<Esc>[2 q"            " solid block cursor in normal mode
 
+    let g:airline_powerline_font=0      " disable powerline dependency
+    let g:airline_symbols = {}
+    let g:airline_symbols.linenr=''     " disable meaningless symbol
+    let g:airline_symbols.maxlinenr=''  " disable meaningless symbol
+
 
 """ BEHAVIOR & COMMANDS """""""""""""""""""""""""""""""""""""""""""""
 
