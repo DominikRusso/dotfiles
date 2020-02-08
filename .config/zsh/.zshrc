@@ -12,8 +12,8 @@ PS1="%B%F{red}[%F{green}%n%F{white}@%F{green}%M%F{white}:%F{cyan}%3~%F{red}]%F{w
 
 
 # load aliases and shell procedures ------------------------------------------
-[ -f "$HOME/.config/procedures" ] && source "$HOME/.config/procedures"
 [ -f "$HOME/.config/aliases" ] && source "$HOME/.config/aliases"
+[ -f "$HOME/.local/bin/procedures" ] && source "$HOME/.local/bin/procedures"
 
 
 # history --------------------------------------------------------------------
