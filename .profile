@@ -9,7 +9,9 @@ export BROWSER="brave"
 export EDITOR="nvim"
 export FILE="lf"
 export READER="zathura"
+export TERMINAL="alacritty"
 export VISUAL="nvim"
+export WM="dwm"
 
 # path
 PATH=~/.local/bin:$PATH
