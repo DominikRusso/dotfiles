@@ -4,4 +4,4 @@ sxhkd &
 unclutter &
 xcompmgr &
 xwallpaper --zoom ~/.config/wallpaper &
-exec bspwm
+exec $WM

@@ -1,0 +1,26 @@
+#
+# general bindings
+#
+
+super + Return
+    $TERMINAL
+
+super + d
+    dmenu_run
+
+super + o ; b
+    $BROWSER
+
+super + o ; {c,f,h,m,n,v}
+    $TERMINAL -e {calcurse, $FILE, htop, cmus, newsboat, $EDITOR}
+
+
+#
+# sxhkd
+#
+
+# reload config
+super + Escape
+    pkill -USR1 -x sxhkd
+
+

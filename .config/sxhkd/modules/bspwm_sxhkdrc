@@ -1,55 +1,14 @@
 #
-# general bindings
-#
-
-super + Return
-    $TERMINAL
-
-super + d
-    dmenu_run
-
-super + f
-    $TERMINAL -e $FILE
-
-super + n
-    $TERMINAL -e newsboat
-
-super + c
-    $TERMINAL -e calcurse
-
-super + b
-    $BROWSER
-
-super + v
-    $TERMINAL -e $EDITOR
-
-#
-# sxhkd
-#
-
-# reload config
-super + Escape
-    pkill -USR1 -x sxhkd
-
-
-#
-# WM independent
-#
-
-# close/kill
-super + {_,shift} + q
-    xdo {close,kill}
-
-
-# TODO: separate WM specific settings from sxhkdrc for when I bring dwm back
-
-#
 # bspwm
 #
 
 # quit/restart bspwm
 super + alt + {q,r}
     bspc {quit,wm -r}
+
+# close/kill window
+super + {_,shift} + q
+    bspc node -{c,k}
 
 
 #
@@ -63,6 +22,7 @@ super + alt + {t,p,d,f} # tiled,pseudo,detached,full
 # set the node flags
 super + ctrl + {m,x,s,p}
     bspc node -g {marked,locked,sticky,private}
+
 
 #
 # movement

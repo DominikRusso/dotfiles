@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+[ ! -z "$1" ] && export WM="$1"
+cat ~/.config/sxhkd/modules/general_sxhkdrc \
+    ~/.config/sxhkd/modules/"$WM"_sxhkdrc \
+    > ~/.config/sxhkd/sxhkdrc
+startx
