@@ -11,8 +11,8 @@ super + d
 super + o ; b
     $BROWSER
 
-super + o ; {c,f,h,m,n,v}
-    $TERMINAL -e {calcurse, $FILE, htop, cmus, newsboat, $EDITOR}
+super + o ; {a,c,f,h,m,n,v}
+    $TERMINAL -e {alsamixer,calcurse, $FILE, htop, cmus, newsboat, $EDITOR}
 
 
 #
