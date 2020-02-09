@@ -8,6 +8,7 @@ export LC_ALL=en_US.UTF-8
 export BROWSER="brave"
 export EDITOR="nvim"
 export FILE="lf"
+export PAGER="less"
 export READER="zathura"
 export TERMINAL="alacritty"
 export VISUAL="nvim"
