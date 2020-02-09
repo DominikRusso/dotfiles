@@ -14,6 +14,9 @@ super + o ; b
 super + o ; {a,c,f,h,m,n,v}
     $TERMINAL -e {alsamixer,calcurse, $FILE, htop, cmus, newsboat, $EDITOR}
 
+super + shift + x
+    dmenu_prompt "Shutdown?" "sudo shutdown -h now" # shutdown must be passwordless in sudoers
+
 
 #
 # sxhkd
