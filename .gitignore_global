@@ -1,40 +1,43 @@
-# General #################################################################
+# General ###########################################################
 
 log/
+logs/
 *.log
+*.log.[0-9]*
 
 
-# macOS ###################################################################
+# Jetbrains #########################################################
 
-# General
+.idea/
+
+
+# macOS #############################################################
+
 .DS_Store
-.AppleDouble
-.LSOverride
-
-# Icon must end with two \r
-Icon
-
-# Thumbnails
-._*
-
-# Files that might appear in the root of a volume
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
-.com.apple.timemachine.donotpresent
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
 
 
-# Vim #####################################################################
+# OpenSSL ###########################################################
+
+*.ca        # certificate authority
+*.crt       # certificate
+*.csr       # certificate sign request
+*.der       # certificate
+*.kdb       # key database file
+*.org       # OSCP request data
+*.p12       # PKCS #12
+*.pem       # PEM-encoded certificate data
+*.rnd       # random number seed
+*.smime     # S/MIME message
+
+
+# SSH ##############################################################
+
+id_rsa*
+!id_rsa*.pub    # no need to ignore public keys
+known_hosts
+
+
+# Vim ###############################################################
 
 # Swap
 [._]*.s[a-v][a-z]
@@ -56,26 +59,4 @@ tags
 
 # Persistent undo
 [._]*.un~
-
-
-# Jetbrains ###############################################################
-
-# User-specific files
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/**/usage.statistics.xml
-.idea/**/dictionaries
-.idea/**/shelf
-
-# Generated files
-.idea/**/contentModel.xml
-
-# Sensitive or high-churn files
-.idea/**/dataSources/
-.idea/**/dataSources.ids
-.idea/**/dataSources.local.xml
-.idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
-.idea/**/dbnavigator.xml
 
