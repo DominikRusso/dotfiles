@@ -1,11 +1,29 @@
 #!/bin/sh
 
-# this script lets you select a bookmark from ~/.local/share/bookmarks and
-# opens it in $BROWSER. the bookmarks file should contain one bookmark per
-# line in the following format:
+# browser independent bookmark management
+
+# the bookmarks file (~/.local/share/bookmarks) should contain
+# one bookmark per line in the following format:
 # name of bookmark | url
 
-sep="|"
+# bm:    select a bookmark in fzf and open it in $BROWSER
+# bm -e: edit the bookmarks file in your $EDITOR
+# bm -l: print the contents of the bookmark file to stdout
+
+
 bookmarks="$HOME/.local/share/bookmarks"
-url=$(cut -f 1 -d $sep $bookmarks | fzf | xargs -i grep -F "{}" $bookmarks | cut -f 2 -d $sep)
-$BROWSER $url </dev/null >/dev/null 2>&1 &
+
+if [ "$1" = "-e" ]; then
+    $EDITOR "$bookmarks"
+    exit
+fi
+
+if [ "$1" = "-l" ]; then
+    cat "$bookmarks"
+    exit
+fi
+
+sep="|"
+url=$(cut -f 1 -d $sep "$bookmarks" | fzf | xargs -i grep -F "{}" "$bookmarks" | cut -f 2 -d $sep)
+[ -z "$url" ] && exit
+$BROWSER "$url" </dev/null >/dev/null 2>&1 &
