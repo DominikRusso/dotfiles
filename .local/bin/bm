@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# this script lets you select a bookmark from ~/.local/share/bookmarks and
+# opens it in $BROWSER. the bookmarks file should contain one bookmark per
+# line in the following format:
+# name of bookmark | url
+
+sep="|"
+bookmarks="$HOME/.local/share/bookmarks"
+url=$(cut -f 1 -d $sep $bookmarks | fzf | xargs -i grep -F "{}" $bookmarks | cut -f 2 -d $sep)
+$BROWSER $url </dev/null >/dev/null 2>&1 &
