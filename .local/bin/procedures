@@ -1,5 +1,5 @@
 # cd into parent dir if trying to cd into file
-export cd() {
+cd() {
     if (( $+2 )); then
         builtin cd "$@"
         return
@@ -15,10 +15,27 @@ export cd() {
 }
 
 # cd with fzf
-cdf() { dir=$(find ~/.config ~/.local ~/Documents -type d -not -path '*/\.git*' 2>/dev/null | fzf); if [ ! -z dir ]; then; cd $dir; fi }
+cdf() {
+    dir=$(find "$HOME" -type d \
+          -not -path '*/.cache*' \
+          -not -path '*/.git*' \
+          -not -path '*/cache*' \
+          2>/dev/null | sed "s|$HOME|~|" | fzf)
+    if [ -n "$dir" ]; then
+        eval cd "$dir"
+    fi
+}
 
 # find file and open in vim
-vf() { find ~/.config ~/.local ~/Documents -type f -not -path '*/\.git*' 2>/dev/null | fzf | xargs $EDITOR }
+vf() {
+    file=$(find "$HOME" -type f \
+           -not -path '*/.git*' \
+           2>/dev/null | fzf)
+    if [ -n "$file" ]; then
+        $EDITOR "$file"
+    fi
+}
 
 # reload shell
 reload() { exec "${SHELL}" "$@" }
+
