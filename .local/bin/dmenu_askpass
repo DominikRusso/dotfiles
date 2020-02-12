@@ -1,0 +1,4 @@
+#!/bin/sh
+
+dmenu -sf white -sb red -nf darkred -nb darkred -p "$1" <&- && echo
+
