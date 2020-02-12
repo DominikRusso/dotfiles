@@ -70,6 +70,7 @@
 
     call plug#begin('~/.config/vim/plugged')
     Plug '/usr/local/opt/fzf'             " use already installed fzf
+    Plug 'editorconfig/editorconfig-vim'  " support for .editorconfig
     Plug 'junegunn/fzf.vim'               " fzf scripts
     Plug 'junegunn/vim-easy-align'        " algining things
     Plug 'junegunn/vim-slash'             " better in-buffer search experience
@@ -116,6 +117,7 @@
     let g:airline_symbols = {}
     let g:airline_symbols.linenr=''     " disable meaningless symbol
     let g:airline_symbols.maxlinenr=''  " disable meaningless symbol
+
 
 
 """ BEHAVIOR & COMMANDS """""""""""""""""""""""""""""""""""""""""""""
