@@ -17,18 +17,23 @@ export WM="dwm"
 # path
 PATH=~/.local/bin:$PATH
 
-# clean up ~/
-export CTCDIR="$HOME/.local/share/contacts"
-export LESSHISTFILE="-"
-export MYVIMRC="$HOME/.config/vim/.vimrc"
-export TASKRC="$HOME/.config/task/.taskrc"
-export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
-export VIMINIT="source $MYVIMRC"
+# XDG
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
-export ZDOTDIR="$HOME/.config/zsh"
-export ZSHCACHE="$HOME/.cache/zsh"
+
+# clean up ~/
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export CTCDIR="$XDG_DATA_HOME/ctcs"
+export LESSHISTFILE="-"
+export MYVIMRC="$XDG_CONFIG_HOME/vim/.vimrc"
+export RANDFILE="$XDG_CACHE_HOME/rnd"
+export TASKRC="$XDG_CONFIG_HOME/task/.taskrc"
+export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
+export VIMINIT="source $MYVIMRC"
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export ZSHCACHE="$XDG_CACHE_HOME/zsh"
 
 # program settings
 export CLICOLOR=1
