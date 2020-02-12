@@ -9,24 +9,64 @@ indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
 
+[{*.c,*.h}]
+indent_style = tab
+indent_size = 4
+max_line_length = 80
+
+[*.css]
+indent_size = 2
+indent_style = space
+
 [docs/**.txt]
 max_line_length = 79
 
+[*.go]
+indent_size = 8
+indent_style = tab
+max_line_length = 100
+
 [*.html]
 indent_size = 2
+indent_style = space
 
 [*.hs]
 indent_size = 2
+indent_style = space
+
+[*.java]
+indent_size = 4
+indent_style = space
 
 [*.json]
 indent_size = 2
+indent_style = space
 insert_final_newline = ignore
 
 [Makefile]
 indent_style = tab
 
 [*.py]
+indent_style = space
 max_line_length = 119
 
-[*.yaml, *.yml]
+[*.rb]
 indent_size = 2
+indent_style = space
+
+[{*.rs,*.rlib}]
+indent_size = 2
+indent_style = space
+
+[*.tex]
+indent_size = 2
+indent_style = space
+
+[{*.xml,*.xsd,*.xsl,*.xslt}]
+indent_size = 2
+indent_style = space
+
+[{*.yaml,*.yml}]
+indent_size = 2
+indent_style = space
+
