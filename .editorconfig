@@ -12,19 +12,14 @@ trim_trailing_whitespace = true
 [{*.c,*.h}]
 indent_style = tab
 indent_size = 4
-max_line_length = 80
 
 [*.css]
 indent_size = 2
 indent_style = space
 
-[docs/**.txt]
-max_line_length = 79
-
 [*.go]
 indent_size = 8
 indent_style = tab
-max_line_length = 100
 
 [*.html]
 indent_size = 2
@@ -48,7 +43,6 @@ indent_style = tab
 
 [*.py]
 indent_style = space
-max_line_length = 119
 
 [*.rb]
 indent_size = 2
