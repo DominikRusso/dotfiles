@@ -89,6 +89,7 @@
 """ VISUAL & UI """""""""""""""""""""""""""""""""""""""""""""""""""""
 
     set background=dark                 " use colors that are visible on dark background
+    set termguicolors                   " enable true 24-bit color support
 
     set number relativenumber           " hybrid line numbering
 
