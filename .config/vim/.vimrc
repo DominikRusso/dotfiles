@@ -88,12 +88,12 @@
 
 """ VISUAL & UI """""""""""""""""""""""""""""""""""""""""""""""""""""
 
-    set background=dark                 " use colors that are visible on dark background
-    set termguicolors                   " enable true 24-bit color support
+    syntax on                           " enable syntax highlighting
+    set background=dark                 " dark background defaults
+    source $HOME/.config/vim/colors.vim " source colors
 
     set number relativenumber           " hybrid line numbering
-
-    syntax on                           " enable syntax highlighting
+    set numberwidth=1                   " compress gutter as much as possible
 
     set shortmess=I                     " disable splash screen
     set shortmess+=a                    " use abbreviations in file messages
