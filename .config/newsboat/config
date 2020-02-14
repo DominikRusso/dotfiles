@@ -1,11 +1,13 @@
 # feeds
 
-reload-threads   4
+reload-threads  4
+max-items       9999
 
-download-retries 2
-download-timeout 15
 
-max-items        9999
+# podcasts
+
+download-path           ~/media/podcasts/
+podcast-auto-enqueue    yes
 
 
 # UI
@@ -14,17 +16,17 @@ text-width 80
 
 show-keymap-hint no
 
-color listnormal        cyan default
-color listfocus         blue yellow standout bold
-color listnormal_unread blue default bold
-color listfocus_unread  yellow blue bold
+color listnormal        color244 default
+color listfocus         color244 black standout bold
+color listnormal_unread white default bold
+color listfocus_unread  yellow color244 bold
 color info              red black bold
-color article           cyan default
+color article           color244 default
 
 
 # navigation
 
-browser "open -a 'Brave Browser' %u"
+browser linkhandler
 
 unbind-key $
 unbind-key A
@@ -82,5 +84,16 @@ bind-key t select-tag
 bind-key F set-filter
 bind-key f select-filter
 
+bind-key A mark-feed-read
+
 bind-key o open-in-browser-and-mark-read articlelist
 bind-key o open-in-browser article
+
+# podboat
+
+bind-key D pb-download
+bind-key c pb-cancel
+bind-key p pb-play
+bind-key X pb-delete
+bind-key P pb-purge
+
