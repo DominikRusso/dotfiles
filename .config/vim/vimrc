@@ -80,7 +80,6 @@
     Plug 'tpope/vim-fugitive'             " git wrapper for vim
     Plug 'tpope/vim-surround'             " fancy stuff with pairs of things
     Plug 'vim-airline/vim-airline'        " status line
-    Plug 'vim-airline/vim-airline-themes' " status line themes
 
     Plug 'ryanoasis/vim-devicons'         " file type icons (load last)
     call plug#end()
@@ -115,7 +114,9 @@
     let &t_EI = "\<Esc>[2 q"            " solid block cursor in normal mode
 
     let g:airline_powerline_font=0      " disable powerline dependency
-    let g:airline_symbols = {}
+    if !exists('g:airline_symbols')
+        let g:airline_symbols = {}
+    endif
     let g:airline_symbols.linenr=''     " disable meaningless symbol
     let g:airline_symbols.maxlinenr=''  " disable meaningless symbol
 
