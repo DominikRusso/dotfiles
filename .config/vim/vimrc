@@ -93,7 +93,7 @@
     source $HOME/.config/vim/colors.vim " source colors
 
     set number relativenumber           " hybrid line numbering
-    set numberwidth=1                   " compress gutter as much as possible
+    set numberwidth=2                   " compress gutter
 
     set shortmess=I                     " disable splash screen
     set shortmess+=a                    " use abbreviations in file messages
