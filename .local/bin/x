@@ -1,7 +1,11 @@
-#!/usr/bin/env sh
+# no shebang, script should be sourced
 
-[ ! -z "$1" ] && export WM="$1"
+# combines sxhkdrc modules and starts xorg server
+
+[ -n "$1" ] && export WM="$1"
 cat ~/.config/sxhkd/modules/general_sxhkdrc \
     ~/.config/sxhkd/modules/"$WM"_sxhkdrc \
     > ~/.config/sxhkd/sxhkdrc
+
 startx
+
