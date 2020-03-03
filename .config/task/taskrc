@@ -83,8 +83,8 @@ report.completed.sort = end-    # most recent first
 report.list.labels    = ID,Urg,Dep,P,Project,Tags,R,Sched,Due,Until,Description,Age
 report.list.columns   = id,urgency,depends.count,priority,project,tags,recur.indicator,scheduled,due,until.remaining,description.count,entry.age
 
-report.next.labels    = ID,Dep,P,Project,Tags,Sch,Due,Description
-report.next.columns   = id,depends.count,priority,project,tags,scheduled.remaining,due.remaining,description.count
+report.next.labels    = ID,Dep,P,Project,Sch,Due,Description
+report.next.columns   = id,depends.count,priority,project,scheduled.remaining,due.remaining,description.count
 report.next.filter    = status:pending limit:page (scheduled.before:1w or due.before:1m)
 report.next.sort      = urgency-,due+
 
