@@ -48,15 +48,15 @@ urgency.uda.priority.L.coefficient  = -4.0   # low priority
 
 urgency.inherit                     = on     # blockings task gets highest urgency in chain
 
-urgency.user.tag.next.coefficient   = 15.0   # +next tag
-urgency.due.coefficient             = 12.0   # overdue or near due date
+urgency.user.tag.next.coefficient   = 50.0   # +next tag
+urgency.due.coefficient             = 15.0   # overdue or near due date
 urgency.active.coefficient          =  6.0   # already started tasks
 urgency.scheduled.coefficient       =  4.0   # scheduled tasks
 urgency.blocking.coefficient        =  2.5   # blocking other tasks
 urgency.age.coefficient             =  1.5   # coefficient for age
 urgency.annotations.coefficient     =  1.0   # has annotations
-urgency.project.coefficient         =  0.9   # assigned to any project
-urgency.tags.coefficient            =  0.8   # has tags
+urgency.project.coefficient         =  1.0   # assigned to any project
+urgency.tags.coefficient            =  1.0   # has tags
 urgency.blocked.coefficient         =  0.0   # blocked by other tasks
 urgency.waiting.coefficient         = -5.0   # waiting task
 
@@ -64,7 +64,7 @@ urgency.waiting.coefficient         = -5.0   # waiting task
 
 ## APPEARANCE ###################
 
-detection             = on       # use ioctl to determine window dimentions
+detection             = on      # use ioctl to determine window dimentions
 defaultwidth          = 100
 defaultheight         = 30
 
