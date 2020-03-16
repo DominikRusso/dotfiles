@@ -12,7 +12,6 @@ lxml
 matplotlib
 numpy
 pendulum
-proselint
 pyenchant
 pylint
 requests
@@ -39,4 +38,3 @@ scikit-learn
 tensorboard
 tensorflow
 tflearn
-torch
