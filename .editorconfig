@@ -25,7 +25,7 @@ indent_style = tab
 indent_size = 2
 indent_style = space
 
-[*.hs]
+[{*.hs,*.lhs}]
 indent_size = 2
 indent_style = space
 
