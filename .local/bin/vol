@@ -1,0 +1,14 @@
+#!/bin/sh
+
+CMD="$1"
+VAL="${2:-5}"
+
+case "$CMD" in
+    up)     amixer sset Master "$VAL"%+ ;;
+    down)   amixer sset Master "$VAL"%- ;;
+    set)    amixer sset Master "$VAL"% ;;
+    mute)   amixer sset Master mute ;;
+    toggle) amixer sset Master toggle ;;
+    unmute) amixer sset Master unmute ;;
+esac > /dev/null
+
