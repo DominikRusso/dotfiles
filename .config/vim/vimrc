@@ -170,9 +170,6 @@
         autocmd BufLeave,FocusLost   * set norelativenumber
     augroup END
 
-    " protect gopass secrets
-    au BufNewFile,BufRead /dev/shm/gopass.* setlocal noswapfile nobackup noundofile
-
 
 """ FILE TYPE SPECIFIC STUFF """"""""""""""""""""""""""""""""""""""""
 
