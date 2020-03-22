@@ -530,7 +530,7 @@ cursor:
 # binding with the same triggers is defined. To unset a default binding, it can
 # be mapped to the `ReceiveChar` action. Alternatively, you can use `None` for
 # a no-op if you do not wish to receive input characters for that binding.
-#key_bindings:
+key_bindings:
   # (Windows, Linux, and BSD only)
   #- { key: V,        mods: Control|Shift, action: Paste            }
   #- { key: C,        mods: Control|Shift, action: Copy             }
@@ -540,6 +540,10 @@ cursor:
   #- { key: Add,      mods: Control,       action: IncreaseFontSize }
   #- { key: Subtract, mods: Control,       action: DecreaseFontSize }
   #- { key: Minus,    mods: Control,       action: DecreaseFontSize }
+  - { key: K,        mods: Alt,           action: ScrollLineUp     }
+  - { key: J,        mods: Alt,           action: ScrollLineDown   }
+  - { key: U,        mods: Alt,           action: ScrollPageUp     }
+  - { key: D,        mods: Alt,           action: ScrollPageDown   }
 
   # (Windows only)
   #- { key: Return,   mods: Alt,           action: ToggleFullscreen }
