@@ -35,6 +35,7 @@ gettext
 ghc
 git
 go
+gopass
 grep
 groff
 grub
@@ -111,6 +112,8 @@ vi
 vim
 wget
 which
+wireguard-arch
+wireguard-tools
 xcalib
 xcompmgr
 xdg-user-dirs
