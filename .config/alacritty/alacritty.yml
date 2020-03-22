@@ -544,6 +544,8 @@ key_bindings:
   - { key: J,        mods: Alt,           action: ScrollLineDown   }
   - { key: U,        mods: Alt,           action: ScrollPageUp     }
   - { key: D,        mods: Alt,           action: ScrollPageDown   }
+  - { key: C,        mods: Alt,           action: Copy             }
+  - { key: V,        mods: Alt,           action: Paste            }
 
   # (Windows only)
   #- { key: Return,   mods: Alt,           action: ToggleFullscreen }
