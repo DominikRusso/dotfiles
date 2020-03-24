@@ -88,7 +88,6 @@
 """ VISUAL & UI """""""""""""""""""""""""""""""""""""""""""""""""""""
 
     syntax on                           " enable syntax highlighting
-    set background=dark                 " dark background defaults
     source $HOME/.config/vim/colors.vim " source colors
 
     set number relativenumber           " hybrid line numbering

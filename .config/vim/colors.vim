@@ -1,35 +1,35 @@
 " 238 Gray27
 
-hi Normal       cterm=NONE         ctermfg=Gray     ctermbg=Black
-hi Keyword      cterm=NONE         ctermfg=White    ctermbg=Black
-hi Constant     cterm=NONE         ctermfg=Gray     ctermbg=Black
-hi String       cterm=NONE         ctermfg=Gray     ctermbg=Black
-hi Comment      cterm=NONE         ctermfg=238      ctermbg=Black
-hi Number       cterm=NONE         ctermfg=White    ctermbg=Black
-hi Error        cterm=NONE         ctermfg=White    ctermbg=DarkRed
-hi ErrorMsg     cterm=NONE         ctermfg=White    ctermbg=Red
-hi WarningMsg   cterm=NONE         ctermfg=Red      ctermbg=Black
-hi Search       cterm=NONE         ctermfg=White    ctermbg=DarkGray
-hi IncSearch    cterm=NONE         ctermfg=Black    ctermbg=White
-hi DiffAdd      cterm=NONE         ctermfg=Green    ctermbg=Black
-hi DiffDelete   cterm=NONE         ctermfg=Red      ctermbg=Black
-hi DiffChange   cterm=NONE         ctermfg=Red      ctermbg=White
+hi Normal       cterm=none         ctermfg=Gray     ctermbg=none
+hi Keyword      cterm=none         ctermfg=White    ctermbg=none
+hi Constant     cterm=none         ctermfg=Gray     ctermbg=none
+hi String       cterm=none         ctermfg=Gray     ctermbg=none
+hi Comment      cterm=none         ctermfg=238      ctermbg=none
+hi Number       cterm=none         ctermfg=White    ctermbg=none
+hi Error        cterm=none         ctermfg=White    ctermbg=DarkRed
+hi ErrorMsg     cterm=none         ctermfg=White    ctermbg=Red
+hi WarningMsg   cterm=none         ctermfg=Red      ctermbg=none
+hi Search       cterm=none         ctermfg=White    ctermbg=DarkGray
+hi IncSearch    cterm=none         ctermfg=Black    ctermbg=White
+hi DiffAdd      cterm=none         ctermfg=Green    ctermbg=none
+hi DiffDelete   cterm=none         ctermfg=Red      ctermbg=none
+hi DiffChange   cterm=none         ctermfg=Red      ctermbg=White
 hi DiffText     cterm=bold         ctermfg=Gray     ctermbg=Red
-hi SignColumn   cterm=NONE         ctermfg=Red      ctermbg=DarkGray
+hi SignColumn   cterm=none         ctermfg=Red      ctermbg=DarkGray
 hi SpellBad     cterm=undercurl    ctermfg=White    ctermbg=DarkRed
-hi SpellCap     cterm=NONE         ctermfg=White    ctermbg=Red
-hi SpellRare    cterm=NONE         ctermfg=Red      ctermbg=Black
-hi WildMenu     cterm=NONE         ctermfg=DarkGray ctermbg=White
-hi Pmenu        cterm=NONE         ctermfg=White    ctermbg=DarkGray
-hi PmenuThumb   cterm=NONE         ctermfg=Black    ctermbg=DarkGray
-hi SpecialKey   cterm=NONE         ctermfg=Black    ctermbg=White
-hi MatchParen   cterm=NONE         ctermfg=Black    ctermbg=DarkGray
-hi CursorLine   cterm=NONE         ctermfg=NONE     ctermbg=Black
-hi StatusLine   cterm=bold,reverse ctermfg=Gray     ctermbg=Black
-hi StatusLineNC cterm=reverse      ctermfg=DarkGray ctermbg=Black
-hi Visual       cterm=reverse      ctermfg=Gray     ctermbg=Black
-hi TermCursor   cterm=reverse      ctermfg=NONE     ctermbg=NONE
-hi Todo         cterm=NONE         ctermfg=Black    ctermbg=Green
+hi SpellCap     cterm=none         ctermfg=White    ctermbg=Red
+hi SpellRare    cterm=none         ctermfg=Red      ctermbg=none
+hi WildMenu     cterm=none         ctermfg=DarkGray ctermbg=White
+hi Pmenu        cterm=none         ctermfg=White    ctermbg=DarkGray
+hi PmenuThumb   cterm=none         ctermfg=Black    ctermbg=DarkGray
+hi SpecialKey   cterm=none         ctermfg=Black    ctermbg=White
+hi MatchParen   cterm=none         ctermfg=Black    ctermbg=DarkGray
+hi CursorLine   cterm=none         ctermfg=none     ctermbg=none
+hi StatusLine   cterm=bold,reverse ctermfg=Gray     ctermbg=none
+hi StatusLineNC cterm=reverse      ctermfg=DarkGray ctermbg=none
+hi Visual       cterm=reverse      ctermfg=Gray     ctermbg=none
+hi TermCursor   cterm=reverse      ctermfg=none     ctermbg=none
+hi Todo         cterm=none         ctermfg=Black    ctermbg=Green
 
 hi! link Boolean    Normal
 hi! link Delimiter  Normal
