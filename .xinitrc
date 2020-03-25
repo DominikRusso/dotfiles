@@ -1,13 +1,19 @@
-setxkbmap -layout de
+sxhkd &      # start simple x hotkey daemon
+unclutter &  # hide mouse when idle
+xcompmgr &   # enable transparency
 
-sxhkd &
-unclutter &
-xcompmgr &
-xwallpaper --zoom ~/.config/wallpaper.png &
+# set keyboard layout
+setxkbmap -option caps:escape -layout de
 
-if [ $WM = dwm ]; then
-    dwmstatus &
-fi;
+# disable screen blanking
+xset s off
 
+# set wallpaper
+xwallpaper --zoom ~/.config/wallpaper &
+
+# start statusbar script
+[ $WM = dwm ] && dwmstatus &
+
+# start window manager
 exec $WM
 
