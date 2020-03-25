@@ -1,12 +1,30 @@
 #!/bin/sh
 
-# prints date to statusbar and waits until the next full second
+# prints info to statusbar and waits until the next full second
 
 # 995 instead of 1000 to compensate for duration of sed and printf
 # that parameter might need tweaking on very slow or very fast systems
 
+datetime() {
+    date '+%a %F %T'
+    # date '+%a %F %T.%3N' # to see precision
+}
+
+volume() {
+    amixer get Master | grep -o "[0-9]*%\|\[off\]" | sed "s/\[off\]/(m)/"
+}
+
+sep=" :: "
+
 while true; do
-    xsetroot -name " $(date '+%a %F %T') "
-    # xsetroot -name " $(date '+%a %F %T.%3N') " # to see precision
+
+    xsetroot -name "$(
+        ( echo "vol" ; volume
+          echo "$sep"
+          datetime
+        ) | tr '\n' ' '
+    )"
+
     sleep 0."$(printf '%03d' $((995 - $(date +%3N | sed 's/^0*//'))))"
+
 done
