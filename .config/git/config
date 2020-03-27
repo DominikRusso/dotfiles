@@ -1,10 +1,10 @@
 [alias]
 
     # View full tree
-    tree = log --graph --abbrev-commit --pretty=format:'%C(auto)%h -%d %s %C(green)(%cr) %C(bold blue)<%aN>'
+    tree = log --graph --abbrev-commit --pretty=format:'%C(auto)%h - %s %C(bold blue)<%aN>%C(auto)%d'
 
     # View abbreviated SHA, description, author, date, and history graph of latest 20 commits
-    l = log --pretty=format:'%C(auto)%h -%d %s %C(bold blue)<%aN>%C(reset) %C(green)(%ci)' -n 20 --graph --abbrev-commit
+    l = log --abbrev-commit -n 20 --pretty=format:'%C(auto)%h - %s %C(bold blue)<%aN>%C(reset) %C(green)(%cr)%C(auto)%d'
 
     # View current working tree status using the short format
     s = status -s
@@ -57,7 +57,7 @@
 
 [core]
 
-    excludesfile = ~/.gitignore_global
+    excludesfile = ~/.config/git/ignore
 
     # Treat spaces before tabs and all kinds of trailing whitespace as an error
     # [default] trailing-space: looks for spaces at the end of a line
