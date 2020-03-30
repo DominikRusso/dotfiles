@@ -6,6 +6,7 @@ alsa-utils
 autoconf
 automake
 base
+bind-tools
 binutils
 binwalk
 bison
@@ -46,6 +47,7 @@ hydra
 imagemagick
 john
 jre-openjdk
+keepassxc
 knockd
 lf
 libtool
@@ -54,6 +56,7 @@ linux-firmware
 m4
 make
 man-db
+mat2
 mediainfo
 mpv
 neofetch
@@ -62,6 +65,7 @@ nerd-fonts-hack
 newsboat
 nmap
 openmpi
+openresolv
 openssh
 pacgraph
 pacman
@@ -77,6 +81,7 @@ rsync
 rust
 sed
 shellcheck
+signal-desktop
 slock
 socat
 speedtest-cli
@@ -103,6 +108,7 @@ tmux
 transmission-cli
 tree
 unclutter
+unzip
 urlscan
 urlview
 usbutils
@@ -130,4 +136,6 @@ yay
 youtube-dl
 z3
 zathura
+zathura-djvu
+zathura-pdf-poppler
 zsh
