@@ -78,7 +78,7 @@
     source $HOME/.config/vim/colors.vim " source colors
 
     set number relativenumber           " hybrid line numbering
-    set numberwidth=2                   " compress gutter
+    set numberwidth=3                   " compress gutter
 
     set noshowmode                      " disable (duplicate) info about mode
 
