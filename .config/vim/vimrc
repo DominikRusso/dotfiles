@@ -79,7 +79,7 @@
     Plug 'tpope/vim-commentary'           " commenting lines
     Plug 'tpope/vim-fugitive'             " git wrapper for vim
     Plug 'tpope/vim-surround'             " fancy stuff with pairs of things
-    Plug 'vim-airline/vim-airline'        " status line
+    Plug 'itchyny/lightline.vim'          " status line
 
     Plug 'ryanoasis/vim-devicons'         " file type icons (load last)
     call plug#end()
@@ -111,29 +111,6 @@
     let &t_SI = "\<Esc>[6 q"            " solid vertical bar in insert mode
     let &t_SR = "\<Esc>[4 q"            " solid underscore cursor in replace mode
     let &t_EI = "\<Esc>[2 q"            " solid block cursor in normal mode
-
-    let g:airline_powerline_font=0      " disable powerline dependency
-    if !exists('g:airline_symbols')
-        let g:airline_symbols = {}
-    endif
-    let g:airline_left_sep=''           " disable pointless symbols
-    let g:airline_left_sep=''
-    let g:airline_right_sep=''
-    let g:airline_right_sep=''
-    let g:airline_symbols.crypt=''
-    let g:airline_symbols.linenr=''
-    let g:airline_symbols.linenr=''
-    let g:airline_symbols.linenr=''
-    let g:airline_symbols.linenr=''
-    let g:airline_symbols.maxlinenr=''
-    let g:airline_symbols.maxlinenr=''
-    let g:airline_symbols.branch=''
-    let g:airline_symbols.paste=''
-    let g:airline_symbols.paste=''
-    let g:airline_symbols.paste=''
-    let g:airline_symbols.spell=''
-    let g:airline_symbols.notexists=''
-    let g:airline_symbols.whitespace=''
 
 
 """ BEHAVIOR & COMMANDS """""""""""""""""""""""""""""""""""""""""""""
