@@ -71,6 +71,7 @@
     call plug#begin('~/.config/vim/plugged')
     Plug '/usr/local/opt/fzf'             " use already installed fzf
     Plug 'editorconfig/editorconfig-vim'  " support for .editorconfig
+    Plug 'itchyny/lightline.vim'          " status line
     Plug 'junegunn/fzf.vim'               " fzf scripts
     Plug 'junegunn/vim-easy-align'        " algining things
     Plug 'junegunn/vim-slash'             " better in-buffer search experience
@@ -79,10 +80,15 @@
     Plug 'tpope/vim-commentary'           " commenting lines
     Plug 'tpope/vim-fugitive'             " git wrapper for vim
     Plug 'tpope/vim-surround'             " fancy stuff with pairs of things
-    Plug 'itchyny/lightline.vim'          " status line
 
     Plug 'ryanoasis/vim-devicons'         " file type icons (load last)
     call plug#end()
+
+
+    " configure lightline
+    let g:lightline = {
+        \ 'colorscheme': 'one'
+        \ }
 
 
 """ VISUAL & UI """""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -92,6 +98,8 @@
 
     set number relativenumber           " hybrid line numbering
     set numberwidth=2                   " compress gutter
+
+    set noshowmode                      " disable (duplicate) info about mode
 
     set shortmess=I                     " disable splash screen
     set shortmess+=a                    " use abbreviations in file messages
