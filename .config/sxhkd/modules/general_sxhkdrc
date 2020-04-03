@@ -5,17 +5,49 @@
 super + Return
     $TERMINAL
 
+# dmenu
 super + d
     dmenu_run
 
+# open browser
 super + o ; b
     $BROWSER
 
+# open {terminal progams}
 super + o ; {a,c,f,h,m,n,v}
     $TERMINAL -e {alsamixer,calcurse, $FILE, htop, cmus, newsboat, $EDITOR}
 
+# reboot
+super + r
+    dmenu_prompt "Reboot?" "sudo -A reboot"
+
+# sleep
+super + s
+    systemctl suspend
+
+# SLEEP
+super + shift + s
+    dmenu_prompt "Hibernate?" "systemctl hibernate"
+
+# lock
+super + x
+    brightness min ; physlock
+
+# shutdown
 super + shift + x
-    dmenu_prompt "Shutdown?" "sudo shutdown -h now" # shutdown must be passwordless in sudoers
+    dmenu_prompt "Shutdown?" "sudo -A shutdown -h now"
+
+# toggle mute
+XF86AudioMute
+    vol toggle
+
+# volume down
+XF86AudioLowerVolume
+    vol down
+
+# volume up
+XF86AudioRaiseVolume
+    vol up
 
 
 #
