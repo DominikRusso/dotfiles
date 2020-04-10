@@ -49,18 +49,18 @@
 """ PLUGINS """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
     call plug#begin('~/.config/vim/plugged')
-    Plug '/usr/local/opt/fzf'             " use already installed fzf
+    Plug '/usr/local/opt/fzf'             " use local fzf
     Plug 'editorconfig/editorconfig-vim'  " support for .editorconfig
     Plug 'itchyny/lightline.vim'          " status line
     Plug 'junegunn/fzf.vim'               " fzf scripts
     Plug 'junegunn/vim-easy-align'        " algining things
     Plug 'junegunn/vim-slash'             " better in-buffer search experience
+    Plug 'preservim/nerdtree'             " file explorer
     Plug 'rust-lang/rust.vim'             " rust support
-    Plug 'scrooloose/nerdtree'            " file explorer
-    Plug 'scrooloose/syntastic'           " syntax checking
     Plug 'tpope/vim-commentary'           " commenting lines
     Plug 'tpope/vim-fugitive'             " git wrapper for vim
     Plug 'tpope/vim-surround'             " fancy stuff with pairs of things
+    Plug 'vim-syntastic/syntastic'        " syntax checking
 
     Plug 'ryanoasis/vim-devicons'         " file type icons (load last)
     call plug#end()
