@@ -6,8 +6,8 @@
 
     set autoread                        " auto read external file changes
     set lazyredraw                      " don't redraw when not necessary
-
-    set nobackup                        " no permant backup files
+    set hidden                          " don't close buffer on abandon
+    set nobackup                        " no permanent backup files
 
 " backspacing
     set backspace=indent,eol,start      " over indents, lines, previous insertions
@@ -53,7 +53,7 @@
     Plug 'editorconfig/editorconfig-vim'  " support for .editorconfig
     Plug 'itchyny/lightline.vim'          " status line
     Plug 'junegunn/fzf.vim'               " fzf scripts
-    Plug 'junegunn/vim-easy-align'        " algining things
+    Plug 'junegunn/vim-easy-align'        " aligning things
     Plug 'junegunn/vim-slash'             " better in-buffer search experience
     Plug 'preservim/nerdtree'             " file explorer
     Plug 'rust-lang/rust.vim'             " rust support
@@ -107,9 +107,6 @@
     " matching using % key
     runtime macros/matchit.vim
 
-    " check file in shellcheck
-    map <leader>s :w \| !clear && shellcheck %<CR>
-
     " toggle spellcheck to english
     map <leader>e :setlocal spell! spelllang=en_us<CR>
 
@@ -120,7 +117,7 @@
     nnoremap S :%s//g<Left><Left>
 
     " reload vimrc
-    nnoremap <leader>v :source $MYVIMRC<CR>
+    nnoremap <leader>s :source $MYVIMRC<CR>
 
     " automatically delete trailing whitespace on save
     autocmd BufWritePre * silent! %s/\s\+$//e
