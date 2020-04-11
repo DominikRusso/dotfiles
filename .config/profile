@@ -25,7 +25,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 
 # clean up ~/
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
-export CTCDIR="$XDG_DATA_HOME/ctcs"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export LESSHISTFILE="-"
 export MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
 export RANDFILE="$XDG_CACHE_HOME/rnd"
