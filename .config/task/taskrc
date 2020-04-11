@@ -36,10 +36,9 @@ dateformat.info = Y-M-D H:N
 
 ## priority #####
 
-uda.priority.values                 = H,M,,L # high, medium, none, low
+uda.priority.values                 = H,,L # high, none, low
 
 urgency.uda.priority.H.coefficient  =  7.0   # high priority
-urgency.uda.priority.M.coefficient  =  3.0   # medium priority
 urgency.uda.priority..coefficient   =  0.0   # no priority
 urgency.uda.priority.L.coefficient  = -4.0   # low priority
 
