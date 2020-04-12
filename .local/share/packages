@@ -3,6 +3,7 @@ afl
 aircrack-ng
 alacritty
 alsa-utils
+arch-install-scripts
 autoconf
 automake
 base
@@ -21,6 +22,7 @@ dmenu
 dust
 editorconfig-core-c
 entr
+exa
 expac
 fakeroot
 ffmpeg
@@ -35,6 +37,7 @@ gdb
 gettext
 ghc
 git
+glances
 go
 grep
 groff
@@ -75,6 +78,8 @@ patch
 pkgconf
 powertop
 proselint
+ps_mem
+qutebrowser
 radare2
 ripgrep
 rsync
@@ -112,7 +117,6 @@ vi
 vim
 wget
 which
-wireguard-arch
 wireguard-tools
 xcalib
 xcompmgr
