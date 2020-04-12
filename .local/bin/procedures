@@ -29,8 +29,10 @@ cdf() {
 # find file and open in vim
 vf() {
     file=$(find "$HOME" -type f \
+           -not -path '*/.cache*' \
            -not -path '*/.git*' \
-           2>/dev/null | fzf)
+           -not -path '*/cache*' \
+           2>/dev/null | sed "s|$HOME|~|" | fzf)
     if [ -n "$file" ]; then
         $EDITOR "$file"
     fi
