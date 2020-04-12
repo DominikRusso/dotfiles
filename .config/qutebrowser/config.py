@@ -22,7 +22,7 @@ c.url.searchengines = {
         'aw'      : 'https://wiki.archlinux.org/?search={}',
         'def'     : 'https://lexico.com/en/definition/{}',
         'etym'    : 'https://etymonline.com/search?q={}',
-        'g'       : 'https://google.com/?q={}',
+        'g'       : 'https://google.com/search?q={}',
         'gw'      : 'https://wiki.gentoo.org/search={}',
         'w'       : 'https://en.wikipedia.org/?search)={}',
         'wd'      : 'https://en.wiktionary.org/wiki/{}'
