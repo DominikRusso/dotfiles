@@ -6,4 +6,4 @@
 cat ~/.config/sxhkd/modules/general_sxhkdrc \
     ~/.config/sxhkd/modules/"$WM"_sxhkdrc \
     > ~/.config/sxhkd/sxhkdrc
-startx >/dev/null 2>&1
+startx "$XINITRC" >/dev/null 2>&1
