@@ -41,6 +41,21 @@ cpf() {
 		2>/dev/null | fzf)
 }
 
+# mv fith fzf
+mvf() {
+	mv -v \
+		$(find "$HOME" \
+		-not -path '*/.cache*' \
+		-not -path '*/.git*' \
+		-not -path '*/cache*' \
+		2>/dev/null | fzf -m) \
+		$(find "$HOME" -type d \
+		-not -path '*/.cache*' \
+		-not -path '*/.git*' \
+		-not -path '*/cache*' \
+		2>/dev/null | fzf)
+}
+
 # find file and open in vim
 vf() {
     file=$(find "$HOME" -type f \
