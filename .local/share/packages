@@ -11,15 +11,12 @@ bind-tools
 binutils
 binwalk
 bison
-broot
 calcurse
-can-utils
 chromium
 cronie
 dash
 dhcpcd
 dmenu
-dust
 editorconfig-core-c
 entr
 exa
@@ -52,7 +49,6 @@ john
 jre-openjdk
 keepassxc
 knockd
-lf
 libtool
 linux
 linux-firmware
@@ -64,7 +60,6 @@ mediainfo
 mpv
 neofetch
 neovim
-nerd-fonts-hack
 newsboat
 nmap
 openmpi
@@ -95,7 +90,6 @@ sudo
 sxhkd
 sxiv
 task
-tasksh
 texinfo
 texlive-bibtexextra
 texlive-core
@@ -118,7 +112,6 @@ vim
 wget
 which
 wireguard-tools
-xcalib
 xcompmgr
 xdg-user-dirs
 xdo
@@ -131,7 +124,6 @@ xorg-xsetroot
 xorg-xwininfo
 xsel
 xwallpaper
-yay
 youtube-dl
 z3
 zathura
