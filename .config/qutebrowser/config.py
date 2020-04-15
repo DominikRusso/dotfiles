@@ -1,8 +1,9 @@
 c.colors.tabs.bar.bg = "#000"
 c.colors.tabs.even.bg = "#000"
-c.colors.tabs.odd.bg = "#111"
+c.colors.tabs.odd.bg = "#000"
 c.colors.tabs.selected.even.bg = "#555"
 c.colors.tabs.selected.odd.bg = "#555"
+c.completion.open_categories = ["searchengines", "quickmarks", "bookmarks"]
 c.completion.shrink = True
 c.statusbar.padding = {"bottom": 1, "left": 2, "right": 2, "top": 1}
 c.statusbar.widgets = ["keypress", "url", "scroll", "tabs", "progress"]
@@ -17,15 +18,16 @@ c.window.hide_decoration = True
 
 c.tabs.mousewheel_switching = False
 c.url.searchengines = {
-        'DEFAULT' : 'https://duckduckgo.com/?q={}',
         '4'       : 'https://4chan.org/{}',
+        'DEFAULT' : 'https://duckduckgo.com/?q={}',
         'aw'      : 'https://wiki.archlinux.org/?search={}',
         'def'     : 'https://lexico.com/en/definition/{}',
         'etym'    : 'https://etymonline.com/search?q={}',
         'g'       : 'https://google.com/search?q={}',
         'gw'      : 'https://wiki.gentoo.org/search={}',
-        'w'       : 'https://en.wikipedia.org/?search)={}',
-        'wd'      : 'https://en.wiktionary.org/wiki/{}'
+        'se'      : 'https://stackexchange.com/search?q={}',
+        'w'       : 'https://en.wikipedia.org/?search={}',
         }
 
-config.bind('<Ctrl-Shift-m>', 'hint links spawn --detach mpv --force-window yes {hint-url}')
+config.bind('<Ctrl-m>', 'hint links spawn --detach mpv --force-window yes {hint-url}')
+
