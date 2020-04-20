@@ -20,9 +20,9 @@ cdf() {
           -not -path '*/.cache*' \
           -not -path '*/.git*' \
           -not -path '*/cache*' \
-          2>/dev/null | sed "s|$HOME|~|" | fzf)
+          2>/dev/null | sed "s|$HOME|~|" | fzf | sed "s|~|$HOME|")
     if [ -n "$dir" ]; then
-        eval cd "$dir"
+        builtin cd "$dir"
     fi
 }
 
@@ -62,9 +62,9 @@ vf() {
            -not -path '*/.cache*' \
            -not -path '*/.git*' \
            -not -path '*/cache*' \
-           2>/dev/null | sed "s|$HOME|~|" | fzf)
+           2>/dev/null | sed "s|$HOME|~|" | fzf | sed "s|~|$HOME|")
     if [ -n "$file" ]; then
-        $EDITOR "$file"
+        "$EDITOR" "$file"
     fi
 }
 
