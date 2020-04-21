@@ -60,6 +60,7 @@ neofetch
 neovim
 newsboat
 nmap
+noto-fonts
 openmpi
 openresolv
 openssh
@@ -101,6 +102,7 @@ tig
 tmux
 transmission-cli
 tree
+ttf-joypixels
 unclutter
 unzip
 usbutils
