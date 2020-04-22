@@ -1,143 +1,234 @@
-""" GENERAL """""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Sections
+"   -> General
+"   -> Plugins
+"   -> Meta Navigation
+"   -> Indenting
+"   -> Searching
+"   -> Deleting
+"   -> Visual & UI
+"   -> Behavior & Commands
+"   -> File Type Specific Stuff
 
-    set nocompatible                    " disable vi compatibility
 
-    let mapleader=","                   " set mapleader
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-    set autoread                        " auto read external file changes
-    set lazyredraw                      " don't redraw when not necessary
-    set hidden                          " don't close buffer on abandon
-    set nobackup                        " no permanent backup files
+" disable vi backward compatibility
+set nocompatible
 
-" backspacing
-    set backspace=indent,eol,start      " over indents, lines, previous insertions
+" set mapleader
+let mapleader=","
 
 " encoding
-    set encoding=utf-8
-    set fileencoding=utf-8
-    set termencoding=utf-8
+set encoding=utf-8
+set fileencoding=utf-8
+set termencoding=utf-8
 
-" indenting
-    set autoindent                      " copy indent onto next line
-    set smartindent                     " infer indentation of next line
-    set smarttab                        " tab for indent, else spaces
-    set softtabstop=4                   " softtab = 4 spaces
-    set tabstop=4                       " tab = 4 spaces
-    set shiftwidth=4                    " tab = 4 space
+" don't redraw when not necessary
+" dramatically speeds up macros
+set lazyredraw
 
-" mouse
-    set mouse=a                         " enable mouse in terminal vim
+" hide, don't close, buffer on abandon
+set hidden
 
-" searching
-    set hlsearch                        " highlight search
-    set incsearch                       " instant highlighting
-    set ignorecase                      " case insensitive search
-    set smartcase                       " except when query contains uppercase
+" no backup files (this does not include swap files)
+set nobackup
+set nowritebackup
 
-" splitting
-    set splitbelow splitright           " better splitting behavior
-    map <C-h> <C-w>h
-    map <C-j> <C-w>j
-    map <C-k> <C-w>k
-    map <C-l> <C-w>l
+" don't break in the middle of a word
+set linebreak
 
-" wrapping
-    set linebreak                       " don't break in the middle of a word
-    set tw=0                            " stop text being broken at 80
+" stop lines being broken at 80 chars
+set tw=0
 
 
-""" PLUGINS """""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-    call plug#begin('~/.config/vim/plugged')
-    Plug '/usr/local/opt/fzf'             " use local fzf
-    Plug 'editorconfig/editorconfig-vim'  " support for .editorconfig
-    Plug 'itchyny/lightline.vim'          " status line
-    Plug 'junegunn/fzf.vim'               " fzf scripts
-    Plug 'junegunn/vim-easy-align'        " aligning things
-    Plug 'junegunn/vim-slash'             " better in-buffer search experience
-    Plug 'preservim/nerdtree'             " file explorer
-    Plug 'rust-lang/rust.vim'             " rust support
-    Plug 'tpope/vim-commentary'           " commenting lines
-    Plug 'tpope/vim-fugitive'             " git wrapper for vim
-    Plug 'tpope/vim-surround'             " fancy stuff with pairs of things
-    Plug 'vim-syntastic/syntastic'        " syntax checking
-
-    Plug 'ryanoasis/vim-devicons'         " file type icons (load last)
-    call plug#end()
-
-
-    " configure lightline
-    let g:lightline = {
-        \ 'colorscheme': 'one'
-        \ }
+call plug#begin('~/.config/vim/plugged')
+Plug '/usr/local/opt/fzf'            " use local fzf
+Plug 'editorconfig/editorconfig-vim' " respect editorconfig
+Plug 'itchyny/lightline.vim'         " status line
+Plug 'junegunn/fzf.vim'              " fzf scripts
+Plug 'junegunn/vim-easy-align'       " aligning things
+Plug 'preservim/nerdtree'            " file explorer
+Plug 'rust-lang/rust.vim'            " rust support
+Plug 'tpope/vim-commentary'          " commenting lines
+Plug 'tpope/vim-fugitive'            " git wrapper
+Plug 'tpope/vim-surround'            " surrounding things
+Plug 'vim-syntastic/syntastic'       " syntax checking
+call plug#end()
 
 
-""" VISUAL & UI """""""""""""""""""""""""""""""""""""""""""""""""""""
-
-    syntax on                           " enable syntax highlighting
-    source $HOME/.config/vim/colors.vim " source colors
-
-    set number relativenumber           " hybrid line numbering
-    set numberwidth=3                   " compress gutter
-
-    set noshowmode                      " disable (duplicate) info about mode
-
-    set shortmess=I                     " disable splash screen
-    set shortmess+=a                    " use abbreviations in file messages
-
-    set so=8                            " set scroll offset to 8 lines
-
-    set wildmenu                        " enable wildmenu
-    set wildmode=longest,list           " complete longest common string, then list alternatives
-
-    set showmatch                       " show matching brackets
-    set mat=0                           " don't move cursor back
-
-    set noerrorbells                    " disable error bells
-    set visualbell
-    set t_vb=
-
-    let &t_SI = "\<Esc>[6 q"            " solid vertical bar in insert mode
-    let &t_SR = "\<Esc>[4 q"            " solid underscore cursor in replace mode
-    let &t_EI = "\<Esc>[2 q"            " solid block cursor in normal mode
+" lightline
+let g:lightline = {
+            \ 'colorscheme': 'one'
+            \ }
 
 
-""" BEHAVIOR & COMMANDS """""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Meta Navigation
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-    " matching using % key
-    runtime macros/matchit.vim
+" split in TTB and LTR directions
+set splitbelow splitright
 
-    " toggle spellcheck to english
-    map <leader>e :setlocal spell! spelllang=en_us<CR>
-
-    " toggle spellcheck to german
-    map <leader>d :setlocal spell! spelllang=de_de<CR>
-
-    " map substitute to S
-    nnoremap S :%s//g<Left><Left>
-
-    " reload vimrc
-    nnoremap <leader>s :source $MYVIMRC<CR>
-
-    " automatically delete trailing whitespace on save
-    autocmd BufWritePre * silent! %s/\s\+$//e
-
-    " no auto-commenting on newline
-    autocmd BufEnter * set fo-=c fo-=r fo-=o
-
-    " absolute line numbering when not in focus
-    augroup numbertoggle
-        autocmd!
-        autocmd BufEnter,FocusGained * set relativenumber
-        autocmd BufLeave,FocusLost   * set norelativenumber
-    augroup END
+" abbreviate key chords for moving between splits
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
 
 
-""" FILE TYPE SPECIFIC STUFF """"""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Indenting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-    " turn on spell check in git commits
-    autocmd FileType gitcommit set spell
+" copy indent onto next line
+set autoindent
 
-    " treat dashed strings as words in stylesheets
-    autocmd Filetype css,scss,sass setlocal iskeyword+=-
+" infer indentation of next line
+set smartindent
+
+" the editorconfig plugin handles tabstop,
+" softtabstop, shiftwidth and expandtab
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Searching
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" highlight search
+set hlsearch
+
+" highlight while typing
+set incsearch
+
+" case insensitive search
+set ignorecase
+
+" except when query contains uppercase
+set smartcase
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Deleting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" backspace over everything in insert mode
+set backspace=indent,eol,start
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Visual & UI
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" enable syntax highlighting
+syntax on
+
+" source colors
+source $HOME/.config/vim/colors.vim
+
+" hybrid line numbering
+set number relativenumber
+
+" compress gutter
+set numberwidth=3
+
+" disable (duplicate) info about mode
+set noshowmode
+
+" disable splash screen
+set shortmess=I
+
+" use abbreviations in file messages
+set shortmess+=a
+
+" set scroll offset to 8 lines
+set scrolloff=8
+
+" enable wildmenu
+set wildmenu
+
+" complete longest common string, then list alternatives
+set wildmode=longest,list
+
+" show matching brackets
+set showmatch
+
+" don't move cursor back
+set mat=0
+
+" disable error bells
+set noerrorbells
+set visualbell
+set t_vb=
+
+" solid vertical bar in insert mode
+let &t_SI = "\<Esc>[6 q"
+" solid underscore cursor in replace mode
+let &t_SR = "\<Esc>[4 q"
+" solid block cursor in normal mode
+let &t_EI = "\<Esc>[2 q"
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Behavior & Commands
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" matching using % key
+runtime macros/matchit.vim
+
+" allow saving files as root when vim not invoked as such
+cmap w!! w !sudo tee >/dev/null %
+
+" toggle spellcheck to english
+nnoremap <leader>e :setlocal spell! spelllang=en_us<CR>
+
+" toggle spellcheck to german
+nnoremap <leader>d :setlocal spell! spelllang=de_de<CR>
+
+" remove search highlighting
+nnoremap <leader>n :noh<CR>
+
+" reload vimrc
+nnoremap <leader>sv :source $MYVIMRC<CR>
+
+" faster saving
+nnoremap <leader>w :w!<CR>
+
+" map substitute to S
+nnoremap S :%s//g<Left><Left>
+
+" delete trailing whitespace on save
+au BufWritePre * silent! %s/\s\+$//e
+
+" no auto-commenting on newline
+au FileType * setlocal fo-=c fo-=r fo-=o
+
+" auto read external file changes
+set autoread
+au BufEnter,CursorHold,FocusGained * checktime
+
+" absolute line numbering when not in focus
+augroup numbertoggle
+    autocmd!
+    au BufEnter,FocusGained * set relativenumber
+    au BufLeave,FocusLost   * set norelativenumber
+augroup END
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => File Type Specific Stuff
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+filetype indent on
+
+" turn on spell check in git commits
+au FileType gitcommit set spell
+
+" treat dashed strings as words in style sheets
+au Filetype css,scss,sass setlocal iskeyword+=-
 
