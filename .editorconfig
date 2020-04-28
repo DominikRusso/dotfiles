@@ -10,8 +10,12 @@ insert_final_newline = true
 trim_trailing_whitespace = true
 
 [{*.c,*.h}]
-indent_style = tab
 indent_size = 4
+indent_style = tab
+
+[{*.clj,*.cljc,*.cljs,*.edn}]
+indent_size = 2
+indent_style = space
 
 [*.css]
 indent_size = 2
@@ -33,15 +37,44 @@ indent_style = space
 indent_size = 4
 indent_style = space
 
+[*.jl]
+indent_size = 4
+indent_style = space
+
+[*.js]
+indent_size = 2
+indent_style = space
+
 [*.json]
 indent_size = 2
 indent_style = space
 insert_final_newline = ignore
 
 [Makefile]
+indent_size = 4
 indent_style = tab
 
+[*.md]
+trim_trailing_whitespace = false
+
+[{*.ml,*.mli}]
+indent_size = 2
+indent_style = space
+
+[{*.pas,*.pp}]
+indent_size = 2
+indent_style = space
+
+[*.pl]
+indent_size = 4
+indent_style = space
+
+[*.php]
+indent_size = 4
+indent_style = space
+
 [*.py]
+indent_size = 4
 indent_style = space
 
 [*.rb]
@@ -49,11 +82,23 @@ indent_size = 2
 indent_style = space
 
 [{*.rs,*.rlib}]
+indent_size = 4
+indent_style = space
+
+[*.sh]
+indent_size = 2
+indent_style = space
+
+[*.sql]
 indent_size = 2
 indent_style = space
 
 [*.tex]
 indent_size = 2
+indent_style = space
+
+[*.ts]
+indent_size = 4
 indent_style = space
 
 [{*.xml,*.xsd,*.xsl,*.xslt}]
