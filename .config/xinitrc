@@ -10,7 +10,7 @@ setxkbmap -layout de \
 xset s off
 
 # set wallpaper
-xwallpaper --zoom ~/.config/wallpaper &
+xwallpaper --zoom "$XDG_CACHE_HOME"/wallpaper &
 
 # start statusbar script
 [ $WM = dwm ] && dwmstatus &
