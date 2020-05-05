@@ -1,13 +1,9 @@
-# envs
-jupyterlab
-
 # general
 beautifulsoup4
 cloudpickle
 colorama
 eventlet
 fuckit
-gitpython
 lxml
 matplotlib
 numpy
@@ -23,7 +19,7 @@ tqdm
 capstone
 cryptography
 fake-useragent
-# pwntools # wait for py3 support
+pwntools
 ropgadget
 
 # ml
@@ -38,3 +34,4 @@ scikit-learn
 tensorboard
 tensorflow
 tflearn
+
