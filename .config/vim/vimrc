@@ -193,6 +193,9 @@ nnoremap <leader>d :setlocal spell! spelllang=de_de<CR>
 " remove search highlighting
 nnoremap <leader>n :noh<CR>
 
+" sort paragraph
+nnoremap <leader>sp vip:sort<CR>
+
 " reload vimrc
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
