@@ -73,6 +73,7 @@ pkgconf
 powertop
 proselint
 ps_mem
+python-pip
 qutebrowser
 radare2
 ripgrep
