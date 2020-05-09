@@ -24,10 +24,10 @@
     # Commit all changes
     ca = !git add -A && git commit -av
 
-    # Show verbose output about tags, branches and remotes
-    tags = tag -l
+    # Show verbose output about branches, remotes and tags
     branches = branch -a
     remotes = remote -v
+    tags = tag -l
 
     # List aliases
     aliases = config --get-regexp alias
@@ -41,12 +41,6 @@
 
     # List contributors with number of commits
     contributors = shortlog --summary --numbered
-
-
-[user]
-
-    name = Dominik Russo
-    email = DominikRusso@tutanota.com
 
 
 [apply]
@@ -80,11 +74,18 @@
 [filter "lfs"]
 
     clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
     process = git-lfs filter-process
     required = true
+    smudge = git-lfs smudge -- %f
 
 
 [log]
 
     mailmap = true
+
+
+[user]
+
+    name = Dominik Russo
+    email = DominikRusso@tutanota.com
+
