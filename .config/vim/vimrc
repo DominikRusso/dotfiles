@@ -92,6 +92,9 @@ set autoindent
 " infer indentation of next line
 set smartindent
 
+" preserve indentation on line wraps
+set breakindent
+
 " the editorconfig plugin handles tabstop,
 " softtabstop, shiftwidth and expandtab
 
