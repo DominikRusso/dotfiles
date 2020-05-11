@@ -197,7 +197,7 @@ nnoremap <leader>d :setlocal spell! spelllang=de_de<CR>
 nnoremap <leader>n :noh<CR>
 
 " sort paragraph
-nnoremap <leader>sp vip:sort<CR>
+nnoremap <leader>sp vip:sort i<CR>
 
 " reload vimrc
 nnoremap <leader>sv :source $MYVIMRC<CR>
