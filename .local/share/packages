@@ -116,6 +116,9 @@ wireguard-tools
 xcompmgr
 xdg-user-dirs
 xdo
+xmobar
+xmonad
+xmonad-contrib
 xorg-server
 xorg-xbacklight
 xorg-xinit
