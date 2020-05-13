@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# update directory database
+find "$HOME" -type d \
+    -not -path '*/.cache*' \
+    -not -path '*/.git*' \
+    -not -path '*/cache*' \
+    >$HOME/.cache/dirdb \
+    2>/dev/null
+

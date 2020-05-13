@@ -16,58 +16,18 @@ cd() {
 
 # cd with fzf
 cdf() {
-    dir=$(find "$HOME" -type d \
-          -not -path '*/.cache*' \
-          -not -path '*/.git*' \
-          -not -path '*/cache*' \
-          2>/dev/null | sed "s|$HOME|~|" | fzf | sed "s|~|$HOME|")
-    if [ -n "$dir" ]; then
-        builtin cd "$dir"
-    fi
-}
-
-# cp fith fzf
-cpf() {
-	cp -rv \
-		$(find "$HOME" \
-		-not -path '*/.cache*' \
-		-not -path '*/.git*' \
-		-not -path '*/cache*' \
-		2>/dev/null | fzf -m) \
-		$(find "$HOME" -type d \
-		-not -path '*/.cache*' \
-		-not -path '*/.git*' \
-		-not -path '*/cache*' \
-		2>/dev/null | fzf)
-}
-
-# mv fith fzf
-mvf() {
-	mv -v \
-		$(find "$HOME" \
-		-not -path '*/.cache*' \
-		-not -path '*/.git*' \
-		-not -path '*/cache*' \
-		2>/dev/null | fzf -m) \
-		$(find "$HOME" -type d \
-		-not -path '*/.cache*' \
-		-not -path '*/.git*' \
-		-not -path '*/cache*' \
-		2>/dev/null | fzf)
+    dir=$(sed "s|$HOME|~|" <"$XDG_CACHE_HOME"/dirdb | fzf | sed "s|~|$HOME|")
+    [ -d "$dir" ] && builtin cd "$dir"
 }
 
 # find file and open in vim
 vf() {
-    file=$(find "$HOME" -type f \
-           -not -path '*/.cache*' \
-           -not -path '*/.git*' \
-           -not -path '*/cache*' \
-           2>/dev/null | sed "s|$HOME|~|" | fzf | sed "s|~|$HOME|")
-    if [ -n "$file" ]; then
-        "$EDITOR" "$file"
-    fi
+    file=$(sed "s|$HOME|~|" < "$XDG_CACHE_HOME"/filedb | fzf | sed "s|~|$HOME|")
+    [ -n "$file" ] && "$EDITOR" "$file"
 }
 
 # reload shell
-reload() { exec "${SHELL}" "$@" }
+reload() {
+    exec "${SHELL}" "$@"
+}
 
