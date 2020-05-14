@@ -1,13 +1,13 @@
-sxhkd &      # start simple x hotkey daemon
+sxhkd -m 1 & # start simple x hotkey daemon
 unclutter &  # hide mouse when idle
 xcompmgr &   # enable transparency
 
 # set keyboard layout
 setxkbmap -layout de \
-    -option caps:escape
+    -option caps:escape &
 
 # disable screen blanking
-xset s off
+xset s off &
 
 # set wallpaper
 xwallpaper --zoom "$XDG_CACHE_HOME"/wallpaper &
