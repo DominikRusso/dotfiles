@@ -1,15 +1,19 @@
 Config {
+    -- appearance
       font        = "xft:monospace:size=10"
-    , bgColor     = "#222222"
+    , bgColor     = "#000000"
     , fgColor     = "#aaaaaa"
+    , alpha       = 217   -- 15% alpha
     , position    = Top
+
+    -- behavior
     , allDesktops = True
     , persistent  = False -- make bar hidable
 
+
     -- layout
-    , sepChar     = "%"   -- delineator between plugins and regular text
-    , alignSep    = "}{"  -- separator between left-right alignment
-    , template    = " %UnsafeStdinReader%}{%multicpu% (%multicoretemp%) :: %memory% :: %date% "
+    , template    = "  %UnsafeStdinReader%}{%multicpu% (%multicoretemp%) :: %memory% :: %date%  "
+
     , commands    = [
           Run Date            "%a %F %T" "date" 10
         , Run Memory        [ "--template", "mem <usedratio>%"

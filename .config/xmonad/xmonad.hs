@@ -1,22 +1,37 @@
 import System.Exit
 import XMonad
-import XMonad.Layout.Renamed (renamed, Rename(Replace))
+import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ManageDocks
+import XMonad.Layout.Named
+import XMonad.Layout.NoBorders
 import XMonad.Layout.Spacing
+import XMonad.Util.Run
 
 import qualified Data.Map        as M
 import qualified XMonad.StackSet as W
 
+
 main :: IO ()
-main = xmonad defaultConfig
-  {
-    borderWidth        = borderWidth'
-  , focusedBorderColor = focusedBorderColor'
-  , keys               = keys'
-  , layoutHook         = layouts'
-  , modMask            = modMask'
-  , normalBorderColor  = normalBorderColor'
-  , workspaces         = workspaces'
-  }
+main = do
+  xmproc0 <- spawnPipe "xmobar -x 0"
+  xmonad $ docks defaultConfig
+    {
+      borderWidth        = borderWidth'
+    , focusedBorderColor = focusedBorderColor'
+    , keys               = keys'
+    , layoutHook         = layouts'
+    , logHook            = dynamicLogWithPP xmobarPP
+                            { ppOutput = hPutStrLn xmproc0
+                            , ppSep    = " :: "
+                            , ppCurrent = xmobarColor "yellow" ""
+                            , ppHidden = xmobarColor "gray" ""
+                            , ppHiddenNoWindows = const "_"
+                            , ppTitle  = shorten 50
+                            }
+    , modMask            = modMask'
+    , normalBorderColor  = normalBorderColor'
+    , workspaces         = workspaces'
+    }
 
 modMask'            = mod4Mask
 workspaces'         = map show [1..9]
@@ -31,7 +46,8 @@ normalBorderColor'  = "#222222"
 
 keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   [
-    ((modm .|. shiftMask, xK_g), decScreenWindowSpacing 2)
+    ((modm,               xK_b), sendMessage ToggleStruts)
+  , ((modm .|. shiftMask, xK_g), decScreenWindowSpacing 2)
   , ((modm,               xK_g), incScreenWindowSpacing 2)
   , ((modm .|. mod1Mask,  xK_g), sequence_ [toggleScreenSpacingEnabled, toggleWindowSpacingEnabled])
   , ((modm,               xK_h), sendMessage Shrink)
@@ -61,10 +77,13 @@ keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 -- Layouts
 -------------------------------------------------------------------
 
-layouts' = masterStack ||| monocle
+layouts' = avoidStruts   -- make space for xmobar
+         $ smartBorders  -- no border when only one window
+         $ masterStack ||| monocle
 
-masterStack = renamed [Replace "[]≡"] $ spacingRaw False (uniBorder 5) True (uniBorder 5) True $ Tall 1 (5/100) (1/2)
-monocle     = renamed [Replace "[ ]"] $ Full
+masterStack = named "[]=" $ spacingRaw False (uniBorder 6) True (uniBorder 6) True $ Tall 1 (5/100) (1/2)
+monocle     = named "[ ]" $ Full
+
 
 -- construct a uniform 'Border'
 uniBorder :: Integer -> Border
