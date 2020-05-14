@@ -1,18 +1,13 @@
 Config {
     -- appearance
-      font        = "xft:monospace:size=10"
+      alpha       = 217   -- 15% alpha
     , bgColor     = "#000000"
     , fgColor     = "#aaaaaa"
-    , alpha       = 217   -- 15% alpha
+    , font        = "xft:monospace:size=10"
     , position    = Top
 
-    -- behavior
-    , allDesktops = True
-    , persistent  = False -- make bar hidable
-
-
     -- layout
-    , template    = "  %UnsafeStdinReader%}{%multicpu% (%multicoretemp%) :: %memory% :: %date%  "
+    , template    = "  %UnsafeStdinReader%}{%multicpu% (%multicoretemp%)  ::  %memory%  ::  %date%  "
 
     , commands    = [
           Run Date            "%a %F %T" "date" 10
@@ -28,3 +23,4 @@ Config {
         , Run UnsafeStdinReader
     ]
 }
+
