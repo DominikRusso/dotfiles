@@ -13,7 +13,7 @@ export READER="zathura"
 export SUDO_ASKPASS="$HOME/.local/bin/dmenu_askpass"
 export TERMINAL="alacritty"
 export VISUAL="nvim"
-export WM="dwm"
+export WM="xmonad"
 
 # path
 PATH=~/.local/bin:$PATH
