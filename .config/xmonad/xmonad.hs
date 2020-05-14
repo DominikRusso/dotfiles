@@ -47,20 +47,23 @@ normalBorderColor'  = "black"
 
 keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   [
-    ((modm .|. shiftMask, xK_g), decScreenWindowSpacing 2)
-  , ((modm,               xK_g), incScreenWindowSpacing 2)
-  , ((modm .|. mod1Mask,  xK_g), sequence_ [toggleScreenSpacingEnabled, toggleWindowSpacingEnabled])
-  , ((modm,               xK_h), sendMessage Shrink)
-  , ((modm .|. shiftMask, xK_i), sendMessage (IncMasterN (-1)))
-  , ((modm              , xK_i), sendMessage (IncMasterN 1))
-  , ((modm,               xK_j), windows W.focusDown)
-  , ((modm .|. shiftMask, xK_j), windows W.swapDown)
-  , ((modm,               xK_k), windows W.focusUp)
-  , ((modm .|. shiftMask, xK_k), windows W.swapUp)
-  , ((modm,               xK_l), sendMessage Expand)
-  , ((modm .|. shiftMask, xK_q), io (exitWith ExitSuccess))
-  , ((modm,               xK_q), kill)
-  , ((modm,               xK_space), sendMessage NextLayout)
+    ((modm .|. shiftMask,   xK_g  ), decScreenWindowSpacing 2)
+  , ((modm,                 xK_g  ), incScreenWindowSpacing 2)
+  , ((modm .|. controlMask, xK_q  ), io (exitWith ExitSuccess))
+  , ((modm .|. shiftMask,   xK_q  ), kill)
+  , ((modm .|. shiftMask,   xK_i  ), sendMessage (IncMasterN (-1)))
+  , ((modm,                 xK_i  ), sendMessage (IncMasterN 1))
+  , ((modm,                 xK_l  ), sendMessage Expand)
+  , ((modm,                 xK_Tab), sendMessage NextLayout)
+  , ((modm,                 xK_h  ), sendMessage Shrink)
+  , ((modm .|. mod1Mask,    xK_g  ), sequence_ [toggleScreenSpacingEnabled, toggleWindowSpacingEnabled])
+  , ((modm .|. controlMask, xK_r  ), spawn "xmonad --recompile && xmonad --restart")
+  , ((modm,                 xK_j  ), windows W.focusDown)
+  , ((modm,                 xK_m  ), windows W.focusMaster)
+  , ((modm,                 xK_k  ), windows W.focusUp)
+  , ((modm .|. shiftMask,   xK_j  ), windows W.swapDown)
+  , ((modm .|. shiftMask,   xK_m  ), windows W.swapMaster)
+  , ((modm .|. shiftMask,   xK_k  ), windows W.swapUp)
   ]
 
   ++

@@ -15,27 +15,15 @@ super + o ; b
 
 # open {terminal progams}
 super + o ; {a,c,f,h,m,n,v}
-    $TERMINAL -e {alsamixer,calcurse, $FILE, htop, cmus, newsboat, $EDITOR}
+    $TERMINAL -e {alsamixer,calcurse,$FILE,htop,cmus,newsboat,vim}
 
-# reboot
-super + r
-    dmenu_prompt "Reboot?" "sudo -A reboot"
-
-# sleep
-super + s
-    systemctl suspend
-
-# SLEEP
-super + shift + s
-    dmenu_prompt "Hibernate?" "systemctl hibernate"
+# system {commands}
+super + s ; {s, r, z, h}
+    dmenu_prompt {"Shutdown?" "sudo -A shutdown -h now","Reboot?" "sudo -A reboot","Sleep?" "systemctl suspend","Hibernate?" "systemctl hibernate"}
 
 # lock
 super + x
     brightness min ; physlock
-
-# shutdown
-super + shift + x
-    dmenu_prompt "Shutdown?" "sudo -A shutdown -h now"
 
 # toggle mute
 XF86AudioMute
