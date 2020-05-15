@@ -1,6 +1,0 @@
-# no shebang, script should be sourced
-
-[ -n "$1" ] && export WM="$1"
-
-startx "$XINITRC" >/dev/null 2>&1
-
