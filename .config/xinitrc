@@ -1,4 +1,3 @@
-sxhkd -m 1 & # start simple x hotkey daemon
 unclutter &  # hide mouse when idle
 xcompmgr &   # enable transparency
 
@@ -11,9 +10,6 @@ xset s off &
 
 # set wallpaper
 xwallpaper --zoom "$XDG_CACHE_HOME"/wallpaper &
-
-# start statusbar script
-[ $WM = dwm ] && dwmstatus &
 
 # start window manager
 exec $WM
