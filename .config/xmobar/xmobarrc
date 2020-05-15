@@ -7,7 +7,7 @@ Config {
     , position    = Top
 
     -- layout
-    , template    = "  %UnsafeStdinReader%}{%multicpu% (%multicoretemp%)  ::  %memory%  ::  %date%  "
+    , template    = "  %StdinReader%}{%multicpu% (%multicoretemp%)  ::  %memory%  ::  %date%  "
 
     , commands    = [
           Run Date            "%a %F %T" "date" 10
@@ -20,7 +20,7 @@ Config {
         , Run MultiCpu      [ "--template", "cpu <total>%"
                             , "--minwidth", "2"
                             ] 20
-        , Run UnsafeStdinReader
+        , Run StdinReader
     ]
 }
 
