@@ -1,3 +1,8 @@
+# Currently unused since XMonad provides better functionality and the less
+# stuff I need to have running the better. Also these bindings are outdated
+# and will have to be adapted from xmonad.hs if I ever decide to use
+# something other than XMonad.
+
 #
 # general bindings
 #
