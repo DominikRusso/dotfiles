@@ -13,6 +13,10 @@ import qualified Data.Map        as M
 import qualified XMonad.StackSet as W
 
 
+-------------------------------------------------------------------
+-- Main
+-------------------------------------------------------------------
+
 main :: IO ()
 main = do
   xmproc0 <- spawnPipe "xmobar -x 0"
@@ -38,12 +42,13 @@ main = do
 
 terminal'           = "alacritty"
 
-modMask'            = mod4Mask
+modMask'            = mod4Mask -- super key
 workspaces'         = map show $ [1..9] ++ [0]
 
 borderWidth' = 1
 focusedBorderColor' = "yellow"
 normalBorderColor'  = "black"
+
 
 -------------------------------------------------------------------
 -- Key Bindings
@@ -51,31 +56,38 @@ normalBorderColor'  = "black"
 
 keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   [
-    ((modm .|. shiftMask,   xK_g      ), decScreenWindowSpacing 2)
-  , ((modm,                 xK_g      ), incScreenWindowSpacing 2)
-  , ((modm,                 xK_Escape ), io (exitWith ExitSuccess))
-  , ((modm .|. shiftMask,   xK_q      ), kill)
-  , ((modm .|. shiftMask,   xK_i      ), sendMessage (IncMasterN (-1)))
-  , ((modm,                 xK_i      ), sendMessage (IncMasterN 1))
-  , ((modm,                 xK_l      ), sendMessage Expand)
-  , ((modm,                 xK_Tab    ), sendMessage NextLayout)
-  , ((modm,                 xK_h      ), sendMessage Shrink)
-  , ((modm .|. mod1Mask,    xK_g      ), sequence_ [toggleScreenSpacingEnabled, toggleWindowSpacingEnabled])
-  , ((modm .|. controlMask, xK_r      ), spawn "xmonad --recompile && xmonad --restart")
-  , ((modm,                 xK_j      ), windows W.focusDown)
-  , ((modm,                 xK_m      ), windows W.focusMaster)
-  , ((modm,                 xK_k      ), windows W.focusUp)
-  , ((modm .|. shiftMask,   xK_j      ), windows W.swapDown)
-  , ((modm .|. shiftMask,   xK_m      ), windows W.swapMaster)
-  , ((modm .|. shiftMask,   xK_k      ), windows W.swapUp)
+  -- navigating
+    ((modm, xK_j), windows W.focusDown)
+  , ((modm, xK_k), windows W.focusUp)
+  , ((modm, xK_h), sendMessage Shrink)
+  , ((modm, xK_l), sendMessage Expand)
+  , ((modm, xK_m), windows W.focusMaster)
 
-  , ((modm,                 xK_Return ), spawn "alacritty")
-  , ((modm,                 xK_d      ), spawn "dmenu_run")
+  -- moving windows
+  , ((modm .|. shiftMask, xK_j), windows W.swapDown)
+  , ((modm .|. shiftMask, xK_k), windows W.swapUp)
+  , ((modm .|. shiftMask, xK_m), windows W.swapMaster)
+  , ((modm,               xK_t), withFocused $ windows . W.sink) -- (t)ile floating window
 
-  -- (o)pen
-  , ((modm,                 xK_o     ), submap . M.fromList $
-      [
-        ((0, xK_a), spawn "alacritty -e alsamixer")
+  -- controling gaps
+  , ((modm .|. shiftMask, xK_g), decScreenWindowSpacing 2)
+  , ((modm,               xK_g), incScreenWindowSpacing 2)
+  , ((modm .|. mod1Mask,  xK_g), sequence_ [toggleScreenSpacingEnabled,
+                                                    toggleWindowSpacingEnabled])
+
+  -- layouts
+  , ((modm, xK_Tab), sendMessage NextLayout)
+
+  --
+  , ((modm,               xK_Escape), io (exitWith ExitSuccess))
+  , ((modm .|. shiftMask, xK_q     ), kill)
+
+  -- open and closing programs
+  , ((modm,                 xK_Return), spawn "alacritty")
+  , ((modm,                 xK_d     ), spawn "dmenu_run")
+  , ((modm .|. controlMask, xK_r     ), spawn "xmonad --recompile && xmonad --restart")
+  , ((modm,                 xK_o     ), submap . M.fromList $ -- (o)pen
+      [ ((0, xK_a), spawn "alacritty -e alsamixer")
       , ((0, xK_b), spawn "qutebrowser")
       , ((0, xK_c), spawn "alacritty -e calcurse")
       , ((0, xK_h), spawn "alacritty -e htop")
@@ -84,22 +96,21 @@ keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
       , ((0, xK_v), spawn "alacritty -e nvim")
       ])
 
-  -- (s)ystem
-  , ((modm,                 xK_s     ), submap . M.fromList $
-      [
-        ((0, xK_h), spawn "dmenu_prompt \"Hibernate?\" \"systemctl hibernate\"")
+  -- system control
+  , ((modm, xK_s), submap . M.fromList $ -- (s)ystem
+      [ ((0, xK_h), spawn "dmenu_prompt \"Hibernate?\" \"systemctl hibernate\"")
       , ((0, xK_r), spawn "dmenu_prompt \"Reboot?\" \"sudo -A reboot\"")
       , ((0, xK_s), spawn "dmenu_prompt \"Shutdown?\" \"sudo -A shutdown -h now\"")
       , ((0, xK_z), spawn "systemctl suspend")
       ])
-  , ((modm,                 xK_x     ), spawn "physlock")
+  , ((modm, xK_x), spawn "physlock")
 
   ]
 
   ++
 
   -- mod-[1..9, 0]       switch to workspace N
-  -- mod-shift-[1..9, 0] move active window to workspace N
+  -- mod-shift-[1..9, 0] move window to workspace N
   [((m .|. modm, k), windows $ f i)
         | (i, k) <- zip (XMonad.workspaces conf) $ [xK_1 .. xK_9] ++ [xK_0]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
