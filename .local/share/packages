@@ -13,7 +13,6 @@ binutils
 binwalk
 bison
 calcurse
-chromium
 cmus
 cronie
 dash
@@ -62,6 +61,7 @@ neofetch
 neovim
 newsboat
 nmap
+nodejs
 noto-fonts
 openmpi
 openresolv
@@ -77,10 +77,12 @@ proselint
 ps_mem
 python-pip
 qutebrowser
+r
 radare2
 ripgrep
 rsync
 rust
+scala
 sed
 shellcheck
 signal-desktop
