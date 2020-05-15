@@ -15,7 +15,7 @@ super + o ; b
 
 # open {terminal progams}
 super + o ; {a,c,f,h,m,n,v}
-    $TERMINAL -e {alsamixer,calcurse,$FILE,htop,cmus,newsboat,vim}
+    $TERMINAL -e {alsamixer,calcurse,$FILE,htop,cmus,newsboat,nvim}
 
 # system {commands}
 super + s ; {s, r, z, h}
