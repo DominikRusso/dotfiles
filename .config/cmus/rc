@@ -1,6 +1,21 @@
-set color_win_title_bg=red
-
-set format_statusline= %{status} %{?show_playback_position?%{position} %{?duration?/ %{duration} }?%{?duration?%{duration} }}- %{total} %{?volume>=0?vol: %{?lvolume!=rvolume?%{lvolume},%{rvolume} ?%{volume} }}%{?stream?buf: %{buffer} }%=%{?repeat_current?repeat current?%{?play_library?%{playlist_mode} from %{?play_sorted?sorted }library?playlist}} | %1{continue}%1{follow}%1{repeat}%1{shuffle}
+set follow=true
 
 set lib_sort=albumartist date album discnumber tracknumber title filename
-set start_view=sorted
+
+set color_separator=40
+set color_titleline_bg=40
+set color_titleline_fg=black
+set color_win_cur=40
+set color_win_cur_sel_bg=245
+set color_win_cur_sel_fg=40
+set color_win_inactive_cur_sel_bg=236
+set color_win_inactive_cur_sel_fg=40
+set color_win_inactive_sel_bg=236
+set color_win_inactive_sel_fg=255
+set color_win_sel_bg=245
+set color_win_sel_fg=black
+set color_win_title_bg=default
+set color_win_title_fg=40
+set color_win_title_fg=40
+set color_win_title_fg=default
+
