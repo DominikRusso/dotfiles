@@ -12,5 +12,3 @@ case "$CMD" in
     unmute) amixer sset Master unmute ;;
 esac > /dev/null
 
-dwmstatus_refresh
-
