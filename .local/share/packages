@@ -114,7 +114,6 @@ wget
 which
 wireguard-tools
 xcompmgr
-xdg-user-dirs
 xdo
 xmobar
 xmonad
