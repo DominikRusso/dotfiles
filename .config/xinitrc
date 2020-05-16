@@ -12,5 +12,5 @@ xset s off &
 xwallpaper --zoom "$XDG_CACHE_HOME"/wallpaper &
 
 # start window manager
-exec $WM
+exec xmonad
 
