@@ -32,6 +32,7 @@ gcc
 gdb
 gettext
 ghc
+ghidra
 git
 glances
 grep
@@ -42,6 +43,7 @@ hashcat
 htop
 hydra
 imagemagick
+jdk-openjdk
 john
 jre-openjdk
 keepassxc
@@ -98,7 +100,6 @@ texlive-formatsextra
 texlive-games
 texlive-latexextra
 texlive-pictures
-texlive-publishers
 texlive-science
 tig
 tmux
