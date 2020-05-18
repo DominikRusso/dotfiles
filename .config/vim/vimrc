@@ -58,7 +58,6 @@ Plug 'rust-lang/rust.vim'            " rust support
 Plug 'tpope/vim-commentary'          " commenting lines
 Plug 'tpope/vim-fugitive'            " git wrapper
 Plug 'tpope/vim-surround'            " surrounding things
-Plug 'vim-syntastic/syntastic'       " syntax checking
 call plug#end()
 
 
