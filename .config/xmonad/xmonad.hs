@@ -125,9 +125,9 @@ layouts' = avoidStruts   -- make space for xmobar
          $ smartBorders  -- no border when only one window
          $ masterStack ||| monocle ||| grid
   where
-    masterStack = named "[]=" $ spacingRaw False (uniBorder 6) True (uniBorder 6) True $ Tall 1 (5/100) (1/2)
-    monocle     = named "[ ]" $ Full
-    grid        = named "[+]" $ spacingRaw False (uniBorder 6) True (uniBorder 6) True $ Grid
+    masterStack = named "<fc=yellow>[]=</fc> [ ] [+]" $ spacingRaw False (uniBorder 6) True (uniBorder 6) True $ Tall 1 (5/100) (1/2)
+    monocle     = named "[]= <fc=yellow>[ ]</fc> [+]" $ Full
+    grid        = named "[]= [ ] <fc=yellow>[+]</fc>" $ spacingRaw False (uniBorder 6) True (uniBorder 6) True $ Grid
 
 
 -- construct a uniform 'Border'
