@@ -70,25 +70,28 @@ keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   , ((modm .|. shiftMask, xK_m), windows W.swapMaster)
   , ((modm,               xK_t), withFocused $ windows . W.sink) -- (t)ile floating window
 
-  -- controling gaps
+  -- controlling gaps
   , ((modm .|. shiftMask, xK_g), decScreenWindowSpacing 2)
   , ((modm,               xK_g), incScreenWindowSpacing 2)
   , ((modm .|. mod1Mask,  xK_g), sequence_ [toggleScreenSpacingEnabled,
-                                                    toggleWindowSpacingEnabled])
+                                            toggleWindowSpacingEnabled])
 
   -- layouts
-  , ((modm, xK_Tab), sendMessage NextLayout)
+  , ((modm .|. shiftMask, xK_Tab  ), sendMessage FirstLayout)
+  , ((modm .|. shiftMask, xK_space), sendMessage FirstLayout)
+  , ((modm,               xK_Tab  ), sendMessage NextLayout)
+  , ((modm,               xK_space), sendMessage NextLayout)
   , ((modm,               xK_b    ), bindOn LN [(monocleName, sendMessage ToggleStruts)])
 
-  --
-  , ((modm,               xK_Escape), io (exitWith ExitSuccess))
-  , ((modm .|. shiftMask, xK_q     ), kill)
 
-  -- open and closing programs
+  -- opening and closing programs
+  , ((modm .|. shiftMask,   xK_Escape), io (exitWith ExitSuccess))
+  , ((modm .|. controlMask, xK_r     ), spawn "xmonad --recompile && xmonad --restart")
+  , ((modm .|. shiftMask,   xK_q     ), kill)
   , ((modm,                 xK_Return), spawn "alacritty")
   , ((modm,                 xK_d     ), spawn "dmenu_run")
-  , ((modm .|. controlMask, xK_r     ), spawn "xmonad --recompile && xmonad --restart")
-  , ((modm,                 xK_o     ), submap . M.fromList $ -- (o)pen
+  , ((modm,                 xK_o     ), submap . M.fromList $
+      -- (o)pen
       [ ((0, xK_a), spawn "alacritty -e alsamixer")
       , ((0, xK_b), spawn "qutebrowser")
       , ((0, xK_c), spawn "alacritty -e calcurse")
@@ -99,13 +102,14 @@ keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
       ])
 
   -- system control
-  , ((modm, xK_s), submap . M.fromList $ -- (s)ystem
+  , ((modm, xK_x), spawn "physlock")
+  , ((modm, xK_s), submap . M.fromList $
+      -- (s)ystem
       [ ((0, xK_h), spawn "dmenu_prompt \"Hibernate?\" \"systemctl hibernate\"")
       , ((0, xK_r), spawn "dmenu_prompt \"Reboot?\" \"sudo -A reboot\"")
       , ((0, xK_s), spawn "dmenu_prompt \"Shutdown?\" \"sudo -A shutdown -h now\"")
       , ((0, xK_z), spawn "systemctl suspend")
       ])
-  , ((modm, xK_x), spawn "physlock")
 
   ]
 
@@ -162,3 +166,4 @@ bindOn bt bindings = chooseAction bt $ chooser where
         Nothing -> case find ((""==).fst) bindings of
             Just (_, action) -> action
             Nothing -> return ()
+
