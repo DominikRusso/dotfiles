@@ -43,9 +43,8 @@ main = do
     , workspaces         = workspaces'
     }
 
-terminal'           = "alacritty"
 
-modMask'            = mod4Mask -- super key
+terminal'           = "alacritty"
 workspaces'         = map show $ [1..9] ++ [0]
 
 borderWidth' = 1
@@ -57,6 +56,18 @@ normalBorderColor'  = "black"
 -- Key Bindings
 -------------------------------------------------------------------
 
+alt   :: KeyMask
+ctrl  :: KeyMask
+shift :: KeyMask
+super :: KeyMask
+alt   = mod1Mask
+ctrl  = controlMask
+shift = shiftMask
+super = mod4Mask
+
+-- main modifier key
+modMask' = super
+
 keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   [
   -- navigating
@@ -67,34 +78,34 @@ keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   , ((modm, xK_m), windows W.focusMaster)
 
   -- moving windows
-  , ((modm .|. shiftMask, xK_j), windows W.swapDown)
-  , ((modm .|. shiftMask, xK_k), windows W.swapUp)
-  , ((modm .|. shiftMask, xK_m), windows W.swapMaster)
-  , ((modm,               xK_t), withFocused $ windows . W.sink) -- (t)ile floating window
+  , ((modm .|. shift, xK_j), windows W.swapDown)
+  , ((modm .|. shift, xK_k), windows W.swapUp)
+  , ((modm .|. shift, xK_m), windows W.swapMaster)
+  , ((modm,           xK_t), withFocused $ windows . W.sink) -- (t)ile floating window
 
   -- controlling gaps and padding
-  , ((modm .|. shiftMask,   xK_g), decScreenWindowSpacing 2)
-  , ((modm,                 xK_g), incScreenWindowSpacing 2)
-  , ((modm .|. controlMask, xK_g), sequence_ [setWindowSpacing defBorder,
-                                              setScreenSpacing defBorder])
-  , ((modm .|. mod1Mask,    xK_g), sequence_ [toggleScreenSpacingEnabled,
+  , ((modm .|. shift, xK_g), decScreenWindowSpacing 2)
+  , ((modm,           xK_g), incScreenWindowSpacing 2)
+  , ((modm .|. ctrl,  xK_g), sequence_ [setWindowSpacing defBorder,
+                                        setScreenSpacing defBorder])
+  , ((modm .|. alt,   xK_g), sequence_ [toggleScreenSpacingEnabled,
                                             toggleWindowSpacingEnabled])
-  , ((modm .|. mod1Mask,    xK_b), sendMessage ToggleStruts)
-  , ((modm,                 xK_f), sequence_ [sendMessage $ JumpToLayout monocleName,
+  , ((modm .|. alt,   xK_b), sendMessage ToggleStruts)
+  , ((modm,           xK_f), sequence_ [sendMessage $ JumpToLayout monocleName,
                                               sendMessage $ SetStruts [] [U .. L]])
   -- layouts
-  , ((modm .|. shiftMask, xK_Tab  ), sendMessage FirstLayout)
-  , ((modm .|. shiftMask, xK_space), sendMessage FirstLayout)
-  , ((modm,               xK_Tab  ), sendMessage NextLayout)
-  , ((modm,               xK_space), sendMessage NextLayout)
+  , ((modm .|. shift, xK_Tab  ), sendMessage FirstLayout)
+  , ((modm .|. shift, xK_space), sendMessage FirstLayout)
+  , ((modm,           xK_Tab  ), sendMessage NextLayout)
+  , ((modm,           xK_space), sendMessage NextLayout)
 
   -- opening and closing programs
-  , ((modm .|. controlMask, xK_Escape), io (exitWith ExitSuccess))
-  , ((modm .|. controlMask, xK_r     ), spawn "xmonad --recompile && xmonad --restart")
-  , ((modm .|. shiftMask,   xK_q     ), kill)
-  , ((modm,                 xK_Return), spawn "alacritty")
-  , ((modm,                 xK_d     ), spawn "dmenu_run")
-  , ((modm,                 xK_o     ), submap . M.fromList $
+  , ((modm .|. ctrl,  xK_Escape), io (exitWith ExitSuccess))
+  , ((modm .|. ctrl,  xK_r     ), spawn "xmonad --recompile && xmonad --restart")
+  , ((modm .|. shift, xK_q     ), kill)
+  , ((modm,           xK_Return), spawn "alacritty")
+  , ((modm,           xK_d     ), spawn "dmenu_run")
+  , ((modm,           xK_o     ), submap . M.fromList $
       -- (o)pen
       [ ((0, xK_a), spawn "alacritty -e alsamixer")
       , ((0, xK_b), spawn "qutebrowser")
@@ -123,7 +134,7 @@ keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   -- mod-shift-[1..9, 0] move window to workspace N
   [((m .|. modm, k), windows $ f i)
         | (i, k) <- zip (XMonad.workspaces conf) $ [xK_1 .. xK_9] ++ [xK_0]
-        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
+        , (f, m) <- [(W.greedyView, 0), (W.shift, shift)]
   ]
 
 
