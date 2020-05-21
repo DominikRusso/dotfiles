@@ -1,8 +1,8 @@
 Config {
     -- appearance
-      alpha       = 217   -- 15% alpha
-    , bgColor     = "#000000"
-    , fgColor     = "#aaaaaa"
+      alpha       = 217   -- ~15% alpha
+    , bgColor     = "black"
+    , fgColor     = "gray"
     , font        = "xft:monospace:size=10"
     , position    = Top
 
@@ -14,7 +14,9 @@ Config {
         , Run Memory        [ "--template", "mem <usedratio>%"
                             , "--minwidth", "2"
                             ] 20
-        , Run MultiCoreTemp [ "--template", "<max>°C"
+        , Run MultiCoreTemp [ "--template", "<avg>-<max>°C"
+                            , "--High"    , "60"
+                            , "--high"    , "red"
                             , "--minwidth", "2"
                             ] 20
         , Run MultiCpu      [ "--template", "cpu <total>%"
