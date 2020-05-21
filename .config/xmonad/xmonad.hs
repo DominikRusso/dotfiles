@@ -1,3 +1,4 @@
+import Data.List (find)
 import System.Exit
 import XMonad
 import XMonad.Actions.Submap
@@ -77,6 +78,7 @@ keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
   -- layouts
   , ((modm, xK_Tab), sendMessage NextLayout)
+  , ((modm,               xK_b    ), bindOn LN [(monocleName, sendMessage ToggleStruts)])
 
   --
   , ((modm,               xK_Escape), io (exitWith ExitSuccess))
@@ -125,12 +127,38 @@ layouts' = avoidStruts   -- make space for xmobar
          $ smartBorders  -- no border when only one window
          $ masterStack ||| monocle ||| grid
   where
-    masterStack = named "<fc=yellow>[]=</fc> [ ] [+]" $ spacingRaw False (uniBorder 6) True (uniBorder 6) True $ Tall 1 (5/100) (1/2)
-    monocle     = named "[]= <fc=yellow>[ ]</fc> [+]" $ Full
-    grid        = named "[]= [ ] <fc=yellow>[+]</fc>" $ spacingRaw False (uniBorder 6) True (uniBorder 6) True $ Grid
+    masterStack = named masterStackName $ spacingRaw False (uniBorder 6) True (uniBorder 6) True $ Tall 1 (5/100) (1/2)
+    monocle     = named monocleName $ Full
+    grid        = named gridName $ spacingRaw False (uniBorder 6) True (uniBorder 6) True $ Grid
 
+masterStackName = "<fc=yellow>[]=</fc> [ ] [+]"
+monocleName     = "[]= <fc=yellow>[ ]</fc> [+]"
+gridName        = "[]= [ ] <fc=yellow>[+]</fc>"
 
 -- construct a uniform 'Border'
 uniBorder :: Integer -> Border
 uniBorder i = Border i i i i
 
+
+-------------------------------------------------------------------
+-- Helper Functions
+-------------------------------------------------------------------
+
+-- bind keys on a per layout basis (adapted from Ethan Schoonover)
+data BindType = WS | LN -- workspace | layout name
+
+chooseAction :: BindType -> (String->X()) -> X()
+chooseAction WS f = withWindowSet (f . W.currentTag)
+chooseAction LN f = withWindowSet (f . description . W.layout . W.workspace . W.current)
+
+-- If current workspace or layout string is listed, run the associated action.
+-- If it isn't listed, run the default action (marked with empty string, ""),
+-- or do nothing if a default isn't supplied.
+-- Note that only the first match counts!
+bindOn :: BindType -> [(String, X())] -> X()
+bindOn bt bindings = chooseAction bt $ chooser where
+    chooser bt = case find ((bt==).fst) bindings of
+        Just (_, action) -> action
+        Nothing -> case find ((""==).fst) bindings of
+            Just (_, action) -> action
+            Nothing -> return ()
