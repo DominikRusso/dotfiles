@@ -13,9 +13,6 @@ export SUDO_ASKPASS="$HOME/.local/bin/dmenu_askpass"
 export TERMINAL="alacritty"
 export VISUAL="nvim"
 
-# path
-PATH=~/.local/bin:$PATH
-
 # XDG
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -36,8 +33,10 @@ export XINITRC="$XDG_CONFIG_HOME/xinitrc"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export ZSHCACHE="$XDG_CACHE_HOME/zsh"
 
+# path
+PATH=$HOME/.local/bin:$CARGO_HOME/bin:$PATH
+
 # program settings
-export CLICOLOR=1
 export FZF_DEFAULT_OPTS="--layout=reverse --height 33%"
 export LS_COLORS="di=0:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
 
