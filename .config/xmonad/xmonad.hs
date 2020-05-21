@@ -1,14 +1,16 @@
 import Data.List (find)
 import System.Exit
-import XMonad
+import XMonad hiding ( (|||) )
 import XMonad.Actions.Submap
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.Grid
+import XMonad.Layout.LayoutCombinators
 import XMonad.Layout.Named
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Spacing
 import XMonad.Util.Run
+import XMonad.Util.Types
 
 import qualified Data.Map        as M
 import qualified XMonad.StackSet as W
@@ -70,22 +72,24 @@ keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   , ((modm .|. shiftMask, xK_m), windows W.swapMaster)
   , ((modm,               xK_t), withFocused $ windows . W.sink) -- (t)ile floating window
 
-  -- controlling gaps
-  , ((modm .|. shiftMask, xK_g), decScreenWindowSpacing 2)
-  , ((modm,               xK_g), incScreenWindowSpacing 2)
-  , ((modm .|. mod1Mask,  xK_g), sequence_ [toggleScreenSpacingEnabled,
+  -- controlling gaps and padding
+  , ((modm .|. shiftMask,   xK_g), decScreenWindowSpacing 2)
+  , ((modm,                 xK_g), incScreenWindowSpacing 2)
+  , ((modm .|. controlMask, xK_g), sequence_ [setWindowSpacing defBorder,
+                                              setScreenSpacing defBorder])
+  , ((modm .|. mod1Mask,    xK_g), sequence_ [toggleScreenSpacingEnabled,
                                             toggleWindowSpacingEnabled])
-
+  , ((modm .|. mod1Mask,    xK_b), sendMessage ToggleStruts)
+  , ((modm,                 xK_f), sequence_ [sendMessage $ JumpToLayout monocleName,
+                                              sendMessage $ SetStruts [] [U .. L]])
   -- layouts
   , ((modm .|. shiftMask, xK_Tab  ), sendMessage FirstLayout)
   , ((modm .|. shiftMask, xK_space), sendMessage FirstLayout)
   , ((modm,               xK_Tab  ), sendMessage NextLayout)
   , ((modm,               xK_space), sendMessage NextLayout)
-  , ((modm,               xK_b    ), bindOn LN [(monocleName, sendMessage ToggleStruts)])
-
 
   -- opening and closing programs
-  , ((modm .|. shiftMask,   xK_Escape), io (exitWith ExitSuccess))
+  , ((modm .|. controlMask, xK_Escape), io (exitWith ExitSuccess))
   , ((modm .|. controlMask, xK_r     ), spawn "xmonad --recompile && xmonad --restart")
   , ((modm .|. shiftMask,   xK_q     ), kill)
   , ((modm,                 xK_Return), spawn "alacritty")
@@ -131,13 +135,15 @@ layouts' = avoidStruts   -- make space for xmobar
          $ smartBorders  -- no border when only one window
          $ masterStack ||| monocle ||| grid
   where
-    masterStack = named masterStackName $ spacingRaw False (uniBorder 6) True (uniBorder 6) True $ Tall 1 (5/100) (1/2)
+    masterStack = named masterStackName $ spacingRaw False defBorder True defBorder True $ Tall 1 (5/100) (1/2)
     monocle     = named monocleName $ Full
-    grid        = named gridName $ spacingRaw False (uniBorder 6) True (uniBorder 6) True $ Grid
+    grid        = named gridName $ spacingRaw False defBorder True defBorder True $ Grid
 
 masterStackName = "<fc=yellow>[]=</fc> [ ] [+]"
 monocleName     = "[]= <fc=yellow>[ ]</fc> [+]"
 gridName        = "[]= [ ] <fc=yellow>[+]</fc>"
+
+defBorder = uniBorder 6
 
 -- construct a uniform 'Border'
 uniBorder :: Integer -> Border
