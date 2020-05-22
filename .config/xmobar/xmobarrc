@@ -7,10 +7,17 @@ Config {
     , position    = Top
 
     -- layout
-    , template    = "  %StdinReader%}{%multicpu% (%multicoretemp%)  ::  %memory%  ::  %date%  "
+    , template    = "  %StdinReader%}{%dynnetwork%  ::  %multicpu% (%multicoretemp%)  ::  %memory%  ::  %date%  "
 
     , commands    = [
           Run Date            "%a %F %T" "date" 10
+        , Run DynNetwork    [ "--template", "<rx>KB/<tx>KB"
+                            , "--Low"     , "0"     -- 0B
+                            , "--High"    , "10000" -- 10KB
+                            , "--low"     , "gray"
+                            , "--normal"  , "white"
+                            , "--high"    , "red"
+                            ] 10
         , Run Memory        [ "--template", "mem <usedratio>%"
                             , "--minwidth", "2"
                             ] 20
