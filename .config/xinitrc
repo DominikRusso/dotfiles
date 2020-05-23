@@ -1,3 +1,4 @@
+redshift &   # decrease col temp at night
 unclutter &  # hide mouse when idle
 xcompmgr &   # enable transparency
 
@@ -12,7 +13,7 @@ xset s off &
 xwallpaper --zoom "$XDG_CACHE_HOME"/wallpaper &
 
 # fix for java GUIs (ghidra) in non-reparenting WMs
-export _JAVA_AWT_WM_NONREPARENTING=1
+export _JAVA_AWT_WM_NONREPARENTING=1 &
 
 # start window manager
 exec xmonad
