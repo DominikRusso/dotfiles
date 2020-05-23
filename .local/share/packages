@@ -72,6 +72,7 @@ pacman
 pacman-contrib
 pandoc
 patch
+physlock
 pkgconf
 powertop
 proselint
