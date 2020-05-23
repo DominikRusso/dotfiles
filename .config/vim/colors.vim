@@ -19,6 +19,7 @@ hi MatchParen   cterm=none      ctermfg=Black       ctermbg=White
 hi Operator     cterm=none      ctermfg=White       ctermbg=none
 hi SpecialChar  cterm=none      ctermfg=White       ctermbg=none
 hi String       cterm=none      ctermfg=White       ctermbg=none
+hi Title        cterm=none      ctermfg=Gray        ctermbg=none
 
 " Non-Syntax
 hi CursorLineNr cterm=none      ctermfg=White       ctermbg=none
@@ -29,7 +30,7 @@ hi diffChanged  cterm=none      ctermfg=33          ctermbg=none
 hi DiffDelete   cterm=none      ctermfg=White       ctermbg=DarkRed
 hi diffRemoved  cterm=none      ctermfg=DarkRed     ctermbg=none
 hi DiffText     cterm=none      ctermfg=Black       ctermbg=27
-hi Error        cterm=none      ctermfg=White       ctermbg=DarkRed
+hi Error        cterm=none      ctermfg=Black       ctermbg=DarkRed
 hi LineNr       cterm=none      ctermfg=238         ctermbg=none
 hi SpecialKey   cterm=none      ctermfg=Black       ctermbg=White
 hi Todo         cterm=none      ctermfg=Black       ctermbg=Green
