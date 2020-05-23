@@ -7,10 +7,17 @@ Config {
     , position    = Top
 
     -- layout
-    , template    = "  %StdinReader%}{%dynnetwork%  ::  %multicpu% (%multicoretemp%)  ::  %memory%  ::  %date%  "
+    , template    = "  %StdinReader%}{%dynnetwork%  ::  %multicpu% (%multicoretemp%)  ::  %memory%  ::  %alsa:default:Master%  ::  %date%  "
 
     , commands    = [
-          Run Date            "%a %F %T" "date" 10
+          Run Alsa "default" "Master" [ "--template", "vol <volume>% <status>"
+                                      , "--"
+                                      , "--on"      , "on"
+                                      , "--off"     , "off"
+                                      , "--onc"     , "gray"
+                                      , "--offc"    , "gray"
+                                      ]
+        , Run Date            "%a %F %T" "date" 10
         , Run DynNetwork    [ "--template", "<rx>KB/<tx>KB"
                             , "--Low"     , "0"     -- 0B
                             , "--High"    , "10000" -- 10KB
