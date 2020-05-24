@@ -18,7 +18,7 @@
 set nocompatible
 
 " set mapleader
-let mapleader=","
+let mapleader=" "
 
 " encoding
 set encoding=utf-8
