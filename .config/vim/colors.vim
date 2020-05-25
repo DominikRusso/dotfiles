@@ -33,7 +33,11 @@ hi DiffText     cterm=none      ctermfg=Black       ctermbg=27
 hi Error        cterm=none      ctermfg=Black       ctermbg=DarkRed
 hi LineNr       cterm=none      ctermfg=238         ctermbg=none
 hi SpecialKey   cterm=none      ctermfg=Black       ctermbg=White
+hi SpellBad     cterm=underline ctermfg=Red         ctermbg=none
+hi SpellCap     cterm=underline ctermfg=Yellow      ctermbg=none
+hi SpellRare    cterm=underline ctermfg=none        ctermbg=none
 hi Todo         cterm=none      ctermfg=Black       ctermbg=Green
+
 hi! link diffCommon Normal
 hi! link EndOfBuffer LineNr     " filler '~'
 
