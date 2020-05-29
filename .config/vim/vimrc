@@ -11,6 +11,7 @@
 "   -> File Type Specific Stuff
 "   -> Security
 
+
 " =============================================================================
 " => General
 " =============================================================================
@@ -39,7 +40,7 @@ set nowritebackup
 set linebreak
 
 " stop lines being broken at 80 chars
-set nowrap
+set tw=0
 
 filetype plugin indent on
 
@@ -56,12 +57,12 @@ Plug 'airblade/vim-rooter'           " set working dir to proj root
 Plug 'andymass/vim-matchup'          " extend % motion
 Plug 'ciaranm/securemodelines'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'junegunn/fzf.vim'              " fzf scripts
-Plug 'junegunn/vim-easy-align'       " aligning things
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-easy-align'
 Plug 'justinmk/vim-sneak'            " powerful f-like motion
 Plug 'tpope/vim-commentary'          " commenting stuff out
 Plug 'tpope/vim-fugitive'            " git wrapper
-Plug 'tpope/vim-surround'            " surrounding things
+Plug 'tpope/vim-surround'
 
 " syntactic language support
 Plug 'rust-lang/rust.vim'
@@ -76,14 +77,15 @@ call plug#end()
 " => Navigation
 " =============================================================================
 
-" disable arrow keys
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-
+" disable arrow keys in insert and visual mode
 inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
+vnoremap <up> <nop>
+vnoremap <down> <nop>
+vnoremap <left> <nop>
+vnoremap <right> <nop>
 
 
 " =============================================================================
@@ -94,10 +96,10 @@ inoremap <right> <nop>
 set splitbelow splitright
 
 " abbreviate key chords for moving between splits
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " left and right arrow keys switch buffers
 nnoremap <left> :bp<CR>
@@ -159,15 +161,16 @@ set numberwidth=3
 " disable (duplicate) info about mode
 set noshowmode
 
+" less verbose messages + no splash screen
 set shortmess=acI
 
-" set scroll offset to 8 lines
-set scrolloff=8
+" set scroll offset to 3 lines
+set scrolloff=3
 
 " enable wildmenu
 set wildmenu
 
-" list, then complete
+" complete longest string and show list
 set wildmode=list:longest
 
 " show matching brackets
@@ -205,22 +208,11 @@ cmap w!! w !sudo tee >/dev/null %
 map <F1> <Esc>
 imap <F1> <Esc>
 
-" toggle spellcheck to english
-nnoremap <leader>e :setlocal spell! spelllang=en_us<CR>
-
-" toggle spellcheck to german
-nnoremap <leader>d :setlocal spell! spelllang=de_de<CR>
-
-" remove search highlighting
+nnoremap <leader>m :!make<CR>
 nnoremap <leader>n :noh<CR>
-
-" sort paragraph
-nnoremap <leader>sp vip:sort i<CR>
-
-" reload vimrc
+nnoremap <leader>se :setlocal spell! spelllang=en_us<CR>
+nnoremap <leader>sg :setlocal spell! spelllang=de_de<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
-
-" faster saving
 nnoremap <leader>w :w<CR>
 
 " map substitute to S
@@ -248,7 +240,7 @@ augroup END
 " => File Type Specific Stuff
 " =============================================================================
 
-" Rust
+" rust
 let g:rustfmt_autosave = 1
 
 " turn on spell check in git commits

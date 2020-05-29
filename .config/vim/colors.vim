@@ -32,6 +32,7 @@ hi diffRemoved  cterm=none      ctermfg=DarkRed     ctermbg=none
 hi DiffText     cterm=none      ctermfg=Black       ctermbg=27
 hi Error        cterm=none      ctermfg=Black       ctermbg=DarkRed
 hi LineNr       cterm=none      ctermfg=238         ctermbg=none
+hi SignColumn   cterm=none      ctermfg=none        ctermbg=none
 hi SpecialKey   cterm=none      ctermfg=Black       ctermbg=White
 hi SpellBad     cterm=underline ctermfg=Red         ctermbg=none
 hi SpellCap     cterm=underline ctermfg=Yellow      ctermbg=none
