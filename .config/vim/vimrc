@@ -1,6 +1,7 @@
 " Sections
 "   -> General
 "   -> Plugins
+"   -> Navigation
 "   -> Meta Navigation
 "   -> Indenting
 "   -> Searching
@@ -8,19 +9,17 @@
 "   -> Visual & UI
 "   -> Behavior & Commands
 "   -> File Type Specific Stuff
+"   -> Security
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" =============================================================================
 " => General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" =============================================================================
 
 " disable vi backward compatibility
 set nocompatible
 
-" set mapleader
 let mapleader=" "
 
-" encoding
 set encoding=utf-8
 set fileencoding=utf-8
 set termencoding=utf-8
@@ -40,36 +39,56 @@ set nowritebackup
 set linebreak
 
 " stop lines being broken at 80 chars
-set tw=0
+set nowrap
+
+filetype plugin indent on
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" =============================================================================
 " => Plugins
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" =============================================================================
 
 call plug#begin('~/.config/vim/plugged')
+
+" general enhancements
 Plug '/usr/local/opt/fzf'            " use local fzf
-Plug 'editorconfig/editorconfig-vim' " respect editorconfig
-Plug 'itchyny/lightline.vim'         " status line
+Plug 'airblade/vim-rooter'           " set working dir to proj root
+Plug 'andymass/vim-matchup'          " extend % motion
+Plug 'ciaranm/securemodelines'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf.vim'              " fzf scripts
 Plug 'junegunn/vim-easy-align'       " aligning things
-Plug 'preservim/nerdtree'            " file explorer
-Plug 'rust-lang/rust.vim'            " rust support
-Plug 'tpope/vim-commentary'          " commenting lines
+Plug 'justinmk/vim-sneak'            " powerful f-like motion
+Plug 'tpope/vim-commentary'          " commenting stuff out
 Plug 'tpope/vim-fugitive'            " git wrapper
 Plug 'tpope/vim-surround'            " surrounding things
+
+" syntactic language support
+Plug 'rust-lang/rust.vim'
+
+" visual enhancements
+Plug 'itchyny/lightline.vim'         " status line
+
 call plug#end()
 
 
-" lightline
-let g:lightline = {
-            \ 'colorscheme': 'one'
-            \ }
+" =============================================================================
+" => Navigation
+" =============================================================================
+
+" disable arrow keys
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" =============================================================================
 " => Meta Navigation
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" =============================================================================
 
 " split in TTB and LTR directions
 set splitbelow splitright
@@ -80,10 +99,14 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" left and right arrow keys switch buffers
+nnoremap <left> :bp<CR>
+nnoremap <right> :bn<CR>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" =============================================================================
 " => Indenting
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" =============================================================================
 
 " copy indent onto next line
 set autoindent
@@ -98,15 +121,9 @@ set breakindent
 " softtabstop, shiftwidth and expandtab
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" =============================================================================
 " => Searching
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" highlight search
-set hlsearch
-
-" highlight while typing
-set incsearch
+" =============================================================================
 
 " case insensitive search
 set ignorecase
@@ -115,17 +132,17 @@ set ignorecase
 set smartcase
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" =============================================================================
 " => Deleting
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" =============================================================================
 
 " backspace over everything in insert mode
 set backspace=indent,eol,start
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" =============================================================================
 " => Visual & UI
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" =============================================================================
 
 " enable syntax highlighting
 syntax on
@@ -142,11 +159,7 @@ set numberwidth=3
 " disable (duplicate) info about mode
 set noshowmode
 
-" disable splash screen
-set shortmess=I
-
-" use abbreviations in file messages
-set shortmess+=a
+set shortmess=acI
 
 " set scroll offset to 8 lines
 set scrolloff=8
@@ -154,8 +167,8 @@ set scrolloff=8
 " enable wildmenu
 set wildmenu
 
-" complete longest common string, then list alternatives
-set wildmode=longest,list
+" list, then complete
+set wildmode=list:longest
 
 " show matching brackets
 set showmatch
@@ -175,16 +188,22 @@ let &t_SR = "\<Esc>[4 q"
 " solid block cursor in normal mode
 let &t_EI = "\<Esc>[2 q"
 
+" lightline
+let g:lightline = {
+            \ 'colorscheme': 'one'
+            \ }
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" =============================================================================
 " => Behavior & Commands
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" matching using % key
-runtime macros/matchit.vim
+" =============================================================================
 
 " allow saving files as root when vim not invoked as such
 cmap w!! w !sudo tee >/dev/null %
+
+" unmap F1 from help
+map <F1> <Esc>
+imap <F1> <Esc>
 
 " toggle spellcheck to english
 nnoremap <leader>e :setlocal spell! spelllang=en_us<CR>
@@ -202,7 +221,7 @@ nnoremap <leader>sp vip:sort i<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " faster saving
-nnoremap <leader>w :w!<CR>
+nnoremap <leader>w :w<CR>
 
 " map substitute to S
 nnoremap S :%s//g<Left><Left>
@@ -225,15 +244,27 @@ augroup numbertoggle
 augroup END
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" =============================================================================
 " => File Type Specific Stuff
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" =============================================================================
 
-filetype indent on
+" Rust
+let g:rustfmt_autosave = 1
 
 " turn on spell check in git commits
 au FileType gitcommit set spell
 
 " treat dashed strings as words in style sheets
 au Filetype css,scss,sass setlocal iskeyword+=-
+
+
+" =============================================================================
+" => Security
+" =============================================================================
+
+" disable commands being run from local .vimrcs and .exrcs
+set secure
+
+" disable modelines
+let g:secure_modelines_allowed_items = []
 
