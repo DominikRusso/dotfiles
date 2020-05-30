@@ -10,6 +10,7 @@ c.statusbar.padding = {"bottom": 1, "left": 2, "right": 2, "top": 1}
 c.statusbar.widgets = ["keypress", "url", "scroll", "tabs", "progress"]
 c.tabs.favicons.scale = 0.95
 c.tabs.indicator.padding = {"bottom": 0, "left": 0, "right": 4, "top": 0}
+c.tabs.mousewheel_switching = False
 c.tabs.position = "left"
 c.tabs.show = "switching"
 c.tabs.title.format = ""
@@ -17,19 +18,20 @@ c.tabs.width = 30
 c.url.start_pages = ['~/.config/qutebrowser/web/startpage.html']
 c.window.hide_decoration = True
 
-c.tabs.mousewheel_switching = False
+config.bind('<Ctrl-m>', 'hint links spawn --detach mpv --force-window yes {hint-url}')
+
+config.set('content.javascript.enabled', True, 'https://github.com')
+
 c.url.searchengines = {
-        '4'       : 'https://4chan.org/{}',
         'DEFAULT' : 'https://duckduckgo.com/html?q={}',
+        '4'       : 'https://4chan.org/{}',
         'aw'      : 'https://wiki.archlinux.org/?search={}',
         'def'     : 'https://lexico.com/en/definition/{}',
+        'eff'     : 'https://eff.org/search/site/{}',
         'etym'    : 'https://etymonline.com/search?q={}',
         'g'       : 'https://google.com/search?q={}',
         'gh'      : 'https://github.com/{}',
-        'gw'      : 'https://wiki.gentoo.org/search={}',
         'se'      : 'https://stackexchange.com/search?q={}',
         'w'       : 'https://en.wikipedia.org/?search={}',
         }
-
-config.bind('<Ctrl-m>', 'hint links spawn --detach mpv --force-window yes {hint-url}')
 
