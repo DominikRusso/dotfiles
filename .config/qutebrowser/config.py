@@ -5,6 +5,7 @@ c.colors.tabs.selected.even.bg = "#555"
 c.colors.tabs.selected.odd.bg = "#555"
 c.completion.open_categories = ["searchengines", "quickmarks", "bookmarks"]
 c.completion.shrink = True
+c.content.javascript.enabled = False
 c.statusbar.padding = {"bottom": 1, "left": 2, "right": 2, "top": 1}
 c.statusbar.widgets = ["keypress", "url", "scroll", "tabs", "progress"]
 c.tabs.favicons.scale = 0.95
@@ -19,7 +20,7 @@ c.window.hide_decoration = True
 c.tabs.mousewheel_switching = False
 c.url.searchengines = {
         '4'       : 'https://4chan.org/{}',
-        'DEFAULT' : 'https://duckduckgo.com/?q={}',
+        'DEFAULT' : 'https://duckduckgo.com/html?q={}',
         'aw'      : 'https://wiki.archlinux.org/?search={}',
         'def'     : 'https://lexico.com/en/definition/{}',
         'etym'    : 'https://etymonline.com/search?q={}',
