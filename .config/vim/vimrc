@@ -59,7 +59,6 @@ Plug 'ciaranm/securemodelines'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'justinmk/vim-sneak'            " powerful f-like motion
 Plug 'tpope/vim-commentary'          " commenting stuff out
 Plug 'tpope/vim-fugitive'            " git wrapper
 Plug 'tpope/vim-surround'
@@ -214,9 +213,6 @@ nnoremap <leader>se :setlocal spell! spelllang=en_us<CR>
 nnoremap <leader>sg :setlocal spell! spelllang=de_de<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <leader>w :w<CR>
-
-" map substitute to S
-nnoremap S :%s//g<Left><Left>
 
 " delete trailing whitespace on save
 au BufWritePre * silent! %s/\s\+$//e
