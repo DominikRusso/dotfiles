@@ -31,6 +31,7 @@ c.url.searchengines = {
         'etym'    : 'https://etymonline.com/search?q={}',
         'g'       : 'https://google.com/search?q={}',
         'gh'      : 'https://github.com/{}',
+        'gw'      : 'https://wiki.gentoo.org/?search={}',
         'se'      : 'https://stackexchange.com/search?q={}',
         'w'       : 'https://en.wikipedia.org/?search={}',
         }
