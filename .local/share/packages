@@ -22,6 +22,7 @@ entr
 exa
 expac
 fakeroot
+fd
 ffmpeg
 figlet
 file
@@ -48,8 +49,10 @@ jre-openjdk
 keepassxc
 knockd
 libtool
+libva-mesa-driver
 linux
 linux-firmware
+lsof
 m4
 make
 man-db
