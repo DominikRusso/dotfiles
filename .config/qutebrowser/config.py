@@ -20,19 +20,25 @@ c.window.hide_decoration = True
 
 config.bind('<Ctrl-m>', 'hint links spawn --detach mpv --force-window yes {hint-url}')
 
-config.set('content.javascript.enabled', True, 'https://github.com')
+config.set('content.javascript.enabled', True, 'https://*.c2.com')
+config.set('content.javascript.enabled', True, 'https://*.github.com')
+config.set('content.javascript.enabled', True, 'https://*.gitlab.com')
+config.set('content.javascript.enabled', True, 'https://*.openstreetmap.org')
 
 c.url.searchengines = {
         'DEFAULT' : 'https://duckduckgo.com/html?q={}',
         '4'       : 'https://4chan.org/{}',
-        'aw'      : 'https://wiki.archlinux.org/?search={}',
         'def'     : 'https://lexico.com/en/definition/{}',
         'eff'     : 'https://eff.org/search/site/{}',
         'etym'    : 'https://etymonline.com/search?q={}',
         'g'       : 'https://google.com/search?q={}',
         'gh'      : 'https://github.com/{}',
-        'gw'      : 'https://wiki.gentoo.org/?search={}',
+        'gl'      : 'https://gitlab.com/{}',
+        'hoo'     : 'https://hoogle.haskell.org/?hoogle={}',
         'se'      : 'https://stackexchange.com/search?q={}',
+        'r'       : 'https://reddit.com/r/{}',
         'w'       : 'https://en.wikipedia.org/?search={}',
+        'wa'      : 'https://wiki.archlinux.org/?search={}',
+        'wg'      : 'https://wiki.gentoo.org/?search={}',
         }
 
