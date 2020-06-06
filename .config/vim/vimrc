@@ -54,7 +54,6 @@ call plug#begin('~/.config/vim/plugged')
 " general enhancements
 Plug '/usr/local/opt/fzf'            " use local fzf
 Plug 'airblade/vim-rooter'           " set working dir to proj root
-Plug 'andymass/vim-matchup'          " extend % motion
 Plug 'ciaranm/securemodelines'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf.vim'
