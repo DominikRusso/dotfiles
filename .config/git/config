@@ -84,6 +84,12 @@
     mailmap = true
 
 
+[pull]
+
+    # merge (default)
+    rebase = false
+
+
 [user]
 
     name = Dominik Russo
