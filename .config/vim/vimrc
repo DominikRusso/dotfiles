@@ -213,6 +213,9 @@ nnoremap <leader>sg :setlocal spell! spelllang=de_de<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <leader>w :w<CR>
 
+" stop vim-rooter changing directory automatically
+let g:rooter_manual_only = 1
+
 " delete trailing whitespace on save
 au BufWritePre * silent! %s/\s\+$//e
 
