@@ -101,6 +101,10 @@ indent_style = space
 indent_size = 4
 indent_style = space
 
+[*.vue]
+indent_size = 2
+indent_style = space
+
 [{*.xml,*.xsd,*.xsl,*.xslt}]
 indent_size = 2
 indent_style = space
