@@ -9,12 +9,14 @@ bat
 bind-tools
 binutils
 bison
+buildah
 calcurse
 cmus
 cronie
 dash
 dhcpcd
 dmenu
+docker
 editorconfig-core-c
 entr
 exa
@@ -73,6 +75,7 @@ pandoc
 patch
 physlock
 pkgconf
+podman
 powertop
 proselint
 ps_mem
@@ -115,6 +118,7 @@ vi
 wget
 which
 wireguard-tools
+xclip
 xcompmgr
 xdo
 xmobar
@@ -122,6 +126,7 @@ xmonad
 xmonad-contrib
 xorg-server
 xorg-xbacklight
+xorg-xev
 xorg-xinit
 xorg-xrandr
 xorg-xset
