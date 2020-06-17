@@ -81,6 +81,7 @@ proselint
 ps_mem
 python
 python-pip
+qrencode
 qutebrowser
 r
 radare2
