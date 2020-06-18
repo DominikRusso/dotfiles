@@ -1,11 +1,11 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR __fish_initialized:3100
+SETUVAR _fish_abbr_R:R\x20\x2dq
 SETUVAR _fish_abbr_cd_2E_2E_:cd\x20\x2e\x2e
 SETUVAR _fish_abbr_chomod:chmod\x20\x2dv
 SETUVAR _fish_abbr_chown:chown\x20\x2dv
 SETUVAR _fish_abbr_cp:cp\x20\x2div
-SETUVAR _fish_abbr_grep:grep\x20\x2d\x2dcolor\x20auto
 SETUVAR _fish_abbr_ll:ls\x20\x2dAlh
 SETUVAR _fish_abbr_llp:expac\x20\x22\x25m\x20\x25n\x22\x20\x7c\x20sort\x20\x2dh\x20\x7c\x20numfmt\x20\x2d\x2dto\x3diec\x20\x7c\x20tail\x20\x2dn\x2020
 SETUVAR _fish_abbr_ls:ls\x20\x2dF\x20\x2d\x2dgroup\x2ddirectories\x2dfirst
@@ -13,9 +13,9 @@ SETUVAR _fish_abbr_mkdir:mkdir\x20\x2dpv
 SETUVAR _fish_abbr_mp:mp\x20\x2div
 SETUVAR _fish_abbr_nb:newsboat
 SETUVAR _fish_abbr_nf:neofetch
-SETUVAR _fish_abbr_p:pacman
+SETUVAR _fish_abbr_qr:qrencode\x20\x2dm\x202\x20\x2dt\x20ansi
+SETUVAR _fish_abbr_r:R\x20\x2dq
 SETUVAR _fish_abbr_rm:rm\x20\x2dv
-SETUVAR _fish_abbr_s:sudo
 SETUVAR _fish_abbr_sdn:sudo\x20shutdown\x20\x2dh\x20now
 SETUVAR _fish_abbr_sp:sudo\x20pacman
 SETUVAR _fish_abbr_wttr:curl\x20v2\x2ewttr\x2ein
