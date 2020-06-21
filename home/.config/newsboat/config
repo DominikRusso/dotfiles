@@ -16,12 +16,15 @@ text-width 80
 
 show-keymap-hint no
 
-color listnormal        color244 default
+color article           color248 default
+color info              red default bold
 color listfocus         color244 black standout bold
+color listfocus_unread  white color244 bold
+color listnormal        color248 default
 color listnormal_unread white default bold
-color listfocus_unread  yellow color244 bold
-color info              red black bold
-color article           color244 default
+
+highlight feedlist ".+\\(0/0\\) " black
+highlight feedlist ":::.*:::$" yellow
 
 
 # navigation
