@@ -97,3 +97,49 @@ report.ready.filter   = +READY
 report.ready.sort     = due+,urgency-
 
 
+## colors
+
+color.active              =
+color.alternate           =
+color.blocked             =
+color.blocking            =
+
+color.burndown.done       = on rgb010
+color.burndown.pending    = on bright red
+color.burndown.started    = on yellow
+
+color.calendar.due        = black on bright red
+color.calendar.due.today  = black on bright red
+color.calendar.holiday    =
+color.calendar.overdue    = black on bright red
+color.calendar.today      = black on white
+color.calendar.weekend    =
+color.calendar.weeknumber = gray10
+
+color.completed           =
+color.debug               =
+color.deleted             =
+color.due                 = red
+color.due.today           = rgb400
+color.error               = white on red
+color.footnote            = color3
+color.header              = color3
+color.history.add         = black on rgb500
+color.history.delete      = black on rgb550
+color.history.done        = black on rgb050
+color.label               =
+color.label.sort          =
+color.overdue             = bright red
+color.project.none        =
+color.recurring           =
+color.scheduled           = on gray5
+color.summary.background  = white on black
+color.summary.bar         = black on rgb141
+color.tag.next            =
+color.tag.none            =
+color.tagged              =
+color.uda.priority.H      =
+color.uda.priority.L      = gray16
+color.until               =
+color.warning             =
+
