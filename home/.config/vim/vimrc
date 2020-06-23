@@ -75,15 +75,15 @@ call plug#end()
 " => Navigation
 " =============================================================================
 
-" disable arrow keys in insert and visual mode
+" disable arrow keys in all modes except command mode
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <left> <nop>
+noremap <right> <nop>
 inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
-vnoremap <up> <nop>
-vnoremap <down> <nop>
-vnoremap <left> <nop>
-vnoremap <right> <nop>
 
 
 " =============================================================================
