@@ -218,21 +218,21 @@ colors:
   normal:
     black:   '0x000000'
     red:     '0xcc0000'
-    green:   '0x00cc00'
-    yellow:  '0xcccc00'
-    blue:    '0x2222ff'
-    magenta: '0xcc00cc'
-    cyan:    '0x00cccc'
+    green:   '0x44cc55'
+    yellow:  '0xeebb00'
+    blue:    '0x0044ff'
+    magenta: '0xaa00ee'
+    cyan:    '0x00aaee'
     white:   '0xeaeaea'
 
   # Bright colors
   bright:
-    black:   '0x666666'
-    red:     '0xff2222'
+    black:   '0x333333'
+    red:     '0xff0000'
     green:   '0x00ff00'
     yellow:  '0xffff00'
-    blue:    '0x4444ff'
-    magenta: '0xff00ff'
+    blue:    '0x0066ff'
+    magenta: '0xee44ee'
     cyan:    '0x00ffff'
     white:   '0xffffff'
 
@@ -299,9 +299,9 @@ background_opacity: 0.85
   #save_to_clipboard: false
 
 # Allow terminal applications to change Alacritty's window title.
-dynamic_title: true
+#dynamic_title: true
 
-cursor:
+#cursor:
   # Cursor style
   #
   # Values for `style`:
@@ -312,7 +312,7 @@ cursor:
 
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
-  unfocused_hollow: false
+  #unfocused_hollow: true
 
 # Live config reload (changes require restart)
 #live_config_reload: true
