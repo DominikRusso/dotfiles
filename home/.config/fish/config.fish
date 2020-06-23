@@ -38,10 +38,8 @@ alias ffmpeg 'ffmpeg -hide_banner'
 alias gdb 'gdb -q -nh -x $XDG_CONFIG_HOME/gdb/init'
 alias ls 'ls --color=auto'
 alias tmux 'tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf'
-
-if command -v nvim > /dev/null
-    alias vim nvim
-end
+alias vim 'nvim'
+alias vimdiff 'nvim -d'
 
 # environment variables
 set -x TERM "alacritty"
