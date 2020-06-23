@@ -71,6 +71,11 @@
     untrackedCache = true
 
 
+[diff]
+
+    compactionHeuristic = true
+
+
 [filter "lfs"]
 
     clean = git-lfs clean -- %f
