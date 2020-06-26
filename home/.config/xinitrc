@@ -2,8 +2,10 @@ redshift &   # decrease col temp at night
 unclutter &  # hide mouse when idle
 xcompmgr &   # enable transparency
 
-# set keyboard layout
+# Caps_Lock is ctrl
 setxkbmap -option ctrl:nocaps &
+# But when pressed alone for less than 250ms Caps_Lock is Escape
+xcape -t 250 -e '#66=Escape' &
 
 # disable screen blanking
 xset s off &
