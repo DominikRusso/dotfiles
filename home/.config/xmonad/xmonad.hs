@@ -60,7 +60,7 @@ meta   :: KeyMask
 ctrl  :: KeyMask
 shift :: KeyMask
 super :: KeyMask
-meta   = mod1Mask
+meta  = mod1Mask
 ctrl  = controlMask
 shift = shiftMask
 super = mod4Mask
@@ -89,10 +89,10 @@ keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   , ((modm .|. ctrl,  xK_g), sequence_ [setWindowSpacing defaultGap,
                                         setScreenSpacing defaultGap])
   , ((modm .|. super, xK_g), sequence_ [toggleScreenSpacingEnabled,
-                                            toggleWindowSpacingEnabled])
+                                        toggleWindowSpacingEnabled])
   , ((modm .|. super, xK_b), sendMessage ToggleStruts)
   , ((modm,           xK_f), sequence_ [sendMessage $ JumpToLayout monocleName,
-                                              sendMessage $ SetStruts [] [U .. L]])
+                                        sendMessage $ SetStruts [] [U .. L]])
   -- layouts
   , ((modm .|. shift, xK_Tab  ), sendMessage FirstLayout)
   , ((modm .|. shift, xK_space), sendMessage FirstLayout)
@@ -117,8 +117,10 @@ keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
       ])
 
   -- system control
-  , ((modm, xK_x), spawn "physlock")
-  , ((modm, xK_s), submap . M.fromList $
+  , ((modm          , xK_p), spawn "scrot")
+  , ((modm .|. shift, xK_p), spawn "scrot -s")
+  , ((modm          , xK_x), spawn "physlock")
+  , ((modm          , xK_s), submap . M.fromList $
       -- (s)ystem
       [ ((0, xK_h), spawn "dmenu_prompt \"Hibernate?\" \"systemctl hibernate\"")
       , ((0, xK_r), spawn "dmenu_prompt \"Reboot?\" \"sudo -A reboot\"")
