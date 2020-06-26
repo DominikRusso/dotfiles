@@ -21,6 +21,7 @@ abbr -a mkdir 'mkdir -pv'
 abbr -a mp 'mp -iv'
 abbr -a nb 'newsboat'
 abbr -a nf 'neofetch'
+abbr -a open 'xdg-open'
 abbr -a qr 'qrencode -m 2 -t ansi'
 abbr -a R 'R -q'
 abbr -a r 'R -q'
@@ -70,13 +71,12 @@ set -x MYVIMRC "$XDG_CONFIG_HOME/vim/vimrc"
 set -x PYTHONSTARTUP "$XDG_CONFIG_HOME/python/pythonrc"
 set -x RANDFILE "$XDG_CACHE_HOME/rnd"
 set -x RIPGREP_CONFIG_PATH "$XDG_CONFIG_HOME/ripgrep/rgrc"
+set -x RUSTUP_HOME "$XDG_DATA_HOME/rustup"
 set -x TASKRC "$XDG_CONFIG_HOME/task/taskrc"
 set -x TMUX_TMPDIR "$XDG_RUNTIME_DIR"
 set -x VIMINIT "source $MYVIMRC"
 set -x XAUTHORITY "$XDG_RUNTIME_DIR/Xauthority"
 set -x XINITRC "$XDG_CONFIG_HOME/xinitrc"
-set -x ZDOTDIR "$XDG_CONFIG_HOME/zsh"
-set -x ZSHCACHE "$XDG_CACHE_HOME/zsh"
 
 # PATH
 set PATH ~/.local/bin $CARGO_HOME/bin $PATH
