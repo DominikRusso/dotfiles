@@ -56,17 +56,17 @@ normalBorderColor'  = "black"
 -- Key Bindings
 -------------------------------------------------------------------
 
-alt   :: KeyMask
+meta   :: KeyMask
 ctrl  :: KeyMask
 shift :: KeyMask
 super :: KeyMask
-alt   = mod1Mask
+meta   = mod1Mask
 ctrl  = controlMask
 shift = shiftMask
 super = mod4Mask
 
 -- main modifier key
-modMask' = alt
+modMask' = meta
 
 keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   [
