@@ -3,8 +3,7 @@ unclutter &  # hide mouse when idle
 xcompmgr &   # enable transparency
 
 # set keyboard layout
-setxkbmap -layout de \
-    -option caps:escape &
+setxkbmap -option caps:escape &
 
 # disable screen blanking
 xset s off &
