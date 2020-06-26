@@ -20,10 +20,14 @@ c.window.hide_decoration = True
 
 config.bind('<Ctrl-m>', 'hint links spawn --detach mpv --force-window yes {hint-url}')
 
-config.set('content.javascript.enabled', True, 'https://*.c2.com')
-config.set('content.javascript.enabled', True, 'https://*.github.com')
-config.set('content.javascript.enabled', True, 'https://*.gitlab.com')
-config.set('content.javascript.enabled', True, 'https://*.openstreetmap.org')
+config_dir = str(config.configdir)
+
+# whitelist.txt file goes in same dir as this config file
+# with each url on a separate line and NO trailing newline
+with open(config_dir + "/whitelist.txt") as whitelist:
+    urls = whitelist.readlines()
+    for url in urls:
+        config.set('content.javascript.enabled', True, url.strip())
 
 c.url.searchengines = {
         'DEFAULT' : 'https://duckduckgo.com/html?q={}',
