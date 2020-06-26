@@ -66,7 +66,7 @@ shift = shiftMask
 super = mod4Mask
 
 -- main modifier key
-modMask' = super
+modMask' = alt
 
 keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   [
@@ -88,9 +88,9 @@ keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   , ((modm,           xK_g), incScreenWindowSpacing 2)
   , ((modm .|. ctrl,  xK_g), sequence_ [setWindowSpacing defBorder,
                                         setScreenSpacing defBorder])
-  , ((modm .|. alt,   xK_g), sequence_ [toggleScreenSpacingEnabled,
+  , ((modm .|. super, xK_g), sequence_ [toggleScreenSpacingEnabled,
                                             toggleWindowSpacingEnabled])
-  , ((modm .|. alt,   xK_b), sendMessage ToggleStruts)
+  , ((modm .|. super, xK_b), sendMessage ToggleStruts)
   , ((modm,           xK_f), sequence_ [sendMessage $ JumpToLayout monocleName,
                                               sendMessage $ SetStruts [] [U .. L]])
   -- layouts
