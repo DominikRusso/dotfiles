@@ -86,8 +86,8 @@ keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   -- controlling gaps and padding
   , ((modm .|. shift, xK_g), decScreenWindowSpacing 2)
   , ((modm,           xK_g), incScreenWindowSpacing 2)
-  , ((modm .|. ctrl,  xK_g), sequence_ [setWindowSpacing defBorder,
-                                        setScreenSpacing defBorder])
+  , ((modm .|. ctrl,  xK_g), sequence_ [setWindowSpacing defaultGap,
+                                        setScreenSpacing defaultGap])
   , ((modm .|. super, xK_g), sequence_ [toggleScreenSpacingEnabled,
                                             toggleWindowSpacingEnabled])
   , ((modm .|. super, xK_b), sendMessage ToggleStruts)
@@ -146,19 +146,19 @@ layouts' = avoidStruts   -- make space for xmobar
          $ smartBorders  -- no border when only one window
          $ masterStack ||| monocle ||| grid
   where
-    masterStack = named masterStackName $ spacingRaw False defBorder True defBorder True $ Tall 1 (5/100) (1/2)
+    masterStack = named masterStackName $ spacingRaw False defaultGap True defaultGap True $ Tall 1 (5/100) (1/2)
     monocle     = named monocleName $ Full
-    grid        = named gridName $ spacingRaw False defBorder True defBorder True $ Grid
+    grid        = named gridName $ spacingRaw False defaultGap True defaultGap True $ Grid
 
 masterStackName = "<fc=yellow>[]=</fc> [ ] [+]"
 monocleName     = "[]= <fc=yellow>[ ]</fc> [+]"
 gridName        = "[]= [ ] <fc=yellow>[+]</fc>"
 
-defBorder = uniBorder 4
+defaultGap = uniGap 4
 
--- construct a uniform 'Border'
-uniBorder :: Integer -> Border
-uniBorder i = Border i i i i
+-- construct a uniform Gap ('Border')
+uniGap :: Integer -> Border
+uniGap i = Border i i i i
 
 
 -------------------------------------------------------------------
