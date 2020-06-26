@@ -90,6 +90,7 @@ ripgrep
 rsync
 rustup
 scala
+scrot
 sed
 shellcheck
 socat
@@ -119,6 +120,7 @@ vi
 wget
 which
 wireguard-tools
+xcape
 xclip
 xcompmgr
 xdo
