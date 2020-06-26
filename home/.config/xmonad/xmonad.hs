@@ -154,7 +154,7 @@ masterStackName = "<fc=yellow>[]=</fc> [ ] [+]"
 monocleName     = "[]= <fc=yellow>[ ]</fc> [+]"
 gridName        = "[]= [ ] <fc=yellow>[+]</fc>"
 
-defBorder = uniBorder 6
+defBorder = uniBorder 4
 
 -- construct a uniform 'Border'
 uniBorder :: Integer -> Border
