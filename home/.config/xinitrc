@@ -1,5 +1,5 @@
 redshift &   # decrease col temp at night
-unclutter &  # hide mouse when idle
+unclutter --timeout 3 &  # hide mouse when idle
 xcompmgr &   # enable transparency
 
 # Caps_Lock is ctrl
