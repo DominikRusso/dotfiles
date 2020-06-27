@@ -24,7 +24,7 @@ config_dir = str(config.configdir)
 
 # whitelist.txt file goes in same dir as this config file
 # with each url on a separate line and NO trailing newline
-with open(config_dir + "/whitelist.txt") as whitelist:
+with open(config_dir + "/js-whitelist.txt") as whitelist:
     urls = whitelist.readlines()
     for url in urls:
         config.set('content.javascript.enabled', True, url.strip())
