@@ -22,27 +22,19 @@ config.bind('<Ctrl-m>', 'hint links spawn --detach mpv --force-window yes {hint-
 
 config_dir = str(config.configdir)
 
-# whitelist.txt file goes in same dir as this config file
-# with each url on a separate line and NO trailing newline
-with open(config_dir + "/js-whitelist.txt") as whitelist:
+# `js-whitelist` file goes in same dir as this config file
+# with each url on a separate line and NO trailing newlines
+with open(config_dir + "/js-whitelist") as whitelist:
     urls = whitelist.readlines()
     for url in urls:
         config.set('content.javascript.enabled', True, url.strip())
 
-c.url.searchengines = {
-        'DEFAULT' : 'https://duckduckgo.com/html?q={}',
-        '4'       : 'https://4chan.org/{}',
-        'def'     : 'https://lexico.com/en/definition/{}',
-        'eff'     : 'https://eff.org/search/site/{}',
-        'etym'    : 'https://etymonline.com/search?q={}',
-        'g'       : 'https://google.com/search?q={}',
-        'gh'      : 'https://github.com/{}',
-        'gl'      : 'https://gitlab.com/{}',
-        'hoo'     : 'https://hoogle.haskell.org/?hoogle={}',
-        'se'      : 'https://stackexchange.com/search?q={}',
-        'r'       : 'https://reddit.com/r/{}',
-        'w'       : 'https://en.wikipedia.org/?search={}',
-        'wa'      : 'https://wiki.archlinux.org/?search={}',
-        'wg'      : 'https://wiki.gentoo.org/?search={}',
-        }
+# `searchengines` files goes in same dir as this config file
+# with key and value separated by one space and NO trailing newline
+with open(config_dir + "/searchengines") as searchengines:
+    dict = {}
+    for line in searchengines:
+        (key, val) = line.split()
+        dict[key] = val
+    c.url.searchengines = dict
 
