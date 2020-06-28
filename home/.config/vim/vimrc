@@ -85,6 +85,8 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
+nnoremap <leader>r :Rooter<CR>
+
 
 " =============================================================================
 " => Meta Navigation
@@ -102,6 +104,9 @@ nnoremap <C-l> <C-w>l
 " left and right arrow keys switch buffers
 nnoremap <left> :bp<CR>
 nnoremap <right> :bn<CR>
+
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>b :Buffers<CR>
 
 
 " =============================================================================
