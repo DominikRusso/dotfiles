@@ -9,6 +9,7 @@ bat
 bind-tools
 binutils
 bison
+bmon
 buildah
 calcurse
 cmus
@@ -108,7 +109,6 @@ texlive-games
 texlive-latexextra
 texlive-pictures
 texlive-science
-tig
 tmux
 transmission-cli
 ttf-joypixels
