@@ -59,6 +59,7 @@ Plug 'ciaranm/securemodelines'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'sirver/ultisnips'
 Plug 'tpope/vim-commentary'          " commenting stuff out
 Plug 'tpope/vim-fugitive'            " git wrapper
 Plug 'tpope/vim-surround'
@@ -85,6 +86,12 @@ let g:lightline = {
 " rust
 " run rustfmt on write
 let g:rustfmt_autosave = 1
+
+" ultisnips
+let g:UltiSnipsSnippetDirectories=[$XDG_CONFIG_HOME.'/vim/UltiSnips']
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
 " vim rooter
 " stop vim-rooter changing directory automatically
