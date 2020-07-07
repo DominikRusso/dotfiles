@@ -64,6 +64,7 @@ Plug 'tpope/vim-fugitive'            " git wrapper
 Plug 'tpope/vim-surround'
 
 " syntactic language support
+Plug 'lervag/vimtex'
 Plug 'rust-lang/rust.vim'
 
 " visual enhancements
@@ -88,6 +89,12 @@ let g:rustfmt_autosave = 1
 " vim rooter
 " stop vim-rooter changing directory automatically
 let g:rooter_manual_only = 1
+
+" vimtex
+" disable quickfix mode
+let g:vimtex_quickfix_mode=0
+" set pdfviewer to zathura
+let g:vimtex_view_method='zathura'
 
 
 " =============================================================================
@@ -258,6 +265,14 @@ augroup END
 " git commit messages
 " turn on spell check in git commits
 au FileType gitcommit set spell
+
+" TeX
+" default to LaTeX when editing tex files
+let g:tex_flavor='latex'
+" replace concealed text with char defined in listchars (except on cursor line)
+set conceallevel=1
+" conceal accents, stylization, math symbols and greek letters
+let g:tex_conceal='abgm'
 
 
 " =============================================================================

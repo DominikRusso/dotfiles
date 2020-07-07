@@ -22,6 +22,7 @@ hi String       cterm=none      ctermfg=White       ctermbg=none
 hi Title        cterm=none      ctermfg=Gray        ctermbg=none
 
 " Non-Syntax
+hi Conceal      cterm=none      ctermfg=none        ctermbg=238
 hi CursorLineNr cterm=none      ctermfg=White       ctermbg=none
 hi DiffAdd      cterm=none      ctermfg=Black       ctermbg=DarkGreen
 hi diffAdded    cterm=none      ctermfg=DarkGreen   ctermbg=none
