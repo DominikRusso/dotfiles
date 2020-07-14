@@ -1,0 +1,4 @@
+#!/bin/sh
+
+zbarimg --raw -q "$1" | qrencode -m 2 -t ansi
+
