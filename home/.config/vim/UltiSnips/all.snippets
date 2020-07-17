@@ -1,0 +1,32 @@
+# slightly lower priority since filetype specific snippets should take
+# precedence over more general ones
+priority -1
+
+##########
+
+snippet date "YYYY-MM-DD" w
+`!v strftime("%Y-%m-%d")`
+endsnippet
+
+##########
+
+snippet time "hh:mm" w
+`!v strftime("%H:%M")`
+endsnippet
+
+##########
+
+snippet datetime "YYYY-MM-DD hh:mm" w
+`!v strftime ("%Y-%m-%d %H:%M")`
+endsnippet
+
+##########
+
+snippet bang "posix shell shebang" b
+#!/bin/sh
+
+$0
+endsnippet
+
+##########
+
