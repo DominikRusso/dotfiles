@@ -154,6 +154,10 @@ indent_style = space
 indent_size = 2
 indent_style = space
 
+; Snippets
+[*.snippets]
+indent_style = tab
+
 ; SQL
 [*.sql]
 indent_size = 2
