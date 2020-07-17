@@ -1,0 +1,32 @@
+snippet Inc "#include system header" b
+#include <$1.h>
+$0
+endsnippet
+
+##########
+
+snippet inc "#include user header" b
+#include "$1.h"
+$0
+endsnippet
+
+##########
+
+snippet main "main function" b
+int
+main(int argc, char *argv[])
+{
+	$0
+}
+
+endsnippet
+
+##########
+
+snippet if "if condition"
+if ($1) {
+	${VISUAL}${0}
+}
+endsnippet
+
+##########
