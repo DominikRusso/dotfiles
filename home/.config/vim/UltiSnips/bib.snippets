@@ -1,0 +1,109 @@
+snippet article "Article" b
+@article{${1:key},
+	author={${2:authors, separated by "and"}},
+	title={${3:title}},
+	journal={${4:journal}},
+	year={${5:YYYY}},
+
+	month={${6:month}},
+	number={${7:NN}},
+	pages={${8:NN}--${9:NN}},
+	volume={${10:NN}}
+}
+$0
+endsnippet
+
+##########
+
+snippet book "Book" b
+@book{${1:key},
+	author={${2:authors, separated by "and"}},
+	title={${3:title}},
+	publisher={${4:publisher}},
+	year={${5:YYYY}},
+
+	address={${6:location}},
+	edition={${7:edition}},
+	number={${9:number}},
+	//volume={${13:volume}},
+	pages={${10:NN}--${11:NN}},
+	series={${12:series}},
+}
+$0
+endsnippet
+
+##########
+
+snippet inbook "InBook" b
+@inbook{${1:key},
+	author={${2:authors, separated by "and"}},
+	title={${3:title}},
+	chapter={${4:chapter}},
+	publisher={${5:publisher}},
+	year={${6:YYYY}},
+
+	address={${7:location}},
+	edition={${8:edition}},
+	number={${10:number}},
+	//volume={${14:volume}},
+	pages={${11:NN}--${12:NN}},
+	series={${13:series}},
+}
+$0
+endsnippet
+
+##########
+
+snippet incollection "InCollection" b
+@incollection{${1:key},
+	author={${2:authors of article, separated by "and"}},
+	title={${3:title of article}},
+	booktitle={${4:title of book containing article}},
+	publisher={${5:publisher}},
+	year={${6:YYYY}},
+
+	address={${7:location}},
+	chapter={${8:chapter}},
+	edition={${9:edition}},
+	editor={${10:editor}},
+	number={${11:number}},
+	//volume={${12:volume}},
+	pages={${13:NN}--${14:NN}},
+	series={${15:series}},
+}
+$0
+endsnippet
+
+##########
+
+snippet inproceedings "InProceedings" b
+@inproceedings{${1:key},
+	author={${2:authors of article, separated by "and"}},
+	title={${3:title of article}},
+	booktitle={${4:title of book containing article}},
+	year={${5:YYYY}},
+
+	address={${6:location}},
+	editor={${7:editor}},
+	number={${8:number}},
+	//volume={${9:volume}},
+	organization={${10:organization}},
+	pages={${11:NN}--${12:NN}},
+	publisher={${13:publisher}},
+	series={${14:series}},
+}
+$0
+endsnippet
+
+##########
+
+snippet misc "Misc" b
+@misc{${1:key},
+	author={${2:authors of article, separated by "and"}},
+	title={${3:title of article}},
+	howpublished={${4:howpublished}},
+	year={${5:YYYY}}
+}
+$0
+endsnippet
+
