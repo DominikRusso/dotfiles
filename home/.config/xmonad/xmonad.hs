@@ -47,7 +47,7 @@ main = do
 terminal'           = "alacritty"
 workspaces'         = map show $ [1..9] ++ [0]
 
-borderWidth' = 1
+borderWidth'        = 2
 focusedBorderColor' = "yellow"
 normalBorderColor'  = "black"
 
@@ -56,7 +56,7 @@ normalBorderColor'  = "black"
 -- Key Bindings
 -------------------------------------------------------------------
 
-meta   :: KeyMask
+meta  :: KeyMask
 ctrl  :: KeyMask
 shift :: KeyMask
 super :: KeyMask
@@ -70,17 +70,17 @@ modMask' = meta
 
 keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   [
-  -- navigating
+  -- navigating windows
     ((modm, xK_j), windows W.focusDown)
   , ((modm, xK_k), windows W.focusUp)
-  , ((modm, xK_h), sendMessage Shrink)
-  , ((modm, xK_l), sendMessage Expand)
   , ((modm, xK_m), windows W.focusMaster)
 
   -- moving windows
   , ((modm .|. shift, xK_j), windows W.swapDown)
   , ((modm .|. shift, xK_k), windows W.swapUp)
   , ((modm .|. shift, xK_m), windows W.swapMaster)
+  , ((modm,           xK_h), sendMessage Shrink)
+  , ((modm,           xK_l), sendMessage Expand)
   , ((modm,           xK_t), withFocused $ windows . W.sink) -- (t)ile floating window
 
   -- controlling gaps and padding
@@ -94,10 +94,7 @@ keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   , ((modm,           xK_f), sequence_ [sendMessage $ JumpToLayout monocleName,
                                         sendMessage $ SetStruts [] [U .. L]])
   -- layouts
-  , ((modm .|. shift, xK_Tab  ), sendMessage FirstLayout)
-  , ((modm .|. shift, xK_space), sendMessage FirstLayout)
   , ((modm,           xK_Tab  ), sendMessage NextLayout)
-  , ((modm,           xK_space), sendMessage NextLayout)
 
   -- opening and closing programs
   , ((modm .|. ctrl,  xK_Escape), io (exitWith ExitSuccess))
@@ -119,15 +116,14 @@ keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   -- system control
   , ((modm          , xK_p), spawn "scrot")
   , ((modm .|. shift, xK_p), spawn "scrot -s")
-  , ((modm          , xK_x), spawn "physlock")
+  , ((modm          , xK_x), spawn "physlock -m -s")
   , ((modm          , xK_s), submap . M.fromList $
       -- (s)ystem
-      [ ((0, xK_h), spawn "dmenu_prompt \"Hibernate?\" \"systemctl hibernate\"")
+      [ ((0, xK_h), spawn "dmenu_prompt \"Hibernate?\" \"systemctl hibernate\"") -- suspend to disk
       , ((0, xK_r), spawn "dmenu_prompt \"Reboot?\" \"sudo -A reboot\"")
       , ((0, xK_s), spawn "dmenu_prompt \"Shutdown?\" \"sudo -A shutdown -h now\"")
-      , ((0, xK_z), spawn "systemctl suspend")
+      , ((0, xK_z), spawn "systemctl suspend") -- suspend to swap (zzz)
       ])
-
   ]
 
   ++
