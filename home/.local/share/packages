@@ -90,6 +90,9 @@ podman
 powertop
 proselint
 ps_mem
+pulseaudio
+pulseaudio-alsa
+pulseaudio-bluetooth
 python
 python-pip
 qrencode
