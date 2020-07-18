@@ -10,33 +10,39 @@ Config {
     , template    = "  %StdinReader%}{%dynnetwork%  ::  %multicpu% (%multicoretemp%)  ::  %memory%  ::  %alsa:default:Master%  ::  %date%  "
 
     , commands    = [
-          Run Alsa "default" "Master" [ "--template", "vol <volume>% <status>"
-                                      , "--"
-                                      , "--on"      , "on"
-                                      , "--off"     , "off"
-                                      , "--onc"     , "gray"
-                                      , "--offc"    , "gray"
-                                      ]
-        , Run Date            "%a %F %T" "date" 10
-        , Run DynNetwork    [ "--template", "<rx>KB/<tx>KB"
-                            , "--Low"     , "0"     -- 0B
-                            , "--High"    , "10000" -- 10KB
-                            , "--low"     , "gray"
-                            , "--normal"  , "white"
-                            , "--high"    , "red"
-                            ] 10
-        , Run Memory        [ "--template", "mem <usedratio>%"
-                            , "--minwidth", "2"
-                            ] 20
-        , Run MultiCoreTemp [ "--template", "<avg>-<max>°C"
-                            , "--High"    , "60"
-                            , "--high"    , "red"
-                            , "--minwidth", "2"
-                            ] 20
-        , Run MultiCpu      [ "--template", "cpu <total>%"
-                            , "--minwidth", "2"
-                            ] 20
-        , Run StdinReader
+        Run StdinReader
+        , Run Alsa "default" "Master"
+            [ "--template", "vol <volume>% <status>"
+            , "--"
+            , "--on"      , "on"
+            , "--off"     , "off"
+            , "--onc"     , "gray"
+            , "--offc"    , "gray"
+            ]
+        , Run Date
+            "%a %F %T" "date" 10
+        , Run DynNetwork
+            [ "--template", "<rx>KB/<tx>KB"
+            , "--Low"     , "0"     -- 0B
+            , "--High"    , "10000" -- 10KB
+            , "--low"     , "gray"
+            , "--normal"  , "white"
+            , "--high"    , "red"
+            ] 10
+        , Run Memory
+            [ "--template", "mem <usedratio>%"
+            , "--minwidth", "2"
+            ] 50
+        , Run MultiCoreTemp
+            [ "--template", "<avg>-<max>C"
+            , "--High"    , "60"
+            , "--high"    , "red"
+            , "--minwidth", "2"
+            ] 20
+        , Run MultiCpu
+            [ "--template", "cpu <total>%"
+            , "--minwidth", "2"
+            ] 20
     ]
 }
 
