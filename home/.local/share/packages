@@ -1,3 +1,5 @@
+acpi
+acpid
 afl
 alacritty
 alsa-utils
@@ -10,13 +12,17 @@ bat
 bind-tools
 binutils
 bison
+bluez
+bluez-utils
 bmon
 buildah
 calcurse
 cmus
+cpupower
 cronie
 dash
 dhcpcd
+dialog
 dmenu
 docker
 editorconfig-core-c
@@ -50,6 +56,7 @@ jre-openjdk
 keepassxc
 libtool
 libva-mesa-driver
+light
 linux
 linux-firmware
 lsof
@@ -61,6 +68,7 @@ mediainfo
 mpv
 neofetch
 neovim
+netctl
 nethogs
 newsboat
 nmap
@@ -111,6 +119,7 @@ texlive-games
 texlive-latexextra
 texlive-pictures
 texlive-science
+tlp
 tmux
 transmission-cli
 ttf-joypixels
@@ -122,6 +131,7 @@ vi
 wget
 which
 wireguard-tools
+wpa_supplicant
 xcape
 xclip
 xcompmgr
@@ -130,7 +140,6 @@ xmobar
 xmonad
 xmonad-contrib
 xorg-server
-xorg-xbacklight
 xorg-xev
 xorg-xinit
 xorg-xrandr
