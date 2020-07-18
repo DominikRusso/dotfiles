@@ -7,6 +7,7 @@ c.completion.height = "100%"
 c.completion.open_categories = ["searchengines", "quickmarks", "bookmarks"]
 c.completion.shrink = True
 c.content.javascript.enabled = False
+c.content.notifications = False
 c.statusbar.padding = {"bottom": 1, "left": 2, "right": 2, "top": 1}
 c.statusbar.widgets = ["keypress", "url", "scroll", "progress"]
 c.tabs.favicons.scale = 0.95
