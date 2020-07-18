@@ -8,6 +8,7 @@ c.completion.open_categories = ["searchengines", "quickmarks", "bookmarks"]
 c.completion.shrink = True
 c.content.javascript.enabled = False
 c.content.notifications = False
+c.editor.command = ["alacritty", "-e", "nvim", "{}"]
 c.statusbar.padding = {"bottom": 1, "left": 2, "right": 2, "top": 1}
 c.statusbar.widgets = ["keypress", "url", "scroll", "progress"]
 c.tabs.favicons.scale = 0.95
@@ -21,6 +22,7 @@ c.url.start_pages = ['~/.config/qutebrowser/web/startpage.html']
 c.window.hide_decoration = True
 
 config.bind('<Ctrl-m>', 'hint links spawn --detach mpv --force-window=immediate {hint-url}')
+config.bind('e', 'open-editor')
 
 config_dir = str(config.configdir)
 
