@@ -7,7 +7,7 @@ c.completion.open_categories = ["searchengines", "quickmarks", "bookmarks"]
 c.completion.shrink = True
 c.content.javascript.enabled = False
 c.statusbar.padding = {"bottom": 1, "left": 2, "right": 2, "top": 1}
-c.statusbar.widgets = ["keypress", "url", "scroll", "tabs", "progress"]
+c.statusbar.widgets = ["keypress", "url", "scroll", "progress"]
 c.tabs.favicons.scale = 0.95
 c.tabs.indicator.width = 0
 c.tabs.mousewheel_switching = False
@@ -18,7 +18,7 @@ c.tabs.width = 25
 c.url.start_pages = ['~/.config/qutebrowser/web/startpage.html']
 c.window.hide_decoration = True
 
-config.bind('<Ctrl-m>', 'hint links spawn --detach mpv --force-window yes {hint-url}')
+config.bind('<Ctrl-m>', 'hint links spawn --detach mpv --force-window=immediate {hint-url}')
 
 config_dir = str(config.configdir)
 
@@ -27,10 +27,10 @@ config_dir = str(config.configdir)
 with open(config_dir + "/js-whitelist") as whitelist:
     urls = whitelist.readlines()
     for url in urls:
-        config.set('content.javascript.enabled', True, url.strip())
+        config.set('content.javascript.enabled', True, url)
 
 # `searchengines` files goes in same dir as this config file
-# with key and value separated by one space and NO trailing newline
+# with key and value separated by one space and NO trailing newlines
 with open(config_dir + "/searchengines") as searchengines:
     dict = {}
     for line in searchengines:
