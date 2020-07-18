@@ -9,12 +9,12 @@ c.content.javascript.enabled = False
 c.statusbar.padding = {"bottom": 1, "left": 2, "right": 2, "top": 1}
 c.statusbar.widgets = ["keypress", "url", "scroll", "tabs", "progress"]
 c.tabs.favicons.scale = 0.95
-c.tabs.indicator.padding = {"bottom": 0, "left": 0, "right": 4, "top": 0}
+c.tabs.indicator.width = 0
 c.tabs.mousewheel_switching = False
 c.tabs.position = "left"
-c.tabs.show = "switching"
+c.tabs.show = "always"
 c.tabs.title.format = ""
-c.tabs.width = 30
+c.tabs.width = 25
 c.url.start_pages = ['~/.config/qutebrowser/web/startpage.html']
 c.window.hide_decoration = True
 
