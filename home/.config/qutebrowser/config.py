@@ -28,7 +28,7 @@ config_dir = str(config.configdir)
 with open(config_dir + "/js-whitelist") as whitelist:
     urls = whitelist.readlines()
     for url in urls:
-        config.set('content.javascript.enabled', True, url)
+        config.set('content.javascript.enabled', True, url.strip())
 
 # `searchengines` files goes in same dir as this config file
 # with key and value separated by one space and NO trailing newlines
