@@ -3,6 +3,7 @@ c.colors.tabs.even.bg = "#000"
 c.colors.tabs.odd.bg = "#000"
 c.colors.tabs.selected.even.bg = "#555"
 c.colors.tabs.selected.odd.bg = "#555"
+c.completion.height = "100%"
 c.completion.open_categories = ["searchengines", "quickmarks", "bookmarks"]
 c.completion.shrink = True
 c.content.javascript.enabled = False
