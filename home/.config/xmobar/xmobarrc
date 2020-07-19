@@ -7,7 +7,7 @@ Config {
     , position    = Top
 
     -- layout
-    , template    = "  %StdinReader%}{%dynnetwork%  ::  %multicpu% (%multicoretemp%)  ::  %memory%  ::  %alsa:default:Master%  ::  %date%  "
+    , template    = "  %StdinReader%}{%dynnetwork%  ::  %multicpu% (%multicoretemp%)  ::  %memory%  ::  %alsa:default:Master%  ::  %battery%  ::  %date%  "
 
     , commands    = [
         Run StdinReader
@@ -19,6 +19,13 @@ Config {
             , "--onc"     , "gray"
             , "--offc"    , "gray"
             ]
+        , Run Battery
+            [ "--template", "<acstatus>"
+            , "--"
+            , "-o"	      , "[<left>%]"                -- discharging
+            , "-O"	      , "<fc=white>[<left>%]</fc>" -- charging
+            , "-i"	      , "<fc=white>[<left>%]</fc>" -- idle (full)
+            ] 20
         , Run Date
             "%a %F %T" "date" 10
         , Run DynNetwork
