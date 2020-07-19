@@ -34,8 +34,8 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 5
-    y: 5
+    x: 2
+    y: 2
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
@@ -81,7 +81,7 @@ window:
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
-  history: 500
+  history: 0
 
   # Number of lines the viewport will move for every line scrolled when
   # scrollback is enabled (history > 0).
@@ -540,10 +540,6 @@ key_bindings:
   #- { key: Add,      mods: Control,       action: IncreaseFontSize }
   #- { key: Subtract, mods: Control,       action: DecreaseFontSize }
   #- { key: Minus,    mods: Control,       action: DecreaseFontSize }
-  - { key: K,        mods: Alt,           action: ScrollLineUp     }
-  - { key: J,        mods: Alt,           action: ScrollLineDown   }
-  - { key: U,        mods: Alt,           action: ScrollPageUp     }
-  - { key: D,        mods: Alt,           action: ScrollPageDown   }
   - { key: C,        mods: Alt,           action: Copy             }
   - { key: V,        mods: Alt,           action: Paste            }
 
