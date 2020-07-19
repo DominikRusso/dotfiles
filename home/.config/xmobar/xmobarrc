@@ -13,45 +13,58 @@ Config {
         Run StdinReader
         , Run Alsa "default" "Master"
             [ "--template", "vol <volume>% <status>"
+            , "--minwidth", "2"
+            , "--padchars", "_"
+            , "--Low"     , "25"
+            , "--High"    , "75"
+            , "--normal"  , "white"
+            , "--high"    , "red"
             , "--"
             , "--on"      , "on"
             , "--off"     , "off"
             , "--onc"     , "gray"
             , "--offc"    , "gray"
             ]
-        , Run Battery
+        , Run BatteryP ["Bat0"]
             [ "--template", "<acstatus>"
+            , "--minwidth", "3"
+            , "--padchars", "_"
             , "--"
-            , "-o"	      , "[<left>%]"                -- discharging
-            , "-O"	      , "<fc=white>[<left>%]</fc>" -- charging
-            , "-i"	      , "<fc=white>[<left>%]</fc>" -- idle (full)
+            , "-o"	      , "<fc=white>[<left>%]</fc>" -- discharging
+            , "-O"	      , "[<left>%]"                -- charging
+            , "-i"	      , "[<left>%]"                -- idle (full)
             ] 20
         , Run Brightness
             [ "--template", "bri <percent>"
+            , "--minwidth", "3"
+            , "--padchars", "_"
             ] 10
         , Run Date
             "%a %F %T" "date" 10
         , Run DynNetwork
             [ "--template", "<rx>KB/<tx>KB"
-            , "--Low"     , "0"     -- 0B
-            , "--High"    , "10000" -- 10KB
+            , "--Low"     , "0" -- 0B
+            , "--High"    , "1" -- 1B
             , "--low"     , "gray"
-            , "--normal"  , "white"
-            , "--high"    , "red"
+            , "--high"    , "white"
             ] 10
         , Run Memory
             [ "--template", "mem <usedratio>%"
             , "--minwidth", "2"
+            , "--padchars", "_"
             ] 50
         , Run MultiCoreTemp
             [ "--template", "<avg>-<max>C"
-            , "--High"    , "60"
+            , "--Low"     , "40"
+            , "--High"    , "70"
+            , "--normal"  , "white"
             , "--high"    , "red"
             , "--minwidth", "2"
             ] 20
         , Run MultiCpu
             [ "--template", "cpu <total>%"
             , "--minwidth", "2"
+            , "--padchars", "_"
             ] 20
     ]
 }
