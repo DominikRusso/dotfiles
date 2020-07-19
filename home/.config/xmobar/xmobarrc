@@ -7,7 +7,7 @@ Config {
     , position    = Top
 
     -- layout
-    , template    = "  %StdinReader%}{%dynnetwork%  ::  %multicpu% (%multicoretemp%)  ::  %memory%  ::  %alsa:default:Master%  ::  %battery%  ::  %date%  "
+    , template    = "  %StdinReader%}{%dynnetwork%  ::  %multicpu% (%multicoretemp%)  ::  %memory%  ::  %bright%  ::  %alsa:default:Master%  ::  %battery%  ::  %date%  "
 
     , commands    = [
         Run StdinReader
@@ -26,6 +26,9 @@ Config {
             , "-O"	      , "<fc=white>[<left>%]</fc>" -- charging
             , "-i"	      , "<fc=white>[<left>%]</fc>" -- idle (full)
             ] 20
+        , Run Brightness
+            [ "--template", "bri <percent>"
+            ] 10
         , Run Date
             "%a %F %T" "date" 10
         , Run DynNetwork
