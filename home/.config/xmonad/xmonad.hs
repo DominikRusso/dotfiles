@@ -22,21 +22,13 @@ import qualified XMonad.StackSet as W
 
 main :: IO ()
 main = do
-  xmproc0 <- spawnPipe "xmobar -x 0"
+  xmobar0 <- spawnPipe "xmobar -x 0"
   xmonad $ docks def
-    {
-      borderWidth        = borderWidth'
+    { borderWidth        = borderWidth'
     , focusedBorderColor = focusedBorderColor'
     , keys               = keys'
     , layoutHook         = layouts'
-    , logHook            = dynamicLogWithPP xmobarPP
-                            { ppOutput = hPutStrLn xmproc0
-                            , ppSep    = "  ::  "
-                            , ppCurrent = xmobarColor "yellow" ""
-                            , ppHidden = xmobarColor "gray" ""
-                            , ppHiddenNoWindows = const "_"
-                            , ppTitle  = shorten 80
-                            }
+    , logHook            = logHook' xmobar0
     , modMask            = modMask'
     , normalBorderColor  = normalBorderColor'
     , terminal           = terminal'
@@ -44,12 +36,36 @@ main = do
     }
 
 
-terminal'           = "alacritty"
-workspaces'         = map show $ [1..9] ++ [0]
+-------------------------------------------------------------------
+-- General Config
+-------------------------------------------------------------------
 
-borderWidth'        = 2
-focusedBorderColor' = "yellow"
-normalBorderColor'  = "black"
+accentColor         = "green"
+normalColor         = "black"
+
+borderWidth'        = 1
+gapSize             = 4
+
+terminal'           = "alacritty"
+workspaces'         = map show [1..4]
+
+
+focusedBorderColor' = accentColor
+normalBorderColor'  = normalColor
+
+
+-------------------------------------------------------------------
+-- Log Hook
+-------------------------------------------------------------------
+
+logHook' xmobarproc = dynamicLogWithPP xmobarPP
+                        { ppOutput = hPutStrLn xmobarproc
+                        , ppSep    = "  ::  "
+                        , ppCurrent = xmobarColor accentColor ""
+                        , ppHidden = xmobarColor "gray" ""
+                        , ppHiddenNoWindows = const "_"
+                        , ppTitle  = shorten 80
+                        }
 
 
 -------------------------------------------------------------------
@@ -84,15 +100,10 @@ keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   , ((modm,           xK_t), withFocused $ windows . W.sink) -- (t)ile floating window
 
   -- controlling gaps and padding
-  , ((modm .|. shift, xK_g), decScreenWindowSpacing 2)
-  , ((modm,           xK_g), incScreenWindowSpacing 2)
-  , ((modm .|. ctrl,  xK_g), sequence_ [setWindowSpacing defaultGap,
-                                        setScreenSpacing defaultGap])
-  , ((modm .|. super, xK_g), sequence_ [toggleScreenSpacingEnabled,
+  , ((modm,           xK_g), sequence_ [toggleScreenSpacingEnabled,  -- (g)aps
                                         toggleWindowSpacingEnabled])
-  , ((modm .|. super, xK_b), sendMessage ToggleStruts)
-  , ((modm,           xK_f), sequence_ [sendMessage $ JumpToLayout monocleName,
-                                        sendMessage $ SetStruts [] [U .. L]])
+  , ((modm,           xK_b), sendMessage ToggleStruts)               -- (b)ar
+
   -- layouts
   , ((modm,           xK_Tab  ), sendMessage NextLayout)
 
@@ -122,16 +133,16 @@ keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
       [ ((0, xK_h), spawn "dmenu_prompt \"Hibernate?\" \"systemctl hibernate\"") -- suspend to disk
       , ((0, xK_r), spawn "dmenu_prompt \"Reboot?\" \"sudo -A reboot\"")
       , ((0, xK_s), spawn "dmenu_prompt \"Shutdown?\" \"sudo -A shutdown -h now\"")
-      , ((0, xK_z), spawn "systemctl suspend") -- suspend to swap (zzz)
+      , ((0, xK_z), spawn "systemctl suspend") -- suspend to swap (z)zz
       ])
   ]
 
   ++
 
-  -- mod-[1..9, 0]       switch to workspace N
-  -- mod-shift-[1..9, 0] move window to workspace N
+  -- mod-[1..k]       switch to workspace N
+  -- mod-shift-[1..k] move window to workspace N
   [((m .|. modm, k), windows $ f i)
-        | (i, k) <- zip (XMonad.workspaces conf) $ [xK_1 .. xK_9] ++ [xK_0]
+        | (i, k) <- zip (XMonad.workspaces conf) [xK_1..xK_4]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shift)]
   ]
 
@@ -144,15 +155,24 @@ layouts' = avoidStruts   -- make space for xmobar
          $ smartBorders  -- no border when only one window
          $ masterStack ||| monocle ||| grid
   where
-    masterStack = named masterStackName $ spacingRaw False defaultGap True defaultGap True $ Tall 1 (5/100) (1/2)
-    monocle     = named monocleName $ Full
-    grid        = named gridName $ spacingRaw False defaultGap True defaultGap True $ Grid
+    masterStack = named masterStackName
+                $ spacingRaw
+                  False                 -- smart border
+                  (uniGap gapSize) True -- screen gap, enabled
+                  (uniGap gapSize) True -- window gap, enabled
+                $ Tall 1 (5/100) (1/2)
+    monocle     = named monocleName
+                $ Full
+    grid        = named gridName
+                $ spacingRaw
+                  False                 -- smart border
+                  (uniGap gapSize) True -- screen gap, enabled
+                  (uniGap gapSize) True -- window gap, enabled
+                $ Grid
 
-masterStackName = "<fc=yellow>[]=</fc> [ ] [+]"
-monocleName     = "[]= <fc=yellow>[ ]</fc> [+]"
-gridName        = "[]= [ ] <fc=yellow>[+]</fc>"
-
-defaultGap = uniGap 4
+masterStackName = "<fc=" ++ accentColor ++ ">[]=</fc> [ ] [+]"
+monocleName     = "[]= <fc=" ++ accentColor ++ ">[ ]</fc> [+]"
+gridName        = "[]= [ ] <fc=" ++ accentColor ++ ">[+]</fc>"
 
 -- construct a uniform Gap ('Border')
 uniGap :: Integer -> Border
