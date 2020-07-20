@@ -4,12 +4,13 @@ afl
 alacritty
 alsa-utils
 anki
+arandr
 arch-install-scripts
 autoconf
 automake
 base
 bat
-bind-tools
+bind
 binutils
 bison
 bluez
