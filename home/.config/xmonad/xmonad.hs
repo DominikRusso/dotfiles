@@ -125,8 +125,8 @@ keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
       ])
 
   -- system control
-  , ((modm          , xK_p), spawn "scrot")
-  , ((modm .|. shift, xK_p), spawn "scrot -s")
+  , ((modm          , xK_p), spawn "scrot ~/media/images/screenshots/screenshot-%Y-%m-%d-%T.png")
+  , ((modm .|. shift, xK_p), spawn "scrot -s ~/media/images/screenshots/screenshot-%Y-%m-%d-%T.png")
   , ((modm          , xK_x), spawn "physlock -m -s")
   , ((modm          , xK_s), submap . M.fromList $
       -- (s)ystem
