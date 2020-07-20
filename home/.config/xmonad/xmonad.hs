@@ -25,12 +25,13 @@ main = do
   xmobar0 <- spawnPipe "xmobar -x 0"
   xmonad $ docks def
     { borderWidth        = borderWidth'
-    , focusedBorderColor = focusedBorderColor'
+    , focusedBorderColor = focusColor
+    , focusFollowsMouse  = focusFollowsMouse'
     , keys               = keys'
     , layoutHook         = layouts'
     , logHook            = logHook' xmobar0
     , modMask            = modMask'
-    , normalBorderColor  = normalBorderColor'
+    , normalBorderColor  = normalColor
     , terminal           = terminal'
     , workspaces         = workspaces'
     }
@@ -40,7 +41,7 @@ main = do
 -- General Config
 -------------------------------------------------------------------
 
-accentColor         = "green"
+focusColor          = "green"
 normalColor         = "black"
 
 borderWidth'        = 1
@@ -49,9 +50,8 @@ gapSize             = 4
 terminal'           = "alacritty"
 workspaces'         = map show [1..4]
 
-
-focusedBorderColor' = accentColor
-normalBorderColor'  = normalColor
+focusFollowsMouse'  = True
+clickJustFocuses    = False
 
 
 -------------------------------------------------------------------
@@ -61,7 +61,7 @@ normalBorderColor'  = normalColor
 logHook' xmobarproc = dynamicLogWithPP xmobarPP
                         { ppOutput = hPutStrLn xmobarproc
                         , ppSep    = "  ::  "
-                        , ppCurrent = xmobarColor accentColor ""
+                        , ppCurrent = xmobarColor focusColor ""
                         , ppHidden = xmobarColor "gray" ""
                         , ppHiddenNoWindows = const "_"
                         , ppTitle  = shorten 80
@@ -72,10 +72,7 @@ logHook' xmobarproc = dynamicLogWithPP xmobarPP
 -- Key Bindings
 -------------------------------------------------------------------
 
-meta  :: KeyMask
-ctrl  :: KeyMask
-shift :: KeyMask
-super :: KeyMask
+ctrl, meta, shift, super :: KeyMask
 meta  = mod1Mask
 ctrl  = controlMask
 shift = shiftMask
@@ -170,9 +167,9 @@ layouts' = avoidStruts   -- make space for xmobar
                   (uniGap gapSize) True -- window gap, enabled
                 $ Grid
 
-masterStackName = "<fc=" ++ accentColor ++ ">[]=</fc> [ ] [+]"
-monocleName     = "[]= <fc=" ++ accentColor ++ ">[ ]</fc> [+]"
-gridName        = "[]= [ ] <fc=" ++ accentColor ++ ">[+]</fc>"
+masterStackName = "<fc=" ++ focusColor ++ ">[]=</fc> [ ] [+]"
+monocleName     = "[]= <fc=" ++ focusColor ++ ">[ ]</fc> [+]"
+gridName        = "[]= [ ] <fc=" ++ focusColor ++ ">[+]</fc>"
 
 -- construct a uniform Gap ('Border')
 uniGap :: Integer -> Border
