@@ -43,15 +43,17 @@ Config {
             "%a %F %T" "date" 10
         , Run DynNetwork
             [ "--template", "<rx>KB/<tx>KB"
-            , "--Low"     , "0" -- 0B
             , "--High"    , "1" -- 1B
-            , "--low"     , "gray"
             , "--high"    , "white"
             ] 10
         , Run Memory
             [ "--template", "mem <usedratio>%"
             , "--minwidth", "2"
             , "--padchars", "_"
+            , "--Low"     , "10"
+            , "--High"    , "25"
+            , "--normal"  , "white"
+            , "--high"    , "red"
             ] 50
         , Run MultiCoreTemp
             [ "--template", "<avg>-<max>C"
@@ -59,12 +61,15 @@ Config {
             , "--High"    , "70"
             , "--normal"  , "white"
             , "--high"    , "red"
-            , "--minwidth", "2"
             ] 20
         , Run MultiCpu
             [ "--template", "cpu <total>%"
             , "--minwidth", "2"
             , "--padchars", "_"
+            , "--Low"     , "5"
+            , "--High"    , "25"
+            , "--normal"  , "white"
+            , "--high"    , "red"
             ] 20
     ]
 }
