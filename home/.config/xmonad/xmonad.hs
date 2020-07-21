@@ -64,7 +64,7 @@ logHook' xmobarproc = dynamicLogWithPP xmobarPP
                         , ppCurrent = xmobarColor focusColor ""
                         , ppHidden = xmobarColor "gray" ""
                         , ppHiddenNoWindows = const "_"
-                        , ppTitle  = shorten 80
+                        , ppTitle  = shorten 50
                         }
 
 
