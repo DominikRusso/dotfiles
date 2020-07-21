@@ -9,6 +9,9 @@ function fish_mode_prompt
     # NOP
 end
 
+# disable fish greeting
+set fish_greeting
+
 # abbreviations
 abbr -a 'cd..' 'cd ..'
 abbr -a chomod 'chmod -v'
@@ -62,6 +65,8 @@ set -x VISUAL "nvim"
 set -x XDG_CACHE_HOME "$HOME/.cache"
 set -x XDG_CONFIG_HOME "$HOME/.config"
 set -x XDG_DATA_HOME "$HOME/.local/share"
+set -x XDG_DOWNLOAD_DIR "$HOME/downloads"
+set -x XDG_MUSIC_DIR "$HOME/media/music"
 
 # clean up ~/
 set -x CARGO_HOME "$XDG_DATA_HOME/cargo"
@@ -77,6 +82,7 @@ set -x TMUX_TMPDIR "$XDG_RUNTIME_DIR"
 set -x VIMINIT "source $MYVIMRC"
 set -x XAUTHORITY "$XDG_RUNTIME_DIR/Xauthority"
 set -x XINITRC "$XDG_CONFIG_HOME/xinitrc"
+set -x XMONAD_CONFIG_DIR "$XDG_CONFIG_HOME/xmonad"
 
 # PATH
 set PATH ~/.local/bin $CARGO_HOME/bin $PATH
