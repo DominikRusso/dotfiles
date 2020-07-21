@@ -7,12 +7,12 @@ Config {
     , position    = Top
 
     -- layout
-    , template    = "  %StdinReader%}{%dynnetwork%  ::  %multicpu% (%multicoretemp%)  ::  %memory%  ::  %bright%  ::  %alsa:default:Master%  ::  %battery%  ::  %date%  "
+    , template    = "  %StdinReader%}{%wi%  ::  %dynnetwork%  ::  %multicpu% (%multicoretemp%)  ::  %memory%  ::  %bright%  ::  %alsa:default:Master%  ::  %battery%  ::  %date%  "
 
     , commands    = [
         Run StdinReader
         , Run Alsa "default" "Master"
-            [ "--template", "vol <volume>% <status>"
+            [ "--template", "v <volume> <status>"
             , "--minwidth", "2"
             , "--padchars", "_"
             , "--Low"     , "25"
@@ -25,29 +25,35 @@ Config {
             , "--onc"     , "gray"
             , "--offc"    , "gray"
             ]
-        , Run BatteryP ["Bat0"]
+        , Run BatteryP ["BAT0"]
             [ "--template", "<acstatus>"
             , "--minwidth", "3"
             , "--padchars", "_"
+            , "--High"    , "75"
+            , "--Low"     , "10"
+            , "--normal"  , "white"
+            , "--low"     , "red"
             , "--"
-            , "-o"	      , "<fc=white>[<left>%]</fc>" -- discharging
-            , "-O"	      , "[<left>%]"                -- charging
-            , "-i"	      , "[<left>%]"                -- idle (full)
+            , "-o"	      , "[<left>] (<timeleft>)" -- discharging
+            , "-O"	      , "[<left>] (<timeleft>)" -- charging
+            , "-i"	      , "[<left>]"              -- idle (full)
             ] 20
         , Run Brightness
-            [ "--template", "bri <percent>"
+            [ "--template", "b <percent>"
             , "--minwidth", "3"
             , "--padchars", "_"
+            , "--"
+            , "-D"        , "amdgpu_bl0"
             ] 10
         , Run Date
             "%a %F %T" "date" 10
         , Run DynNetwork
-            [ "--template", "<rx>KB/<tx>KB"
+            [ "--template", "<dev> <rx>K/<tx>K"
             , "--High"    , "1" -- 1B
             , "--high"    , "white"
             ] 10
         , Run Memory
-            [ "--template", "mem <usedratio>%"
+            [ "--template", "m <usedratio>"
             , "--minwidth", "2"
             , "--padchars", "_"
             , "--Low"     , "10"
@@ -57,13 +63,13 @@ Config {
             ] 50
         , Run MultiCoreTemp
             [ "--template", "<avg>-<max>C"
-            , "--Low"     , "40"
-            , "--High"    , "70"
+            , "--Low"     , "45"
+            , "--High"    , "65"
             , "--normal"  , "white"
             , "--high"    , "red"
             ] 20
         , Run MultiCpu
-            [ "--template", "cpu <total>%"
+            [ "--template", "c <total>"
             , "--minwidth", "2"
             , "--padchars", "_"
             , "--Low"     , "5"
@@ -71,6 +77,9 @@ Config {
             , "--normal"  , "white"
             , "--high"    , "red"
             ] 20
+        , Run Wireless ""
+            [ "--template"  , "<essid> <quality>"
+            ] 25
     ]
 }
 
