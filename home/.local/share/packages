@@ -3,6 +3,7 @@ acpid
 afl
 alacritty
 alsa-utils
+amd-ucode
 anki
 arandr
 arch-install-scripts
@@ -18,6 +19,7 @@ bluez-utils
 bmon
 buildah
 calcurse
+chromium
 cmus
 cpupower
 cronie
@@ -42,6 +44,7 @@ ghc
 ghidra
 git
 glances
+go
 grub
 htop
 imagemagick
