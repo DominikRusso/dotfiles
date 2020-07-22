@@ -44,6 +44,8 @@ Config {
             , "--padchars", "_"
             , "--"
             , "-D"        , "amdgpu_bl0"
+            , "-C"        , "brightness"
+            , "-M"        , "max_brightness"
             ] 10
         , Run Date
             "%a %F %T" "date" 10
