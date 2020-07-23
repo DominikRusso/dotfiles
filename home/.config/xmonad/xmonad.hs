@@ -1,6 +1,7 @@
 import Data.List (find)
 import System.Exit
 import XMonad hiding ( (|||) )
+import XMonad.Actions.PhysicalScreens
 import XMonad.Actions.Submap
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
@@ -61,11 +62,14 @@ clickJustFocuses    = False
 logHook' xmobarproc = dynamicLogWithPP xmobarPP
                         { ppOutput = hPutStrLn xmobarproc
                         , ppSep    = "  ::  "
-                        , ppCurrent = xmobarColor focusColor ""
-                        , ppHidden = xmobarColor "gray" ""
+                        , ppCurrent = color focusColor
+                        , ppHidden = color "gray"
                         , ppHiddenNoWindows = const "_"
                         , ppTitle  = shorten 50
+                        , ppVisible = color "white"
+                        , ppVisibleNoWindows = Just $ color "white" . const "-"
                         }
+                        where color c = xmobarColor c ""
 
 
 -------------------------------------------------------------------
@@ -88,13 +92,21 @@ keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   , ((modm, xK_k), windows W.focusUp)
   , ((modm, xK_m), windows W.focusMaster)
 
-  -- moving windows
+  -- navigating screens
+  , ((super, xK_k), onPrevNeighbour def W.view)
+  , ((super, xK_j), onNextNeighbour def W.view)
+
+  -- moving windows on screens
   , ((modm .|. shift, xK_j), windows W.swapDown)
   , ((modm .|. shift, xK_k), windows W.swapUp)
   , ((modm .|. shift, xK_m), windows W.swapMaster)
   , ((modm,           xK_h), sendMessage Shrink)
   , ((modm,           xK_l), sendMessage Expand)
   , ((modm,           xK_t), withFocused $ windows . W.sink) -- (t)ile floating window
+
+  -- moving windows between screens
+  , ((super .|. shiftMask, xK_k), onPrevNeighbour def W.shift)
+  , ((super .|. shiftMask, xK_j), onNextNeighbour def W.shift)
 
   -- controlling gaps and padding
   , ((modm,           xK_g), sequence_ [toggleScreenSpacingEnabled,  -- (g)aps
@@ -141,6 +153,15 @@ keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   [((m .|. modm, k), windows $ f i)
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1..xK_4]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shift)]
+  ]
+
+  ++
+
+  -- super-{1,2,3}        switch focus to screen 1, 2, or 3
+  -- super-shift-{1,2,3}  move window to screen 1, 2, or 3
+  [((mask .|. super, key), f sc)
+    | (key, sc) <- zip [xK_1, xK_2, xK_3] [0..]
+    , (f, mask) <- [(viewScreen def, 0), (sendToScreen def, shiftMask)]
   ]
 
 
