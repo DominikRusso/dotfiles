@@ -31,7 +31,7 @@ main = do
     , keys               = keys'
     , layoutHook         = layouts'
     , logHook            = logHook' xmobar0
-    , modMask            = modMask'
+    , modMask            = mainM
     , normalBorderColor  = normalColor
     , terminal           = terminal'
     , workspaces         = workspaces'
@@ -56,23 +56,6 @@ clickJustFocuses    = False
 
 
 -------------------------------------------------------------------
--- Log Hook
--------------------------------------------------------------------
-
-logHook' xmobarproc = dynamicLogWithPP xmobarPP
-                        { ppOutput = hPutStrLn xmobarproc
-                        , ppSep    = "  ::  "
-                        , ppCurrent = color focusColor
-                        , ppHidden = color "gray"
-                        , ppHiddenNoWindows = const "_"
-                        , ppTitle  = shorten 50
-                        , ppVisible = color "white"
-                        , ppVisibleNoWindows = Just $ color "white" . const "-"
-                        }
-                        where color c = xmobarColor c ""
-
-
--------------------------------------------------------------------
 -- Key Bindings
 -------------------------------------------------------------------
 
@@ -82,47 +65,49 @@ ctrl  = controlMask
 shift = shiftMask
 super = mod4Mask
 
--- main modifier key
-modMask' = meta
+mainM   = meta  -- main modifier key
+screenM = super -- modifier for things related to screens
+moveM   = shift -- modifier for things related to moving (shifting)
 
-keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
+
+keys' conf@(XConfig {}) = M.fromList $
   [
   -- navigating windows
-    ((modm, xK_j), windows W.focusDown)
-  , ((modm, xK_k), windows W.focusUp)
-  , ((modm, xK_m), windows W.focusMaster)
+    ((mainM, xK_j), windows W.focusDown)
+  , ((mainM, xK_k), windows W.focusUp)
+  , ((mainM, xK_m), windows W.focusMaster)
 
   -- navigating screens
-  , ((super, xK_k), onPrevNeighbour def W.view)
-  , ((super, xK_j), onNextNeighbour def W.view)
+  , ((screenM, xK_k), onPrevNeighbour def W.view)
+  , ((screenM, xK_j), onNextNeighbour def W.view)
 
   -- moving windows on screens
-  , ((modm .|. shift, xK_j), windows W.swapDown)
-  , ((modm .|. shift, xK_k), windows W.swapUp)
-  , ((modm .|. shift, xK_m), windows W.swapMaster)
-  , ((modm,           xK_h), sendMessage Shrink)
-  , ((modm,           xK_l), sendMessage Expand)
-  , ((modm,           xK_t), withFocused $ windows . W.sink) -- (t)ile floating window
+  , ((mainM .|. moveM, xK_j), windows W.swapDown)
+  , ((mainM .|. moveM, xK_k), windows W.swapUp)
+  , ((mainM .|. moveM, xK_m), windows W.swapMaster)
+  , ((mainM,           xK_h), sendMessage Shrink)
+  , ((mainM,           xK_l), sendMessage Expand)
+  , ((mainM,           xK_t), withFocused $ windows . W.sink) -- (t)ile floating
 
   -- moving windows between screens
-  , ((super .|. shiftMask, xK_k), onPrevNeighbour def W.shift)
-  , ((super .|. shiftMask, xK_j), onNextNeighbour def W.shift)
+  , ((screenM .|. moveM, xK_k), onPrevNeighbour def W.shift)
+  , ((screenM .|. moveM, xK_j), onNextNeighbour def W.shift)
 
   -- controlling gaps and padding
-  , ((modm,           xK_g), sequence_ [toggleScreenSpacingEnabled,  -- (g)aps
-                                        toggleWindowSpacingEnabled])
-  , ((modm,           xK_b), sendMessage ToggleStruts)               -- (b)ar
+  , ((mainM, xK_g), sequence_ [toggleScreenSpacingEnabled,  -- (g)aps
+                               toggleWindowSpacingEnabled])
+  , ((mainM, xK_b), sendMessage ToggleStruts)               -- (b)ar
 
   -- layouts
-  , ((modm,           xK_Tab  ), sendMessage NextLayout)
+  , ((mainM, xK_Tab), sendMessage NextLayout)
 
   -- opening and closing programs
-  , ((modm .|. ctrl,  xK_Escape), io (exitWith ExitSuccess))
-  , ((modm .|. ctrl,  xK_r     ), spawn "xmonad --recompile && xmonad --restart")
-  , ((modm .|. shift, xK_q     ), kill)
-  , ((modm,           xK_Return), spawn "alacritty")
-  , ((modm,           xK_d     ), spawn "dmenu_run")
-  , ((modm,           xK_o     ), submap . M.fromList $
+  , ((mainM .|. ctrl,  xK_Escape), io (exitWith ExitSuccess))
+  , ((mainM .|. ctrl,  xK_r     ), spawn "xmonad --recompile && xmonad --restart")
+  , ((mainM .|. moveM, xK_q     ), kill)
+  , ((mainM,           xK_Return), spawn "alacritty")
+  , ((mainM,           xK_d     ), spawn "dmenu_run")
+  , ((mainM,           xK_o     ), submap . M.fromList $
       -- (o)pen
       [ ((0, xK_a), spawn "alacritty -e alsamixer")
       , ((0, xK_b), spawn "qutebrowser")
@@ -134,10 +119,10 @@ keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
       ])
 
   -- system control
-  , ((modm          , xK_p), spawn "scrot ~/media/images/screenshots/screenshot-%Y-%m-%d-%T.png")
-  , ((modm .|. shift, xK_p), spawn "scrot -s ~/media/images/screenshots/screenshot-%Y-%m-%d-%T.png")
-  , ((modm          , xK_x), spawn "physlock -m -s")
-  , ((modm          , xK_s), submap . M.fromList $
+  , ((mainM,           xK_p), spawn "scrot ~/media/images/screenshots/screenshot-%Y-%m-%d-%T.png")
+  , ((mainM .|. moveM, xK_p), spawn "scrot -s ~/media/images/screenshots/screenshot-%Y-%m-%d-%T.png")
+  , ((mainM,           xK_x), spawn "physlock -m -s")
+  , ((mainM,           xK_s), submap . M.fromList $
       -- (s)ystem
       [ ((0, xK_h), spawn "dmenu_prompt \"Hibernate?\" \"systemctl hibernate\"") -- suspend to disk
       , ((0, xK_r), spawn "dmenu_prompt \"Reboot?\" \"sudo -A reboot\"")
@@ -148,20 +133,20 @@ keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
   ++
 
-  -- mod-[1..k]       switch to workspace N
-  -- mod-shift-[1..k] move window to workspace N
-  [((m .|. modm, k), windows $ f i)
-        | (i, k) <- zip (XMonad.workspaces conf) [xK_1..xK_4]
-        , (f, m) <- [(W.greedyView, 0), (W.shift, shift)]
+  -- mainM-[1..k]       switch to workspace N
+  -- mainM-moveM-[1..k] move window to workspace N
+  [((mask .|. mainM, key), windows $ f ws)
+    | (ws, key) <- zip (XMonad.workspaces conf) [xK_1..]
+    , (f, mask) <- [(W.greedyView, 0), (W.shift, moveM)]
   ]
 
   ++
 
-  -- super-{1,2,3}        switch focus to screen 1, 2, or 3
-  -- super-shift-{1,2,3}  move window to screen 1, 2, or 3
-  [((mask .|. super, key), f sc)
-    | (key, sc) <- zip [xK_1, xK_2, xK_3] [0..]
-    , (f, mask) <- [(viewScreen def, 0), (sendToScreen def, shiftMask)]
+  -- screenM-{1,2,3}        switch focus to screen 1, 2, or 3
+  -- screenM-moveM-{1,2,3}  move window to screen 1, 2, or 3
+  [((mask .|. screenM, key), f screen)
+    | (key, screen) <- zip [xK_1, xK_2, xK_3] [0..]
+    , (f, mask)     <- [(viewScreen def, 0), (sendToScreen def, moveM)]
   ]
 
 
@@ -169,24 +154,24 @@ keys' conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 -- Layouts
 -------------------------------------------------------------------
 
-layouts' = avoidStruts   -- make space for xmobar
-         $ smartBorders  -- no border when only one window
-         $ masterStack ||| monocle ||| grid
+layouts' = avoidStruts     -- make space for xmobar
+           $ smartBorders  -- no border when only one window
+           $ masterStack ||| monocle ||| grid
   where
     masterStack = named masterStackName
-                $ spacingRaw
-                  False                 -- smart border
-                  (uniGap gapSize) True -- screen gap, enabled
-                  (uniGap gapSize) True -- window gap, enabled
-                $ Tall 1 (5/100) (1/2)
+                  $ spacingRaw
+                    False                 -- smart border
+                    (uniGap gapSize) True -- screen gap, enabled
+                    (uniGap gapSize) True -- window gap, enabled
+                  $ Tall 1 (5/100) (1/2)
     monocle     = named monocleName
-                $ Full
+                  $ Full
     grid        = named gridName
-                $ spacingRaw
-                  False                 -- smart border
-                  (uniGap gapSize) True -- screen gap, enabled
-                  (uniGap gapSize) True -- window gap, enabled
-                $ Grid
+                  $ spacingRaw
+                    False                 -- smart border
+                    (uniGap gapSize) True -- screen gap, enabled
+                    (uniGap gapSize) True -- window gap, enabled
+                  $ Grid
 
 masterStackName = "<fc=" ++ focusColor ++ ">[]=</fc> [ ] [+]"
 monocleName     = "[]= <fc=" ++ focusColor ++ ">[ ]</fc> [+]"
@@ -198,25 +183,18 @@ uniGap i = Border i i i i
 
 
 -------------------------------------------------------------------
--- Helper Functions
+-- Log Hook
 -------------------------------------------------------------------
 
--- bind keys on a per layout basis (adapted from Ethan Schoonover)
-data BindType = WS | LN -- workspace | layout name
-
-chooseAction :: BindType -> (String->X()) -> X()
-chooseAction WS f = withWindowSet (f . W.currentTag)
-chooseAction LN f = withWindowSet (f . description . W.layout . W.workspace . W.current)
-
--- If current workspace or layout string is listed, run the associated action.
--- If it isn't listed, run the default action (marked with empty string, ""),
--- or do nothing if a default isn't supplied.
--- Note that only the first match counts!
-bindOn :: BindType -> [(String, X())] -> X()
-bindOn bt bindings = chooseAction bt $ chooser where
-    chooser bt = case find ((bt==).fst) bindings of
-        Just (_, action) -> action
-        Nothing -> case find ((""==).fst) bindings of
-            Just (_, action) -> action
-            Nothing -> return ()
+logHook' xmobarproc = dynamicLogWithPP xmobarPP
+                      { ppOutput = hPutStrLn xmobarproc
+                      , ppSep    = "  ::  "
+                      , ppCurrent = color focusColor
+                      , ppHidden = color "gray"
+                      , ppHiddenNoWindows = const "_"
+                      , ppTitle  = shorten 50
+                      , ppVisible = color "white"
+                      , ppVisibleNoWindows = Just $ color "white" . const "-"
+                      }
+                      where color c = xmobarColor c ""
 
