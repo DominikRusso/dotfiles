@@ -6,6 +6,7 @@ import XMonad.Actions.Submap
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.Grid
+import XMonad.Layout.IndependentScreens
 import XMonad.Layout.LayoutCombinators
 import XMonad.Layout.Named
 import XMonad.Layout.NoBorders
@@ -23,18 +24,19 @@ import qualified XMonad.StackSet as W
 
 main :: IO ()
 main = do
-  xmobar0 <- spawnPipe "xmobar -x 0"
+  nScreens <- countScreens
+  xmobars  <- mapM (spawnPipe . xmobarCommand) [0..nScreens-1]
   xmonad $ docks def
     { borderWidth        = borderWidth'
     , focusedBorderColor = focusColor
     , focusFollowsMouse  = focusFollowsMouse'
     , keys               = keys'
     , layoutHook         = layouts'
-    , logHook            = logHook' xmobar0
+    , logHook            = mapM_ dynamicLogWithPP $ zipWith logHook' xmobars [0..]
     , modMask            = mainM
     , normalBorderColor  = normalColor
     , terminal           = terminal'
-    , workspaces         = workspaces'
+    , workspaces         = withScreens nScreens ws'
     }
 
 
@@ -49,7 +51,7 @@ borderWidth'        = 1
 gapSize             = 4
 
 terminal'           = "alacritty"
-workspaces'         = map show [1..4]
+ws'                 = map show [1..4]
 
 focusFollowsMouse'  = True
 clickJustFocuses    = False
@@ -68,7 +70,6 @@ super = mod4Mask
 mainM   = meta  -- main modifier key
 screenM = super -- modifier for things related to screens
 moveM   = shift -- modifier for things related to moving (shifting)
-
 
 keys' conf@(XConfig {}) = M.fromList $
   [
@@ -133,17 +134,17 @@ keys' conf@(XConfig {}) = M.fromList $
 
   ++
 
-  -- mainM-[1..k]       switch to workspace N
-  -- mainM-moveM-[1..k] move window to workspace N
-  [((mask .|. mainM, key), windows $ f ws)
-    | (ws, key) <- zip (XMonad.workspaces conf) [xK_1..]
-    , (f, mask) <- [(W.greedyView, 0), (W.shift, moveM)]
+  -- mod-[1..k]       move focus to workspace N
+  -- mod-shift-[1..k] move window to workspace N
+  [((mask .|. mainM, key), windows $ onCurrentScreen f ws)
+    | (ws, key) <- zip (workspaces' conf) [xK_1..]
+    , (f, mask) <- [(W.view, 0), (W.shift, moveM)]
   ]
 
   ++
 
-  -- screenM-{1,2,3}        switch focus to screen 1, 2, or 3
-  -- screenM-moveM-{1,2,3}  move window to screen 1, 2, or 3
+  -- screenM-{1,2,3}       move focus to screen 1, 2, or 3
+  -- screenM-shift-{1,2,3} move window to screen 1, 2, or 3
   [((mask .|. screenM, key), f screen)
     | (key, screen) <- zip [xK_1, xK_2, xK_3] [0..]
     , (f, mask)     <- [(viewScreen def, 0), (sendToScreen def, moveM)]
@@ -186,7 +187,7 @@ uniGap i = Border i i i i
 -- Log Hook
 -------------------------------------------------------------------
 
-logHook' xmobarproc = dynamicLogWithPP xmobarPP
+logHook' xmobarproc screen = marshallPP screen xmobarPP
                       { ppOutput = hPutStrLn xmobarproc
                       , ppSep    = "  ::  "
                       , ppCurrent = color focusColor
@@ -197,4 +198,17 @@ logHook' xmobarproc = dynamicLogWithPP xmobarPP
                       , ppVisibleNoWindows = Just $ color "white" . const "-"
                       }
                       where color c = xmobarColor c ""
+
+
+ -------------------------------------------------------------------
+ -- Helper Functions
+ -------------------------------------------------------------------
+
+--
+-- starting xmobar
+--
+xmobarCommand (S s) = unwords ["xmobar -x", show s, template s]
+  where
+    template 0 = ""
+    template _ = "-t %StdinReader%"
 
