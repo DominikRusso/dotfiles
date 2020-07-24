@@ -1,20 +1,38 @@
-redshift &   # decrease col temp at night
-unclutter --timeout 3 &  # hide mouse when idle
-xcompmgr &   # enable transparency
+# set correct display coordinates and parameters
+setup-displays &&
+
+    # and then set wallpaper
+    xwallpaper --zoom "$XDG_CACHE_HOME"/wallpaper &
+
+
+# prevent cursor from changing sizes due to the scaling factor of displays
+xrdb "$HOME"/.config/Xresources &
+
+# increase color temperature at night
+redshift &
+
+# hide mouse when idle
+unclutter --timeout 3 &
+
+# enable transparency
+xcompmgr &
 
 # Caps_Lock is ctrl
 setxkbmap -option ctrl:nocaps &
+
 # But when pressed alone for less than 250ms Caps_Lock is Escape
 xcape -t 250 -e '#66=Escape' &
 
-# disable screen blanking
-xset s off &
-
-# set wallpaper
-xwallpaper --zoom "$XDG_CACHE_HOME"/wallpaper &
-
 # fix for java GUIs (ghidra) in non-reparenting WMs
 export _JAVA_AWT_WM_NONREPARENTING=1 &
+
+# disable screen standy and suspend and turn off screen after 30 minutes
+# set key repeat delay to 400ms set rate to 30 keys per second
+# disable screen blanking
+xset \
+    dpms 0 0 1800 \
+    r rate 400 30 \
+    s 0 &
 
 # start window manager
 exec xmonad
