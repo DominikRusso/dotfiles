@@ -1,5 +1,5 @@
 #!/bin/sh
 
-[ -f "$1" ] && cp -f "$1" ~/.config/wallpaper
+[ -f "$1" ] && cp -f "$1" ~/.cache/wallpaper
 
-xwallpaper --zoom ~/.config/wallpaper
+xwallpaper --zoom ~/.cache/wallpaper
