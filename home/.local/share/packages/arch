@@ -19,7 +19,9 @@ bluez-utils
 bmon
 buildah
 calcurse
+clang
 cmus
+cppcheck
 cpupower
 cronie
 dash
@@ -27,6 +29,7 @@ dhcpcd
 dialog
 dmenu
 docker
+doxygen
 editorconfig-core-c
 entr
 exa
@@ -52,15 +55,18 @@ jre-openjdk
 keepassxc
 libtool
 libva-mesa-driver
+libva-utils
 light
 linux
 linux-firmware
+lshw
 lsof
 m4
 make
 man-db
 mat2
 mediainfo
+mesa-vdpau
 mpv
 neofetch
 neovim
@@ -93,6 +99,7 @@ qrencode
 qutebrowser
 r
 radare2
+read-edid
 redshift
 ripgrep
 rsync
@@ -102,6 +109,7 @@ scrot
 shellcheck
 socat
 speedtest-cli
+splint
 sqlmap
 stress
 sudo
@@ -123,7 +131,9 @@ unclutter
 unzip
 usbutils
 valgrind
+vdpauinfo
 vi
+vim
 wget
 which
 wireguard-tools
@@ -132,6 +142,7 @@ xcape
 xclip
 xcompmgr
 xdo
+xdotool
 xf86-video-amdgpu
 xmobar
 xmonad
@@ -139,6 +150,7 @@ xmonad-contrib
 xorg-server
 xorg-xev
 xorg-xinit
+xorg-xinput
 xorg-xrandr
 xorg-xset
 xorg-xsetroot
