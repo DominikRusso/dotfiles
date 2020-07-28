@@ -4,7 +4,8 @@ Config {
     , bgColor     = "black"
     , fgColor     = "gray"
     , font        = "xft:monospace:size=10"
-    , position    = Top
+    , position    = Bottom
+    , textOffset  = 15
 
     -- layout
     , template    = "  %StdinReader%}{%wi%  ::  %dynnetwork%  ::  %multicpu% (%multicoretemp%)  ::  %memory%  ::  %bright%  ::  %alsa:default:Master%  ::  %battery%  ::  %date%  "
