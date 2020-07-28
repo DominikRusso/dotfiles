@@ -1,4 +1,5 @@
 import Data.List (find)
+import Graphics.X11.ExtraTypes.XF86
 import System.Exit
 import XMonad hiding ( (|||) )
 import XMonad.Actions.PhysicalScreens
@@ -130,6 +131,9 @@ keys' conf@(XConfig {}) = M.fromList $
       , ((0, xK_s), spawn "dmenu_prompt \"Shutdown?\" \"sudo -A shutdown -h now\"")
       , ((0, xK_z), spawn "systemctl suspend") -- suspend to swap (z)zz
       ])
+  , ((0, xF86XK_AudioLowerVolume), spawn "amixer sset Master 5%-")
+  , ((0, xF86XK_AudioRaiseVolume), spawn "amixer sset Master 5%+")
+  , ((0, xF86XK_AudioMute       ), spawn "amixer sset Master toggle")
   ]
 
   ++
