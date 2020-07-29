@@ -31,6 +31,7 @@ dialog
 dmenu
 docker
 doxygen
+dunst
 editorconfig-core-c
 entr
 exa
@@ -54,6 +55,7 @@ imagemagick
 jdk-openjdk
 jre-openjdk
 keepassxc
+libnotify
 libtool
 libva-mesa-driver
 libva-utils
@@ -85,6 +87,7 @@ pacgraph
 pacman-contrib
 pandoc
 patch
+perl-rename
 physlock
 pkgconf
 podman
@@ -95,6 +98,7 @@ pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
 python
+python-eyed3
 python-pip
 qrencode
 qutebrowser
