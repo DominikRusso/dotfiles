@@ -121,8 +121,7 @@ keys' conf@(XConfig {}) = M.fromList $
       ])
 
   -- system control
-  , ((mainM,           xK_p), spawn "scrot ~/media/images/screenshots/screenshot-%Y-%m-%d-%T.png")
-  , ((mainM .|. moveM, xK_p), spawn "scrot -s ~/media/images/screenshots/screenshot-%Y-%m-%d-%T.png")
+  , ((mainM,           xK_p), spawn "scrot -z ~/media/images/screenshots/screenshot-%Y-%m-%d_%H-%M-%S.png")
   , ((mainM,           xK_x), spawn "physlock -m -s")
   , ((mainM,           xK_s), submap . M.fromList $
       -- (s)ystem
