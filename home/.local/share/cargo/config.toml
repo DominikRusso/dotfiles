@@ -1,0 +1,11 @@
+[alias]
+b = "build"
+c = "check"
+cl = "clippy"
+f = "fetch"
+r = "run"
+rr = "run --release"
+t = "test"
+
+[install]
+root = "/home/dom/.local"
