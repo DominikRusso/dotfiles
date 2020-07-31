@@ -1,5 +1,6 @@
 [alias]
 b = "build"
+br = "build --release"
 c = "check"
 cl = "clippy"
 f = "fetch"
@@ -9,3 +10,8 @@ t = "test"
 
 [install]
 root = "/home/dom/.local"
+
+[profile.release]
+codegen-units = 1
+lto = "fat"
+
