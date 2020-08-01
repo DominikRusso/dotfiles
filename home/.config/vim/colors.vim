@@ -32,7 +32,9 @@ hi DiffDelete   cterm=none      ctermfg=White       ctermbg=DarkRed
 hi diffRemoved  cterm=none      ctermfg=DarkRed     ctermbg=none
 hi DiffText     cterm=none      ctermfg=Black       ctermbg=27
 hi Error        cterm=none      ctermfg=Black       ctermbg=DarkRed
+hi IncSearch    cterm=none      ctermfg=Black       ctermbg=Yellow
 hi LineNr       cterm=none      ctermfg=238         ctermbg=none
+hi Search       cterm=none      ctermfg=Black       ctermbg=White
 hi SignColumn   cterm=none      ctermfg=none        ctermbg=none
 hi SpecialKey   cterm=none      ctermfg=Black       ctermbg=White
 hi SpellBad     cterm=underline ctermfg=Red         ctermbg=none
