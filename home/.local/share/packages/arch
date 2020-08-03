@@ -3,7 +3,6 @@ acpid
 afl
 alacritty
 alsa-utils
-amd-ucode
 anki
 arandr
 arch-install-scripts
@@ -25,6 +24,7 @@ cmus
 cppcheck
 cpupower
 cronie
+curl
 dash
 dhcpcd
 dialog
@@ -40,8 +40,10 @@ fakeroot
 fd
 ffmpeg
 figlet
+findutils
 fish
 fzf
+gawk
 gcc
 gdb
 ghc
@@ -49,12 +51,15 @@ ghidra
 git
 glances
 go
+grep
 grub
+gzip
 htop
 imagemagick
 jdk-openjdk
 jre-openjdk
 keepassxc
+kmon
 libnotify
 libtool
 libva-mesa-driver
@@ -67,6 +72,7 @@ lsof
 m4
 make
 man-db
+man-pages
 mat2
 mediainfo
 mesa-vdpau
@@ -82,6 +88,7 @@ noto-fonts
 noto-fonts-cjk
 npm
 openmpi
+openresolv
 openssh
 pacgraph
 pacman-contrib
@@ -111,14 +118,17 @@ rsync
 rustup
 scala
 scrot
+sed
 shellcheck
 socat
 speedtest-cli
 splint
+sqlite
 sqlmap
 stress
 sudo
 sxiv
+tar
 task
 texinfo
 texlive-bibtexextra
@@ -128,7 +138,6 @@ texlive-games
 texlive-latexextra
 texlive-pictures
 texlive-science
-tlp
 tmux
 transmission-cli
 ttf-joypixels
@@ -149,7 +158,6 @@ xcompmgr
 xdg-user-dirs
 xdo
 xdotool
-xf86-video-amdgpu
 xmobar
 xmonad
 xmonad-contrib
