@@ -6,7 +6,7 @@ setup-displays &&
 
 
 # prevent cursor from changing sizes due to the scaling factor of displays
-xrdb "$HOME"/.config/Xresources &
+xrdb "$XDG_CONFIG_HOME"/xresources &
 
 # increase color temperature at night
 redshift &
@@ -20,7 +20,7 @@ xcompmgr &
 # Caps_Lock is ctrl
 setxkbmap -option ctrl:nocaps &
 
-# But when pressed alone for less than 250ms Caps_Lock is Escape
+# but when pressed alone for less than 250ms Caps_Lock is Escape
 xcape -t 250 -e '#66=Escape' &
 
 # fix for java GUIs (ghidra) in non-reparenting WMs
@@ -32,7 +32,8 @@ export _JAVA_AWT_WM_NONREPARENTING=1 &
 xset \
     dpms 0 0 1800 \
     r rate 400 30 \
-    s 0 &
+    s 0 \
+    &
 
 # start window manager
 exec xmonad
