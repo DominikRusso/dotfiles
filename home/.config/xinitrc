@@ -1,11 +1,15 @@
+# default WM
+WM=bspwm
+
+# replace WM with $1 if exists
+[ -n "$1" ] && WM="$1"
+
 # set correct display coordinates and parameters
-setup-displays &&
-
+( setup-displays &&
     # and then set wallpaper
-    xwallpaper --zoom "$XDG_CACHE_HOME"/wallpaper &
+    xwallpaper --zoom "$XDG_CACHE_HOME"/wallpaper ) &
 
-
-# prevent cursor from changing sizes due to the scaling factor of displays
+# set cursor size, etc.
 xrdb "$XDG_CONFIG_HOME"/xresources &
 
 # increase color temperature at night
@@ -26,7 +30,7 @@ xcape -t 250 -e '#66=Escape' &
 # fix for java GUIs (ghidra) in non-reparenting WMs
 export _JAVA_AWT_WM_NONREPARENTING=1 &
 
-# disable screen standy and suspend and turn off screen after 30 minutes
+# screen standy never, suspend never, off after 30 minutes
 # set key repeat delay to 400ms set rate to 30 keys per second
 # disable screen blanking
 xset \
@@ -36,5 +40,5 @@ xset \
     &
 
 # start window manager
-exec xmonad
+exec $WM
 
