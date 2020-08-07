@@ -16,6 +16,7 @@ bison
 bluez
 bluez-utils
 bmon
+bspwm
 buildah
 calcurse
 chromium
@@ -117,6 +118,7 @@ ripgrep
 rsync
 rustup
 scala
+screenkey
 scrot
 sed
 shellcheck
@@ -127,6 +129,7 @@ sqlite
 sqlmap
 stress
 sudo
+sxhkd
 sxiv
 tar
 task
