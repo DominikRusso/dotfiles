@@ -62,7 +62,7 @@ alt + Escape
 
 # hide/show
 alt + b
-    polybar-msg cmd {hide && bspc config -m focused bottom_padding 0,show}
+    polybar-msg cmd {hide && bspc config bottom_padding 0,show}
 
 
 #
@@ -78,10 +78,6 @@ alt + ctrl + c
 	bspc node -c
 alt + shift + q
 	bspc node -c
-
-# toggle gaps
-alt + g
-	bspc config window_gap {0, 8}
 
 # set the node state
 alt + s ; {t,f,m}
