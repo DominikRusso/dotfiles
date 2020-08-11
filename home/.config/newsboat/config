@@ -4,10 +4,11 @@ reload-threads  4
 max-items       9999
 
 
-# podcasts
+# podboat
 
 download-path           ~/media/podcasts/
 podcast-auto-enqueue    yes
+player                  mpv
 
 
 # UI
@@ -94,7 +95,7 @@ bind-key o open-in-browser article
 
 # podboat
 
-bind-key D pb-download
+bind-key d pb-download
 bind-key c pb-cancel
 bind-key p pb-play
 bind-key X pb-delete
