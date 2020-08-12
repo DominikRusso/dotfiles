@@ -13,26 +13,21 @@ end
 set fish_greeting
 
 # abbreviations
-abbr -a 'cd..' 'cd ..'
-abbr -a chomod 'chmod -v'
+abbr -a chmod 'chmod -v'
 abbr -a chown 'chown -v'
 abbr -a cp 'cp -iv'
 abbr -a ll 'ls -AFlh'
-abbr -a llp 'expac "%m %n" | sort -h | numfmt --to=iec | tail -n 20'
 abbr -a ls 'ls -F'
 abbr -a mkdir 'mkdir -pv'
-abbr -a mp 'mp -iv'
+abbr -a mv 'mv -iv'
 abbr -a nb 'newsboat'
 abbr -a nf 'neofetch'
 abbr -a open 'xdg-open'
 abbr -a qr 'qrencode -m 2 -t ansi'
-abbr -a R 'R -q'
-abbr -a r 'R -q'
 abbr -a rm 'rm -v'
 abbr -a sdn 'sudo shutdown -h now'
 abbr -a sp 'sudo pacman'
 abbr -a wttr 'curl v2.wttr.in'
-abbr -a x 'startx $XINITRC'
 abbr -a yt 'youtube-dl -i --add-metadata'
 abbr -a yta 'youtube-dl -i -x --add-metadata --audio-format mp3'
 
@@ -41,6 +36,9 @@ alias diff 'diff --color=auto'
 alias ffmpeg 'ffmpeg -hide_banner'
 alias gdb 'gdb -q -nh -x $XDG_CONFIG_HOME/gdb/init'
 alias ls 'ls --color=auto --group-directories-first'
+alias R 'R -q'
+alias r 'R -q'
+alias startx 'startx $XINITRC'
 alias tmux 'tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf'
 alias vim 'nvim'
 alias vimdiff 'nvim -d'
@@ -70,6 +68,7 @@ set -x XDG_DATA_HOME "$HOME/.local/share"
 set -x CARGO_HOME "$XDG_DATA_HOME/cargo"
 set -x GNUPGHOME "$XDG_DATA_HOME/gnupg"
 set -x LESSHISTFILE "-"
+set -x MYSQL_HISTFILE "$XDG_CACHE_HOME/mysql_history"
 set -x MYVIMRC "$XDG_CONFIG_HOME/vim/vimrc"
 set -x PYTHONSTARTUP "$XDG_CONFIG_HOME/python/pythonrc"
 set -x RANDFILE "$XDG_CACHE_HOME/rnd"
@@ -86,6 +85,6 @@ set -x XMONAD_CONFIG_DIR "$XDG_CONFIG_HOME/xmonad"
 set PATH ~/.local/bin $CARGO_HOME/bin $PATH
 
 # program settings
-setenv FZF_DEFAULT_OPTS '--layout=reverse --height 25%'
-setenv LS_COLORS 'di=0:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;'
+set -x FZF_DEFAULT_OPTS '--layout=reverse --height 25%'
+set -x LS_COLORS 'di=0:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;'
 
