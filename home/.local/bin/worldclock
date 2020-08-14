@@ -1,16 +1,21 @@
 #!/bin/sh
 
 fmtdt () {
-    format="+%H:%M %z %Z %b %d"
-    printf "%s UTC%s %4s, %s %s" $(date "$format" | sed -E 's/([0-9])00/\1/')
+    format="+%a %H:%M, UTC%z %Z"
+    printf "%-23s" "$(date "$format" | sed -E 's/([0-9])00/\1/')"
 }
 
-printf "California  %s\n" "$(TZ="America/Los_Angeles" fmtdt)"
-printf "Phoenix     %s\n" "$(TZ="America/Phoenix" fmtdt)"
-printf "New York    %s\n" "$(TZ="America/New_York" fmtdt)"
-printf "UTC         %s\n" "$(TZ="Etc/UTC" fmtdt)"
-printf "London      %s\n" "$(TZ="Europe/London" fmtdt)"
-printf "Vienna      %s\n" "$(TZ="Europe/Vienna" fmtdt)"
-printf "Tokyo       %s\n" "$(TZ="Asia/Tokyo" fmtdt)"
-printf "Sydney      %s\n" "$(TZ="Australia/Sydney" fmtdt)"
+#clear
+C='\033[0m'
+# reverse
+R='\033[100m'
+
+printf ${R}" California      %s${C}\n" "$(TZ="America/Los_Angeles" fmtdt)"
+printf     " Phoenix         %s${C}\n" "$(TZ="America/Phoenix" fmtdt)"
+printf ${R}" New York        %s${C}\n" "$(TZ="America/New_York" fmtdt)"
+printf     " UTC             %s${C}\n" "$(TZ="Etc/UTC" fmtdt)"
+printf ${R}" London          %s${C}\n" "$(TZ="Europe/London" fmtdt)"
+printf     " Vienna          %s${C}\n" "$(TZ="Europe/Vienna" fmtdt)"
+printf ${R}" Tokyo           %s${C}\n" "$(TZ="Asia/Tokyo" fmtdt)"
+printf     " Sydney          %s${C}\n" "$(TZ="Australia/Sydney" fmtdt)"
 
