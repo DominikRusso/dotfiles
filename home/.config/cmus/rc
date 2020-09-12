@@ -4,6 +4,7 @@ set lib_sort=albumartist date album artist discnumber tracknumber title filename
 
 set aaa_mode=all
 set play_library=true
+set play_sorted=true
 
 set continue=true
 set follow=true
