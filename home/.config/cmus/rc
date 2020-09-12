@@ -1,6 +1,6 @@
 set start_view=sorted
 
-set lib_sort=albumartist date album discnumber tracknumber title filename
+set lib_sort=albumartist date album artist discnumber tracknumber title filename
 
 set aaa_mode=all
 set play_library=true
