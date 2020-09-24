@@ -82,10 +82,11 @@ report.list.columns   = id,urgency,depends.count,priority,project,tags,recur.ind
 report.minimal.labels = ID,Project,Description
 report.minimal.columns = id,project,description.count
 
+report.next.description = "Tasks due soonest"
 report.next.labels    = ID,Dep,P,Project,Sch,Due,Description
 report.next.columns   = id,depends.count,priority,project,scheduled.remaining,due.remaining,description.count
 report.next.filter    = status:pending limit:page (scheduled.before:1w or due.before:1m)
-report.next.sort      = urgency-,due+
+report.next.sort      = due+,urgency-
 
 report.newest.filter  = status:pending or status:waiting limit:page
 report.newest.sort    = entry-,modified-
