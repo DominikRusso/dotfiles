@@ -72,32 +72,32 @@ row.padding           = 1       # spaces around table
 
 ## columns
 
-print.empty.columns   = on
+print.empty.columns     = on
 
-report.completed.sort = end-    # most recent first
+report.completed.sort   = end-    # most recent first
 
-report.list.labels    = ID,Urg,Dep,P,Project,Tags,R,Sched,Due,Until,Description,Age
-report.list.columns   = id,urgency,depends.count,priority,project,tags,recur.indicator,scheduled,due,until.remaining,description.count,entry.age
+report.list.labels      = ID,Urg,Dep,P,Project,Tags,R,Sched,Due,Until,Description,Age
+report.list.columns     = id,urgency,depends.count,priority,project,tags,recur.indicator,scheduled,due,until.remaining,description.count,entry.age
 
-report.minimal.labels = ID,Project,Description
-report.minimal.columns = id,project,description.count
+report.minimal.labels   = ID,Project,Description
+report.minimal.columns  = id,project,description.count
 
 report.next.description = "Tasks due soonest"
-report.next.labels    = ID,Dep,P,Project,Sch,Due,Description
-report.next.columns   = id,depends.count,priority,project,scheduled.remaining,due.remaining,description.count
-report.next.filter    = status:pending limit:page (scheduled.before:1w or due.before:1m)
-report.next.sort      = due+,urgency-
+report.next.labels      = ID,Dep,P,Project,Sch,Due,Description
+report.next.columns     = id,depends.count,priority,project,scheduled.remaining,due.remaining,description.count
+report.next.filter      = status:pending limit:page (scheduled.before:1w or due.before:1m)
+report.next.sort        = due+,urgency-
 
-report.newest.filter  = status:pending or status:waiting limit:page
-report.newest.sort    = entry-,modified-
+report.newest.filter    = status:pending or status:waiting limit:page
+report.newest.sort      = entry-,modified-
 
-report.oldest.filter  = status:pending or status:waiting limit:page
-report.oldest.sort    = entry+,modified+
+report.oldest.filter    = status:pending or status:waiting limit:page
+report.oldest.sort      = entry+,modified+
 
-report.ready.labels   = ID,P,Project,R,Due,Description,Urg
-report.ready.columns  = id,priority,project,recur.indicator,due.remaining,description.count,urgency
-report.ready.filter   = +READY
-report.ready.sort     = due+,urgency-
+report.ready.labels     = ID,P,Project,R,Due,Description,Urg
+report.ready.columns    = id,priority,project,recur.indicator,due.remaining,description.count,urgency
+report.ready.filter     = +READY
+report.ready.sort       = due+,urgency-
 
 
 ## colors
