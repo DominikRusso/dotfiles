@@ -14,6 +14,7 @@ player                  mpv
 # UI
 
 text-width 80
+scrolloff 2
 
 show-keymap-hint no
 
@@ -25,7 +26,7 @@ color listnormal        color248 default
 color listnormal_unread white default bold
 
 highlight feedlist ".+\\(0/0\\) " black
-highlight feedlist ":::.*:::$" yellow
+highlight feedlist "[A-z]+ $" yellow
 
 
 # navigation
