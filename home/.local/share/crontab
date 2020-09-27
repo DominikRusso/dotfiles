@@ -1,2 +1,2 @@
-*/15 * * * * /usr/bin/newsboat -x reload
+0 * * * * /usr/bin/newsboat -x reload
 
