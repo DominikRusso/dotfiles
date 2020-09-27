@@ -1,7 +1,8 @@
 # feeds
 
-reload-threads  4
-max-items       9999
+max-items          9999
+refresh-on-startup true
+reload-threads     4
 
 
 # podboat
@@ -64,7 +65,6 @@ unbind-key o
 unbind-key p
 unbind-key s
 unbind-key t
-
 
 bind-key h quit
 bind-key j down
