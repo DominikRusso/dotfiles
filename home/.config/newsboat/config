@@ -1,7 +1,6 @@
 # feeds
 
 max-items          9999
-refresh-on-startup true
 reload-threads     4
 
 
