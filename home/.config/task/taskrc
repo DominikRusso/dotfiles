@@ -40,18 +40,18 @@ urgency.user.tag.next.coefficient   = 50.0   # +next tag
 urgency.due.coefficient             = 15.0   # overdue or near due date
 urgency.active.coefficient          =  6.0   # already started tasks
 urgency.scheduled.coefficient       =  4.0   # scheduled tasks
-urgency.blocking.coefficient        =  2.5   # blocking other tasks
-urgency.age.coefficient             =  1.5   # coefficient for age
-urgency.annotations.coefficient     =  1.0   # has annotations
-urgency.project.coefficient         =  1.0   # assigned to any project
-urgency.tags.coefficient            =  1.0   # has tags
+urgency.blocking.coefficient        =  2.0   # blocking other tasks
+urgency.age.coefficient             =  0.0   # coefficient for age
+urgency.annotations.coefficient     =  0.0   # has annotations
 urgency.blocked.coefficient         =  0.0   # blocked by other tasks
-urgency.waiting.coefficient         = -5.0   # waiting task
+urgency.project.coefficient         =  0.0   # assigned to any project
+urgency.tags.coefficient            =  0.0   # has tags
+urgency.waiting.coefficient         = -9.0   # waiting task
 
 uda.priority.values                 = H,,L # high, none, low
-urgency.uda.priority.H.coefficient  =  7.0   # high priority
+urgency.uda.priority.H.coefficient  = 10.0   # high priority
 urgency.uda.priority..coefficient   =  0.0   # no priority
-urgency.uda.priority.L.coefficient  = -4.0   # low priority
+urgency.uda.priority.L.coefficient  = -5.0   # low priority
 
 
 ## SECURITY ###################################################################
@@ -79,14 +79,19 @@ report.completed.sort   = end-    # most recent first
 report.list.labels      = ID,Urg,Dep,P,Project,Tags,R,Sched,Due,Until,Description,Age
 report.list.columns     = id,urgency,depends.count,priority,project,tags,recur.indicator,scheduled,due,until.remaining,description.count,entry.age
 
+report.ls.labels        = ID,D,Tags,R,Wait,Sch,Due,Until,Project,Description
+report.ls.columns       = id,depends.count,tags,recur.indicator,wait.remaining,scheduled.relative,due.relative,until.relative,project,description.count
+report.ls.sort          = due+
+report.ls.filter        = status:pending
+
 report.minimal.labels   = ID,Project,Description
 report.minimal.columns  = id,project,description.count
 
-report.next.description = "Tasks due soonest"
-report.next.labels      = ID,Dep,P,Project,Sch,Due,Description
-report.next.columns     = id,depends.count,priority,project,scheduled.remaining,due.remaining,description.count
+report.next.description = "Most urgent tasks"
+report.next.labels      = ID,Dep,P,Sched,Due,Project,Description,Urg
+report.next.columns     = id,depends.count,priority,scheduled.relative,due.relative,project,description.count,urgency.integer
 report.next.filter      = status:pending limit:page (scheduled.before:1w or due.before:1m)
-report.next.sort        = due+,urgency-
+report.next.sort        = urgency-,due+
 
 report.newest.filter    = status:pending or status:waiting limit:page
 report.newest.sort      = entry-,modified-
@@ -123,7 +128,7 @@ color.completed           =
 color.debug               =
 color.deleted             =
 color.due                 = red
-color.due.today           = rgb400
+color.due.today           = red
 color.error               = white on red
 color.footnote            = color3
 color.header              = color3
