@@ -276,10 +276,6 @@ au FileType gitcommit set spell
 " TeX
 " default to LaTeX when editing tex files
 let g:tex_flavor='latex'
-" replace concealed text with char defined in listchars (except on cursor line)
-set conceallevel=1
-" conceal accents, stylization, math symbols and greek letters
-let g:tex_conceal='abgm'
 
 
 " =============================================================================
@@ -291,4 +287,3 @@ set secure
 
 " disable modelines
 let g:secure_modelines_allowed_items = []
-
