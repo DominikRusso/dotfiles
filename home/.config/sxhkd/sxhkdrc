@@ -18,11 +18,22 @@ alt + o ; b
 
 # open {terminal progams}
 alt + o ; {a,c,h,m,n,v}
-	alacritty -e {alsamixer,calcurse,htop,cmus,newsboat,nvim}
+	alacritty -e {\
+        alsamixer,\
+        calcurse,\
+        htop,\
+        cmus,\
+        newsboat,\
+        nvim\
+    }
 
 # system {commands}
 super + s ; {h, r, s}
-	dmenu_prompt {"Hibernate?" "systemctl hibernate","Reboot?" "sudo -A reboot","Shutdown?" "sudo -A shutdown -h now"}
+	dmenu_prompt {\
+        "Hibernate?" "systemctl hibernate",\
+        "Reboot?" "sudo -A reboot",\
+        "Shutdown?" "sudo -A shutdown -h now"\
+    }
 super + s ; z
 	systemctl suspend
 
@@ -62,7 +73,10 @@ alt + Escape
 
 # hide/show
 alt + b
-    polybar-msg cmd {hide && bspc config bottom_padding 0,show}
+    polybar-msg cmd {\
+        hide && bspc config bottom_padding 0,\
+        show\
+    }
 
 
 #
@@ -70,34 +84,39 @@ alt + b
 #
 
 # exit/restart bspwm
-alt + ctrl + {e,r}
-	bspc {quit,wm -r}
+alt + ctrl + {e, r}
+	bspc {quit, wm -r}
 
 # close node
-alt + ctrl + c
+alt + shift + c
 	bspc node -c
 alt + shift + q
 	bspc node -c
 
 # set the node state
-alt + s ; {t,f,m}
-	bspc node -t {tiled,floating,fullscreen}
+alt + s ; {t, f, m}
+	bspc node -t {tiled, floating, fullscreen}
 
 # set the node flags
-alt + f ; {m,l,s,p}
-	bspc node -g {marked,locked,sticky,private}
+alt + f ; {m, l, s, p}
+	bspc node -g {marked, locked, sticky, private}
 
-# focus/swap the node in the given direction
-alt + {_,shift + }{h,j,k,l}
-	bspc node -{f,s} {west,south,north,east}
+# focus the node in the given direction
+alt + {h,j,k,l}
+	bspc node -f {west,south,north,east}
+
+# move/swap the node in the given direction
+alt + shift + {h,j,k,l}
+    { dir=west  dx=-20 dy=0   \
+    , dir=south dx=0   dy=20  \
+    , dir=north dx=0   dy=-20 \
+    , dir=east  dx=20  dy=0   \
+    }; \
+	bspc node -v "$dx" "$dy" || bspc node -s "$dir"
 
 # focus the next/previous node on the current desktop
 alt + {_,shift + } n
 	bspc node -f {next,prev}.local
-
-# focus the next/previous desktop on the current monitor
-alt + bracket{left,right}
-	bspc desktop -f {prev,next}.local
 
 # focus the last desktop
 alt + Tab
@@ -124,7 +143,7 @@ alt + ctrl + space
 	bspc node -p cancel
 
 # cancel all preselections for the focused desktop
-alt + shift + space
+alt + control + shift + space
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 # expand a window by moving one of its sides outward
@@ -134,8 +153,3 @@ alt + super + {h,j,k,l}
 # contract a window by moving one of its sides inward
 alt + super + shift + {h,j,k,l}
 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
-
-# move a floating window
-super + {h,j,k,l}
-	bspc node -v {-20 0,0 20,0 -20,20 0}
-
