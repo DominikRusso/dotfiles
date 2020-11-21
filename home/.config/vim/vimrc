@@ -53,23 +53,25 @@ filetype plugin indent on
 call plug#begin('~/.config/vim/plugged')
 
 " general enhancements
-Plug '/usr/local/opt/fzf'            " use local fzf
-Plug 'airblade/vim-rooter'           " set working dir to proj root
+Plug '/usr/local/opt/fzf'
+Plug 'airblade/vim-rooter'
 Plug 'ciaranm/securemodelines'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'sirver/ultisnips'
-Plug 'tpope/vim-commentary'          " commenting stuff out
-Plug 'tpope/vim-fugitive'            " git wrapper
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 
-" syntactic language support
+" language support
 Plug 'lervag/vimtex'
 Plug 'rust-lang/rust.vim'
 
 " visual enhancements
-Plug 'itchyny/lightline.vim'         " status line
+Plug 'itchyny/lightline.vim'
 
 call plug#end()
 
