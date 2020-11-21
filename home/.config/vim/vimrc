@@ -1,21 +1,4 @@
-" Sections
-"   -> General
-"   -> Plugins
-"   -> Plugin Customization
-"   -> Navigation
-"   -> Meta Navigation
-"   -> Indenting
-"   -> Searching
-"   -> Deleting
-"   -> Visual & UI
-"   -> Behavior & Commands
-"   -> File Type Specific Stuff
-"   -> Security
-
-
-" =============================================================================
-" => General
-" =============================================================================
+" => General {{{
 
 " disable vi backward compatibility
 set nocompatible
@@ -45,10 +28,9 @@ set tw=0
 
 filetype plugin indent on
 
+" }}}
 
-" =============================================================================
-" => Plugins
-" =============================================================================
+" => Plugins {{{
 
 call plug#begin('~/.config/vim/plugged')
 
@@ -75,10 +57,9 @@ Plug 'itchyny/lightline.vim'
 
 call plug#end()
 
+" }}}
 
-" =============================================================================
-" => Plugin Customization
-" =============================================================================
+" => Plugin Customization {{{
 
 " lightline
 let g:lightline = {
@@ -105,10 +86,9 @@ let g:vimtex_quickfix_mode=0
 " set pdfviewer to zathura
 let g:vimtex_view_method='zathura'
 
+" }}}
 
-" =============================================================================
-" => Navigation
-" =============================================================================
+" => In-Buffer Navigation {{{
 
 " disable arrow keys in all modes except command mode
 noremap <up> <nop>
@@ -122,10 +102,9 @@ inoremap <right> <nop>
 
 nnoremap <leader>r :Rooter<CR>
 
+" }}}
 
-" =============================================================================
-" => Meta Navigation
-" =============================================================================
+" => Meta Navigation {{{
 
 " split in TTB and LTR directions
 set splitbelow splitright
@@ -143,10 +122,9 @@ nnoremap <right> :bn<CR>
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 
+" }}}
 
-" =============================================================================
-" => Indenting
-" =============================================================================
+" => Indenting {{{
 
 " copy indent onto next line
 set autoindent
@@ -160,10 +138,9 @@ set breakindent
 " the editorconfig plugin handles tabstop,
 " softtabstop, shiftwidth and expandtab
 
+" }}}
 
-" =============================================================================
-" => Searching
-" =============================================================================
+" => Searching {{{
 
 " case insensitive search
 set ignorecase
@@ -172,17 +149,16 @@ set ignorecase
 set smartcase
 
 
-" =============================================================================
-" => Deleting
-" =============================================================================
+" }}}
+
+" => Deleting {{{
 
 " backspace over everything in insert mode
 set backspace=indent,eol,start
 
+" }}}
 
-" =============================================================================
-" => Visual & UI
-" =============================================================================
+" => Visual & UI {{{
 
 " enable syntax highlighting
 syntax on
@@ -229,10 +205,9 @@ let &t_SR = "\<Esc>[4 q"
 " solid block cursor in normal mode
 let &t_EI = "\<Esc>[2 q"
 
+" }}}
 
-" =============================================================================
-" => Behavior & Commands
-" =============================================================================
+" => Behavior & Commands {{{
 
 " allow saving files as root when vim not invoked as such
 cmap w!! w !sudo tee >/dev/null %
@@ -266,10 +241,9 @@ augroup numbertoggle
     au BufLeave,FocusLost   * set norelativenumber
 augroup END
 
+" }}}
 
-" =============================================================================
-" => File Type Specific Stuff
-" =============================================================================
+" => File Type Specific Settings {{{
 
 " git commit messages
 " turn on spell check in git commits
@@ -279,13 +253,17 @@ au FileType gitcommit set spell
 " default to LaTeX when editing tex files
 let g:tex_flavor='latex'
 
+" }}}
 
-" =============================================================================
-" => Security
-" =============================================================================
+" => Security {{{
 
 " disable commands being run from local .vimrcs and .exrcs
 set secure
 
-" disable modelines
-let g:secure_modelines_allowed_items = []
+" disable most modeline settings
+let g:secure_modelines_allowed_items = [
+            \ "foldmethod", "fdm"
+            \ ]
+"}}}
+
+" vim: fdm=marker
