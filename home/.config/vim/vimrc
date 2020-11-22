@@ -23,6 +23,9 @@ set nowritebackup
 " don't break in the middle of a word
 set linebreak
 
+" no double spacing after punctuation when joining lines
+set nojoinspaces
+
 " stop lines being broken at 80 chars
 set tw=0
 
@@ -119,8 +122,15 @@ nnoremap <C-l> <C-w>l
 nnoremap <left> :bp<CR>
 nnoremap <right> :bn<CR>
 
-nnoremap <leader>f :Files<CR>
-nnoremap <leader>b :Buffers<CR>
+" depends on fzf
+nnoremap <leader>fb :Buffers<CR>
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>fh :History<CR>
+nnoremap <leader>fch :History:<CR>
+nnoremap <leader>fl :Lines<CR>
+nnoremap <leader>fm :Marks<CR>
+" additionally depends on UltiSnips
+nnoremap <leader>fs :Snippets<CR>
 
 " }}}
 
@@ -190,7 +200,7 @@ set wildmode=list:longest
 " show matching brackets
 set showmatch
 
-" don't move cursor back
+" but don't move cursor back
 set mat=0
 
 " disable error bells
