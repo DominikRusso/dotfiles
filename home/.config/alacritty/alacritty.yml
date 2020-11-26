@@ -214,22 +214,22 @@ colors:
   #
   # Allowed values are CellForeground and CellBackground, which reference the
   # affected cell, or hexadecimal colors like #ff00ff.
-  #selection:
-  #  text: CellBackground
-  #  background: CellForeground
+  selection:
+    text: '#dddddd'
+    background: '#444444'
 
   # Search colors
   #
   # Colors used for the search bar and match highlighting.
-  #search:
+  search:
     # Allowed values are CellForeground and CellBackground, which reference the
     # affected cell, or hexadecimal colors like #ff00ff.
-    #matches:
-    #  foreground: '#000000'
-    #  background: '#ffffff'
-    #focused_match:
-    #  foreground: CellBackground
-    #  background: CellForeground
+    matches:
+      foreground: '#000000'
+      background: '#ffffff'
+    focused_match:
+      foreground: '#000000'
+      background: '#ffff00'
 
     #bar:
     #  background: '#c5c8c6'
@@ -238,13 +238,13 @@ colors:
   # Normal colors
   normal:
     black:   '#000000'
-    red:     '#cc0000'
-    green:   '#44cc55'
-    yellow:  '#eebb00'
-    blue:    '#0044ff'
-    magenta: '#aa00ee'
-    cyan:    '#00aaee'
-    white:   '#eaeaea'
+    red:     '#aa0000'
+    green:   '#00aa00'
+    yellow:  '#eeaa00'
+    blue:    '#0033aa'
+    magenta: '#5500aa'
+    cyan:    '#00aaaa'
+    white:   '#cccccc'
 
   # Bright colors
   bright:
@@ -252,8 +252,8 @@ colors:
     red:     '#ff0000'
     green:   '#00ff00'
     yellow:  '#ffff00'
-    blue:    '#0066ff'
-    magenta: '#ee44ee'
+    blue:    '#0099ff'
+    magenta: '#ff00ee'
     cyan:    '#00ffff'
     white:   '#ffffff'
 
