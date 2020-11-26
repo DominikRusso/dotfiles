@@ -1,9 +1,9 @@
 "  27 DodgerBlue2
 "  33 DodgerBlue1
-" 238 Gray27
+" 240 Gray35
 
 " Major Syntax Groups
-hi Comment      cterm=none      ctermfg=238         ctermbg=none
+hi Comment      cterm=none      ctermfg=240         ctermbg=none
 hi Constant     cterm=none      ctermfg=Gray        ctermbg=none
 hi Identifier   cterm=none      ctermfg=Gray        ctermbg=none
 hi Normal       cterm=none      ctermfg=Gray        ctermbg=none
