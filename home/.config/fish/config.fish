@@ -96,10 +96,10 @@ set -x fish_color_autosuggestion 555 brblack
 set -x fish_color_cancel -r
 set -x fish_color_command white
 set -x fish_color_comment brblack
-set -x fish_color_cwd green
+set -x fish_color_cwd red --bold
 set -x fish_color_end bryellow
-set -x fish_color_error red
-set -x fish_color_host normal
+set -x fish_color_error brred
+set -x fish_color_host white --bold
 set -x fish_color_host_remote yellow
 set -x fish_color_match brblue
 set -x fish_color_normal white
@@ -109,10 +109,9 @@ set -x fish_color_quote brwhite
 set -x fish_color_redirection bryellow
 set -x fish_color_search_match --background=brblack
 set -x fish_color_selection white --bold --background=brblack
-set -x fish_color_status red
-set -x fish_color_user brgreen
+set -x fish_color_status brred --bold
+set -x fish_color_user white --bold
 set -x fish_color_valid_path -u
 set -x fish_pager_color_description yellow
 set -x fish_pager_color_prefix -u --bold
 set -x fish_pager_color_progress black --background=white
-
