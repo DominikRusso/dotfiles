@@ -89,6 +89,7 @@ set PATH ~/.local/bin $CARGO_HOME/bin $PATH
 # program settings
 set -x FZF_DEFAULT_OPTS '--layout=reverse --height 25%'
 set -x LS_COLORS 'di=0:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;'
+set -x SXHKD_SHELL 'dash'
 
 # fish colors
 set -x fish_color_autosuggestion 555 brblack
