@@ -1,109 +1,154 @@
-snippet article "Article" b
+snippet article "An article from a journal or magazine." b
 @article{${1:key},
-	author={${2:authors, separated by "and"}},
-	title={${3:title}},
-	journal={${4:journal}},
-	year={${5:YYYY}},
-
-	month={${6:month}},
-	number={${7:NN}},
-	pages={${8:NN}--${9:NN}},
-	volume={${10:NN}}
+	author      = {$2},
+	title       = {$3},
+	year        = {$4},
+	_month      = {$5},
+	journal     = {$6},
+	_volume     = {$7},
+	_number     = {$8},
+	_pages      = {$9},
+	_numpages   = {$10--$11},
+	_issue_date = {$12},
+	_publisher  = {$13},
+	_address    = {$14},
+	_doi        = {$15},
 }
+
 $0
 endsnippet
 
 ##########
 
-snippet book "Book" b
+snippet book "A book with an explicit publisher." b
 @book{${1:key},
-	author={${2:authors, separated by "and"}},
-	title={${3:title}},
-	publisher={${4:publisher}},
-	year={${5:YYYY}},
-
-	address={${6:location}},
-	edition={${7:edition}},
-	number={${9:number}},
-	//volume={${13:volume}},
-	pages={${10:NN}--${11:NN}},
-	series={${12:series}},
+	author     = {$2},
+	title      = {$3},
+	year       = {$4},
+	_month     = {$5},
+	publisher  = {$6},
+	_address   = {$7},
+	_series    = {$8},
+	_edition   = {$9},
+	_volume    = {$10},
+	_or_number = {$11},
 }
+
 $0
 endsnippet
 
 ##########
 
-snippet inbook "InBook" b
+snippet booklet "A bound work without a named publisher or sponsor." b
+@booklet{${1:key},
+	_author       = {$2},
+	title         = {$3},
+	_howpublished = {$4},
+	_address      = {$5},
+	_year         = {$6},
+	_month        = {$7},
+}
+
+$0
+endsnippet
+
+##########
+
+snippet inbook "A section of a book without its own title." b
 @inbook{${1:key},
-	author={${2:authors, separated by "and"}},
-	title={${3:title}},
-	chapter={${4:chapter}},
-	publisher={${5:publisher}},
-	year={${6:YYYY}},
-
-	address={${7:location}},
-	edition={${8:edition}},
-	number={${10:number}},
-	//volume={${14:volume}},
-	pages={${11:NN}--${12:NN}},
-	series={${13:series}},
+	author     = {2$},
+	title      = {3$},
+	year       = {4$},
+	_month     = {5$},
+	publisher  = {6$},
+	_address   = {7$},
+	_series    = {8$},
+	_edition   = {9$},
+	_volume    = {10$},
+	_or_number = {11$},
+	chapter    = {12$},
+	pages      = {13$},
 }
+
 $0
 endsnippet
 
 ##########
 
-snippet incollection "InCollection" b
+snippet incollection "A section of a book having its own title." b
 @incollection{${1:key},
-	author={${2:authors of article, separated by "and"}},
-	title={${3:title of article}},
-	booktitle={${4:title of book containing article}},
-	publisher={${5:publisher}},
-	year={${6:YYYY}},
-
-	address={${7:location}},
-	chapter={${8:chapter}},
-	edition={${9:edition}},
-	editor={${10:editor}},
-	number={${11:number}},
-	//volume={${12:volume}},
-	pages={${13:NN}--${14:NN}},
-	series={${15:series}},
+	author     = {$2},
+	title      = {$3},
+	booktitle  = {$4},
+	year       = {$5},
+	_month     = {$6},
+	_editor    = {$7},
+	publisher  = {$8},
+	_address   = {$9},
+	_series    = {$10},
+	_edition   = {$11},
+	_volume    = {$12},
+	_or_number = {$13},
+	_chapter   = {$14},
+	_pages     = {$15},
 }
+
 $0
 endsnippet
 
 ##########
 
-snippet inproceedings "InProceedings" b
+snippet inproceedings "An article in a conference proceedings." b
 @inproceedings{${1:key},
-	author={${2:authors of article, separated by "and"}},
-	title={${3:title of article}},
-	booktitle={${4:title of book containing article}},
-	year={${5:YYYY}},
-
-	address={${6:location}},
-	editor={${7:editor}},
-	number={${8:number}},
-	//volume={${9:volume}},
-	organization={${10:organization}},
-	pages={${11:NN}--${12:NN}},
-	publisher={${13:publisher}},
-	series={${14:series}},
+	author        = {$2},
+	title         = {$3},
+	booktitle     = {$4},
+	year          = {$5},
+	_month        = {$6},
+	_organization = {$7},
+	_publisher    = {$8},
+	_address      = {$9},
+	_editor       = {$10},
+	_series       = {$11},
+	_volume       = {$12},
+	_or_number    = {$13},
+	_pages        = {$13},
 }
+
 $0
 endsnippet
 
 ##########
 
-snippet misc "Misc" b
-@misc{${1:key},
-	author={${2:authors of article, separated by "and"}},
-	title={${3:title of article}},
-	howpublished={${4:howpublished}},
-	year={${5:YYYY}}
+snippet proceedings "The proceedings of a conference." b
+@proceedings{${1:key},
+	title         = {$2},
+	year          = {$3},
+	_month        = {$4},
+	_organization = {$5},
+	_publisher    = {$6},
+	_address      = {$7},
+	_editor       = {$8},
+	_series       = {$9},
+	_volume       = {$10},
+	_or_number    = {$11},
 }
+
 $0
 endsnippet
 
+##########
+
+snippet misc "Other" b
+@misc{${1:key},
+	_author       = {$2},
+	title         = {$3},
+	_howpublished = {$4},
+	_year         = {$5},
+	_month        = {$6},
+}
+
+$0
+endsnippet
+
+##########

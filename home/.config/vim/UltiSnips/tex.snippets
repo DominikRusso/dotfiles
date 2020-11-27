@@ -1,26 +1,100 @@
 snippet template "default template" b
-\documentclass[a4paper,11pt]{article}
+\RequirePackage[l2tabu, orthodox]{nag} % warnings about obsolete latex commands
 
-\usepackage[margin=2.5cm]{geometry}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath, amssymb}
+\documentclass[
+	11pt,
+	a4paper,
+	USenglish
+]{article}
+
+%%%%%%%%%%%%%
+% Essential %
+%%%%%%%%%%%%%
+\usepackage[T1]{fontenc} % 8-bit encoded font, native umlaut support
+\usepackage[margin=25mm]{geometry} % interface to document dimensions
+\usepackage[utf8]{inputenc} % allow UTF-8 characters as input
+\usepackage{microtype} % subliminal refinements towards typographical perfection
+
+%%%%%%%%%%%
+% General %
+%%%%%%%%%%%
+\usepackage[style=alphabetic]{biblatex} % sophisticated bibliographies
+\usepackage{booktabs} % publication quality tables
+\usepackage{cancel} % diagonal strikethrough
+\usepackage{caption} % customize captions in floating environments
+\usepackage{changepage} % local margin adjustment
+\usepackage{enumitem} % control layout of itemize, enumerate, description
+\usepackage{fancyhdr} % extensive control of page headers and footers
+\usepackage{float} % improved interface for floating objects
+\usepackage{hyperref} % embedded hypertext links
+\usepackage[iso]{isodate} % non-insane date format
+% \usepackage{parskip} % zero parindent and non-zero parskip
+\usepackage{titlesec} % customize section titles
+\usepackage[dvipsnames]{xcolor} % driver independent color extension
+
+\hypersetup{ % options for hyperref package
+	colorlinks = true, % color links instead of enclosing in boxes
+	citecolor  = {green!50!black}, % color of citations
+	linkcolor  = {green!50!black}, % color of internal links
+	urlcolor   = black, % color for external hyperlinks
+}
+
+%%%%%%%%
+% Code %
+%%%%%%%%
+\usepackage{algpseudocode} % pseudocode
+\usepackage{cryptocode} % pseudocode and protocols in cryptography
+\usepackage{listings} % source code
+
+%%%%%%%%%%%%
+% Graphics %
+%%%%%%%%%%%%
+\usepackage{graphicx} % insert external graphics
+\usepackage{tikz} % draw graphics
+
+%%%%%%%%%%%%
+% Language %
+%%%%%%%%%%%%
 \usepackage{babel}
-\usepackage{enumitem}
-\usepackage{titlesec}
-\usepackage{url}
-\usepackage{xcolor}
+\usepackage{csquotes} % localized quotation marks
+% german
+% set naustrian or ngerman as an option to documentclass
 
-\frenchspacing              % single space between sentences
+% japanese
+% \usepackage{CJKutf8} % support for various asian scripts in uft8
+% \usepackage{ipaex-type1} % provides superior `ipxm` font family for japanese
 
-\setlength{\parskip}{11pt}  % space between paragraphs
-\setlength{\parindent}{0pt} % indentation of paragraphs
+%%%%%%%%
+% Math %
+%%%%%%%%
+\usepackage{amsmath} % math enhancements
+\usepackage{amssymb} % extra math symbols
+\usepackage{amsthm} % theorems
+\usepackage{array} % improvements to the column specification of the array environment
+\usepackage{bm} % bold symbols in math mode
+\usepackage{bussproofs} % proof trees in the style of the sequent calculus
+\usepackage{pifont} % postscript standard symbols and dingbats
+\usepackage[tableau]{prooftrees} % proof trees in the style of the semantic tableau
+\usepackage{siunitx} % units
+\usepackage{stmaryrd} % additional symbols for math and computer science
+
+% definition for pifont glyphs
+\def\crossmark{\text{\ding{55}}}
+
+%%%%%%%%%%%
+% Options %
+%%%%%%%%%%%
+\frenchspacing % one space between sentences
+% \addbibresource{bibtex.bib}
 
 
 \begin{document}
-	$0
+\author{Dominik Russo}
+\title{Title}
+\maketitle
+$0
+% \printbibliography
 \end{document}
-
 endsnippet
 
 ##########
@@ -41,9 +115,18 @@ endsnippet
 
 ##########
 
+snippet "desc(ription)?" "description" br
+\begin{description}
+	\item $0
+\end{description}
+endsnippet
+
+##########
+
 snippet "item(ize)?" "itemize" br
 \begin{itemize}
 	\item $0
 \end{itemize}
 endsnippet
 
+##########

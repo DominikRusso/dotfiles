@@ -1,13 +1,17 @@
-snippet Inc "#include system header" b
-#include <$1.h>
-$0
+snippet inc "#include generic" b
+#include $0
 endsnippet
 
 ##########
 
-snippet inc "#include user header" b
-#include "$1.h"
-$0
+snippet < "#include system header" b
+#include <$0.h>
+endsnippet
+
+##########
+
+snippet " "#include user header" b
+#include "$0.h"
 endsnippet
 
 ##########
@@ -18,7 +22,6 @@ main(int argc, char *argv[])
 {
 	$0
 }
-
 endsnippet
 
 ##########
