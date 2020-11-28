@@ -15,7 +15,7 @@ hi Underlined   cterm=underline ctermfg=none        ctermfg=none
 
 " Minor Syntax Groups
 hi Character    cterm=none      ctermfg=White       ctermbg=none
-hi MatchParen   cterm=none      ctermfg=Black       ctermbg=White
+hi MatchParen   cterm=none      ctermfg=Black       ctermbg=Gray
 hi Operator     cterm=none      ctermfg=White       ctermbg=none
 hi SpecialChar  cterm=none      ctermfg=White       ctermbg=none
 hi String       cterm=none      ctermfg=White       ctermbg=none
@@ -34,7 +34,7 @@ hi DiffText     cterm=none      ctermfg=Black       ctermbg=27
 hi Error        cterm=none      ctermfg=Black       ctermbg=DarkRed
 hi IncSearch    cterm=none      ctermfg=Black       ctermbg=Yellow
 hi LineNr       cterm=none      ctermfg=238         ctermbg=none
-hi Search       cterm=none      ctermfg=Black       ctermbg=White
+hi Search       cterm=none      ctermfg=Black       ctermbg=Gray
 hi SignColumn   cterm=none      ctermfg=none        ctermbg=none
 hi SpecialKey   cterm=none      ctermfg=Black       ctermbg=White
 hi SpellBad     cterm=underline ctermfg=Red         ctermbg=none
@@ -44,4 +44,3 @@ hi Todo         cterm=none      ctermfg=Black       ctermbg=Green
 
 hi! link diffCommon Normal
 hi! link EndOfBuffer LineNr     " filler '~'
-
