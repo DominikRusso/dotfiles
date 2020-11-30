@@ -1,7 +1,7 @@
 # feeds
 
-max-items          9999
-reload-threads     4
+reload-threads  4
+max-items       9999
 
 
 # podboat
@@ -14,19 +14,18 @@ player                  mpv
 # UI
 
 text-width 80
-scrolloff 2
 
 show-keymap-hint no
 
-color article           color248 default
+color article           white default
 color info              red default bold
-color listfocus         color244 black standout bold
-color listfocus_unread  white color244 bold
-color listnormal        color248 default
-color listnormal_unread white default bold
+color listfocus         color8 black standout bold
+color listfocus_unread  color15 color8 bold
+color listnormal        color7 default
+color listnormal_unread color15 default bold
 
-highlight feedlist ".+\\(0/0\\) " black
-highlight feedlist "[A-z]+ $" yellow
+highlight feedlist ".+\\(0/0\\) " default default invis
+highlight feedlist "[A-z]+ $" yellow default
 
 
 # navigation
@@ -64,6 +63,7 @@ unbind-key o
 unbind-key p
 unbind-key s
 unbind-key t
+
 
 bind-key h quit
 bind-key j down
