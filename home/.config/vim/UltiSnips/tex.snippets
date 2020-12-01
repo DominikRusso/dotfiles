@@ -78,6 +78,12 @@ snippet template "default template" b
 \usepackage{siunitx} % units
 \usepackage{stmaryrd} % additional symbols for math and computer science
 
+% redefine normal and var variants of greek letters
+\let\origphi\phi
+\let\phi\varphi
+\let\origepsilon\epsilon
+\let\epsilon\varepsilon
+
 % definition for pifont glyphs
 \def\crossmark{\text{\ding{55}}}
 
