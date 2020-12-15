@@ -10,6 +10,7 @@ autoconf
 automake
 base
 bat
+biber
 bind
 binutils
 bison
@@ -116,6 +117,7 @@ read-edid
 redshift
 ripgrep
 rsync
+rust-analyzer
 rustup
 scala
 screenkey
@@ -135,12 +137,15 @@ task
 texinfo
 texlive-bibtexextra
 texlive-core
+texlive-fontsextra
 texlive-formatsextra
 texlive-games
 texlive-latexextra
 texlive-pictures
 texlive-science
 tmux
+tor
+torsocks
 transmission-cli
 ttf-joypixels
 unclutter
@@ -160,9 +165,6 @@ xcompmgr
 xdg-user-dirs
 xdo
 xdotool
-xmobar
-xmonad
-xmonad-contrib
 xorg-server
 xorg-xev
 xorg-xinit
