@@ -20,7 +20,6 @@ bmon
 bspwm
 buildah
 calcurse
-chromium
 clang
 cmus
 cppcheck
@@ -81,6 +80,7 @@ mesa-vdpau
 mpv
 neofetch
 neovim
+net-tools
 netctl
 nethogs
 newsboat
