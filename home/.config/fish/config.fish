@@ -17,18 +17,24 @@ set fish_greeting
 # abbreviations
 abbr -a chmod 'chmod -v'
 abbr -a chown 'chown -v'
+abbr -a cl 'clear'
 abbr -a cp 'cp -iv'
-abbr -a ll 'ls -AFlh'
+abbr -a ipinfo 'curl ipinfo.io'
+abbr -a ll 'ls -AFhl' # list long
+abbr -a lm 'ls -1AFt' # last modified
 abbr -a ls 'ls -F'
 abbr -a mkdir 'mkdir -pv'
 abbr -a mv 'mv -iv'
+abbr -a myip 'curl ipinfo.io/ip'
 abbr -a nb 'newsboat'
 abbr -a nf 'neofetch'
 abbr -a open 'xdg-open'
 abbr -a qr 'qrencode -m 2 -t ansi'
 abbr -a rm 'rm -v'
 abbr -a sdn 'sudo shutdown -h now'
+abbr -a sha 'shasum -a 256'
 abbr -a sp 'sudo pacman'
+abbr -a untar 'tar -zxvf'
 abbr -a wttr 'curl v2.wttr.in'
 abbr -a yt 'youtube-dl -i --add-metadata'
 abbr -a yta 'youtube-dl -i -x --add-metadata --audio-format mp3'
@@ -72,6 +78,7 @@ set -x GNUPGHOME "$XDG_DATA_HOME/gnupg"
 set -x LESSHISTFILE "-"
 set -x MYSQL_HISTFILE "$XDG_CACHE_HOME/mysql_history"
 set -x MYVIMRC "$XDG_CONFIG_HOME/vim/vimrc"
+set -x NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME/npm/npmrc"
 set -x PYTHONSTARTUP "$XDG_CONFIG_HOME/python/pythonrc"
 set -x RANDFILE "$XDG_CACHE_HOME/rnd"
 set -x RIPGREP_CONFIG_PATH "$XDG_CONFIG_HOME/ripgrep/rgrc"
@@ -87,7 +94,7 @@ set -x XMONAD_CONFIG_DIR "$XDG_CONFIG_HOME/xmonad"
 set PATH ~/.local/bin $CARGO_HOME/bin $PATH
 
 # program settings
-set -x FZF_DEFAULT_OPTS '--layout=reverse --height 25%'
+set -x FZF_DEFAULT_OPTS '--reverse --height 25%'
 set -x LS_COLORS 'di=0:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;'
 set -x SXHKD_SHELL 'dash'
 
