@@ -406,9 +406,14 @@ nnoremap <leader>sg :setlocal spell! spelllang=de_de<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <leader>w :w<CR>
 
-
 " delete trailing whitespace on save
-au BufWritePre * silent! %s/\s\+$//e
+function! <SID>StripTrailingWhitespace()
+  let l = line(".")
+  let c = col(".")
+  keepp %s/\s\+$//e
+endfunction
+
+au BufWritePre * silent! :call StripTrailingWhitespace()
 
 " no auto-commenting on newline
 au FileType * setlocal fo-=c fo-=r fo-=o
