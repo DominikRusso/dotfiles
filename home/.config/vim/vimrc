@@ -40,7 +40,6 @@ call plug#begin('~/.config/vim/plugged')
 " general enhancements
 Plug '/usr/local/opt/fzf'
 Plug 'airblade/vim-rooter'
-Plug 'ciaranm/securemodelines'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
@@ -449,10 +448,6 @@ let g:tex_flavor='latex'
 " disable commands being run from local .vimrcs and .exrcs
 set secure
 
-" disable most modeline settings
-let g:secure_modelines_allowed_items = [
-            \ "foldmethod", "fdm"
-            \ ]
 "}}}
 
 " vim: fdm=marker
