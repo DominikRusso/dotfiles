@@ -35,6 +35,9 @@ filetype plugin indent on
 
 " => Plugins {{{
 
+set runtimepath^=~/.config/vim
+set runtimepath^=~/.config/vim/after
+
 call plug#begin('~/.config/vim/plugged')
 
 " general enhancements
@@ -300,6 +303,8 @@ set breakindent
 
 " the editorconfig plugin handles tabstop,
 " softtabstop, shiftwidth and expandtab
+" use shiftwidth value for softtabstop
+set softtabstop=-1
 
 " }}}
 
