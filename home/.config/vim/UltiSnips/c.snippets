@@ -1,4 +1,4 @@
-snippet inc "#include generic" b
+snippet "inc(lude)?" "#include generic" br
 #include $0
 endsnippet
 
@@ -33,3 +33,21 @@ if ($1) {
 endsnippet
 
 ##########
+
+snippet ifdef "ifdef" b
+#ifdef $1
+$0
+#endif /* $1 */
+endsnippet
+
+##########
+
+snippet ifndef "ifndef" b
+#ifndef $1
+$0
+#endif /* $1 */
+endsnippet
+
+##########
+
+# vim: fdm=syntax fdl=0
