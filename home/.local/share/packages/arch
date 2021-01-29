@@ -21,6 +21,7 @@ bspwm
 buildah
 calcurse
 clang
+cmake
 cmus
 cppcheck
 cpupower
@@ -115,6 +116,7 @@ r
 radare2
 read-edid
 redshift
+reptyr
 ripgrep
 rsync
 rust-analyzer
@@ -144,6 +146,7 @@ texlive-latexextra
 texlive-pictures
 texlive-science
 tmux
+tokei
 tor
 torsocks
 transmission-cli
