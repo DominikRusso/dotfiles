@@ -44,6 +44,8 @@ call plug#begin('~/.config/vim/plugged')
 Plug '/usr/local/opt/fzf'
 Plug 'airblade/vim-rooter'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'inkarkat/vim-AdvancedSorters'
+Plug 'inkarkat/vim-ingo-library'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-peekaboo'
@@ -274,9 +276,15 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" buffer navigation
+nnoremap <silent> [b :bp<CR>
+nnoremap <silent> ]b :bn<CR>
+nnoremap <silent> [B :bf<CR>
+nnoremap <silent> ]B :bl<CR>
+
 " left and right arrow keys switch buffers
-nnoremap <left> :bp<CR>
-nnoremap <right> :bn<CR>
+nnoremap <silent> <left> :bp<CR>
+nnoremap <silent> <right> :bn<CR>
 
 " depends on fzf
 nnoremap <leader>fb :Buffers<CR>
@@ -369,8 +377,8 @@ set scrolloff=3
 " enable wildmenu
 set wildmenu
 
-" complete longest string and show list
-set wildmode=list:longest
+" complete longest common match and show wildmenu
+set wildmode=longest:full,full
 
 " show matching brackets
 set showmatch
