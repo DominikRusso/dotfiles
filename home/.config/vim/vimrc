@@ -408,11 +408,14 @@ endif
 " allow saving files as root when vim not invoked as such
 cmap w!! w !sudo tee >/dev/null %
 
+" easy expansion of active file directory
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
 " unmap F1 from help
 map <F1> <Esc>
 imap <F1> <Esc>
 
-nnoremap <leader>m :!make<CR>
+nnoremap <leader>m :make<CR>
 nnoremap <leader>n :noh<CR>
 nnoremap <leader>se :setlocal spell! spelllang=en_us<CR>
 nnoremap <leader>sg :setlocal spell! spelllang=de_de<CR>
@@ -420,13 +423,13 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <leader>w :w<CR>
 
 " delete trailing whitespace on save
-function! <SID>StripTrailingWhitespace()
-  let l = line(".")
-  let c = col(".")
+function! StripTrailingWhitespace()
+  let l:view = winsaveview()
   keepp %s/\s\+$//e
+  call winrestview(l:view)
 endfunction
 
-au BufWritePre * silent! :call StripTrailingWhitespace()
+au BufWritePre * silent :call StripTrailingWhitespace()
 
 " no auto-commenting on newline
 au FileType * setlocal fo-=c fo-=r fo-=o
@@ -435,11 +438,13 @@ au FileType * setlocal fo-=c fo-=r fo-=o
 set autoread
 au BufEnter,CursorHold,FocusGained * checktime
 
-" absolute line numbering when not in focus
+" absolute + relative line numbering when buffer in focus
+" absolute line numbering when buffer not in focus
+" does not toggle if `number` has been disabled
 augroup numbertoggle
   autocmd!
-  au BufEnter,FocusGained * set relativenumber
-  au BufLeave,FocusLost   * set norelativenumber
+  au BufEnter,FocusGained * if (&number) | set relativenumber | endif
+  au BufLeave,FocusLost   * if (&number) | set norelativenumber | endif
 augroup END
 
 " }}}
