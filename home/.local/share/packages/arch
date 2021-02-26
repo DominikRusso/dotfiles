@@ -119,6 +119,7 @@ redshift
 reptyr
 ripgrep
 rsync
+ruby
 rust-analyzer
 rustup
 scala
@@ -161,6 +162,7 @@ vim
 wget
 which
 wireguard-tools
+wireshark-cli
 wpa_supplicant
 xcape
 xclip
