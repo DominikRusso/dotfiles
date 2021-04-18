@@ -1,29 +1,42 @@
+config.load_autoconfig(False) # don't read autoconfig.yaml
+
 config_dir = str(config.configdir)
 
-c.colors.tabs.bar.bg = "#000"
-c.colors.tabs.even.bg = "#000"
-c.colors.tabs.odd.bg = "#000"
-c.colors.tabs.selected.even.bg = "#555"
-c.colors.tabs.selected.odd.bg = "#555"
-c.completion.height = "100%"
-c.completion.open_categories = ["searchengines", "quickmarks", "bookmarks"]
+c.colors.tabs.bar.bg = '#000'
+c.colors.tabs.even.bg = '#000'
+c.colors.tabs.odd.bg = '#000'
+c.colors.tabs.selected.even.bg = '#555'
+c.colors.tabs.selected.odd.bg = '#555'
+c.colors.webpage.preferred_color_scheme = 'dark'
+c.completion.height = '100%'
+c.completion.open_categories = ['searchengines', 'quickmarks', 'bookmarks']
 c.completion.shrink = True
+c.content.autoplay = False
+c.content.canvas_reading = False
 c.content.javascript.enabled = False
-c.content.notifications = False
-c.editor.command = ["alacritty", "-e", "nvim", "{}"]
-c.statusbar.padding = {"bottom": 1, "left": 2, "right": 2, "top": 1}
-c.statusbar.widgets = ["keypress", "url", "scroll", "progress"]
+c.content.notifications.enabled = False
+c.downloads.location.directory = '~/downloads'
+c.downloads.location.prompt = False
+c.downloads.position = 'bottom'
+c.editor.command = ['alacritty', '-e', 'nvim', '{}']
+c.hints.chars = 'abcdefghijklmnopqrstuvwxyz'
+c.logging.level.console = 'warning'
+c.logging.level.ram = 'warning'
+c.scrolling.bar = 'never'
+c.statusbar.padding = {'bottom': 1, 'left': 2, 'right': 2, 'top': 1}
+c.statusbar.widgets = ['keypress', 'url', 'scroll', 'progress']
 c.tabs.favicons.scale = 0.95
 c.tabs.indicator.width = 0
 c.tabs.mousewheel_switching = False
-c.tabs.position = "left"
-c.tabs.show = "multiple"
-c.tabs.title.format = ""
+c.tabs.position = 'left'
+c.tabs.show = 'multiple'
+c.tabs.title.format = ''
 c.tabs.width = 25
 c.url.start_pages = [config_dir + '/web/startpage.html']
 c.window.hide_decoration = True
 
-config.bind('<Ctrl-m>', 'hint links spawn --detach mpv --force-window=immediate {hint-url}')
+# <Space> as the leader key
+config.bind('<Space>m', 'hint links spawn --detach mpv --force-window=immediate {hint-url}')
 
 # navigation in command mode using vim keys (like in fzf)
 config.bind('<Ctrl-j>', 'completion-item-focus next', mode='command')
