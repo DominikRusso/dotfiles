@@ -1,13 +1,13 @@
 # feeds
 
-reload-threads  4
-max-items       9999
+reload-threads  16
+max-items       999
 
 
 # podboat
 
 download-path           ~/media/podcasts/
-podcast-auto-enqueue    yes
+podcast-auto-enqueue    no
 player                  mpv
 
 
