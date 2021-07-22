@@ -31,6 +31,9 @@ set tw=0
 
 filetype plugin indent on
 
+" yank into system clipboard too
+set clipboard^=unnamedplus
+
 " }}}
 
 " => Plugins {{{
@@ -252,14 +255,14 @@ let g:vimtex_view_method='zathura'
 " => In-Buffer Navigation {{{
 
 " disable arrow keys in all modes except command mode
-noremap <up> <nop>
-noremap <down> <nop>
-noremap <left> <nop>
-noremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
 
 nnoremap <leader>r :Rooter<CR>
 
@@ -283,8 +286,8 @@ nnoremap <silent> [B :bf<CR>
 nnoremap <silent> ]B :bl<CR>
 
 " left and right arrow keys switch buffers
-nnoremap <silent> <left> :bp<CR>
-nnoremap <silent> <right> :bn<CR>
+nnoremap <silent> <Left> :bp<CR>
+nnoremap <silent> <Right> :bn<CR>
 
 " depends on fzf
 nnoremap <leader>fb :Buffers<CR>
@@ -309,10 +312,17 @@ set smartindent
 " preserve indentation on line wraps
 set breakindent
 
-" the editorconfig plugin handles tabstop,
-" softtabstop, shiftwidth and expandtab
 " use shiftwidth value for softtabstop
 set softtabstop=-1
+" use tabstop value for shiftwidth
+set shiftwidth=0
+
+" the editorconfig plugin and `ftplugin/after` handle
+" tabstop and expandtab
+
+" default values for when no filetype is detected
+set noexpandtab
+set tabstop=4
 
 " }}}
 
