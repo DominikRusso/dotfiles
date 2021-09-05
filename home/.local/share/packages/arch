@@ -43,6 +43,7 @@ fd
 ffmpeg
 figlet
 findutils
+firefox
 fish
 fzf
 gawk
@@ -50,6 +51,7 @@ gcc
 gdb
 ghc
 ghidra
+ghostscript
 git
 glances
 go
@@ -93,16 +95,17 @@ npm
 openmpi
 openresolv
 openssh
+p7zip
 pacgraph
 pacman-contrib
 pandoc
 patch
+perf
 perl-rename
 physlock
 pkgconf
 podman
 powertop
-proselint
 ps_mem
 pulseaudio
 pulseaudio-alsa
@@ -116,6 +119,7 @@ r
 radare2
 read-edid
 redshift
+remind
 reptyr
 ripgrep
 rsync
@@ -131,6 +135,7 @@ socat
 splint
 sqlite
 sqlmap
+stack
 stress
 sudo
 sxhkd
@@ -154,6 +159,7 @@ transmission-cli
 ttf-joypixels
 unclutter
 unzip
+urh
 usbutils
 valgrind
 vdpauinfo
@@ -186,3 +192,4 @@ zathura
 zathura-djvu
 zathura-pdf-mupdf
 zbar
+zsh
