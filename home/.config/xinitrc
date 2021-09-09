@@ -1,44 +1,46 @@
-# default WM
+#!/bin/sh
+
+# Set default WM.
 WM=bspwm
 
-# replace WM with $1 if exists
+# Replace WM with first argument if it exists.
 [ -n "$1" ] && WM="$1"
 
-# set correct display coordinates and parameters
-( setup-displays &&
-    # and then set wallpaper
-    xwallpaper --zoom "$XDG_CACHE_HOME"/wallpaper ) &
+# Start compositor
+xcompmgr &
+# and fix gray X background it causes.
+hsetroot -solid "#000000" &
 
-# set cursor size, etc.
+# Set custom display configuration
+( setup-displays ;
+    # and then set the wallpaper.
+    setbg ) &
+
+# Set X client parameters, like DPI, cursor size, etc.
 xrdb "$XDG_CONFIG_HOME"/xresources &
 
-# increase color temperature at night
+# Start redshift to increase color temperature at night.
 redshift &
 
-# hide mouse when idle
+# Hide mouse when idle.
 unclutter --timeout 3 &
-
-# enable transparency
-xcompmgr &
 
 # Caps_Lock is ctrl
 setxkbmap -option ctrl:nocaps &
-
-# but when pressed alone for less than 250ms Caps_Lock is Escape
+# but when pressed alone for less than 250ms it's Esc.
 xcape -t 250 -e '#66=Escape' &
 
-# fix for java GUIs (ghidra) in non-reparenting WMs
+# Fix for Java GUIs (ghidra) in non-reparenting WMs.
 export _JAVA_AWT_WM_NONREPARENTING=1 &
 
-# screen standy never, suspend never, off after 30 minutes
-# set key repeat delay to 400ms set rate to 30 keys per second
-# disable screen blanking
+# Screen standby: never; suspend: never; off: after 15 minutes.
+# Set key repeat delay to 400ms and rate to 30 keys per second.
+# Disable screen blanking.
 xset \
-    dpms 0 0 1800 \
+    dpms 0 0 900 \
     r rate 400 30 \
     s 0 \
     &
 
-# start window manager
+# Start the window manager.
 exec $WM
-
