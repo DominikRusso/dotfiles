@@ -14,27 +14,56 @@ set shuffle=false
 
 set show_remaining_time=false
 
-# " albumartist [(artist)] :: album :: number. title               year "
-set format_current= %A%{?albumartist!=artist? (%a)} :: %l :: %n. %t%=%-5y
-set format_playlist=%-20%a %3n. %t%= %y %d
-set format_playlist_va=%-20%A %3n. %t [%a]%= %y %d
-set format_trackwin=%3n. %t%= %y %d
-set format_trackwin_va=%3n. %t [%a]%= %y %d
-set format_trackwin_album= %l %= %{albumduration}
+# tree view album
+set format_trackwin_album= %{album} %= %{albumduration}
+# tree view track
+set format_trackwin=%3{tracknumber}. %{title}%= %{date} %{duration}
+# tree view track with album artist and artist
+set format_trackwin_va=%3{tracknumber}. %{title} [%{artist}]%= %{date} %{duration}
 
-set color_separator=40
-set color_titleline_bg=40
-set color_titleline_fg=black
-set color_win_cur=40
-set color_win_cur_sel_bg=245
-set color_win_cur_sel_fg=40
-set color_win_inactive_cur_sel_bg=236
-set color_win_inactive_cur_sel_fg=40
-set color_win_inactive_sel_bg=236
-set color_win_inactive_sel_fg=255
-set color_win_sel_bg=245
-set color_win_sel_fg=black
+# list item
+set format_playlist=%-20%{artist} %3{tracknumber}. %{title}%= %{date} %{duration}
+# list item with album artist and artist
+set format_playlist_va=%-20%{albumartist} %3{tracknumber}. %{title} [%{artist}]%= %{date} %{duration}
+
+# status line ( third to last line)
+# " albumartist [(artist)] :: album :: number. title               year "
+set format_current= %{albumartist}%{?albumartist!=artist? (%{artist})} :: %{album} :: %{tracknumber}. %{title}%=%-5{date}
+
+# colors
+
+# title line (top line)
 set color_win_title_bg=default
-set color_win_title_fg=40
-set color_win_title_fg=40
 set color_win_title_fg=default
+
+# currently playing list item
+set color_win_cur=green
+set color_win_cur_sel_bg=darkgray
+set color_win_cur_sel_fg=green
+
+# list items
+set color_win_inactive_sel_bg=black
+set color_win_inactive_sel_fg=gray
+
+# inactive selection (in tree or playlist view)
+set color_win_inactive_cur_sel_bg=black
+set color_win_inactive_cur_sel_fg=green
+
+# selected line
+set color_win_sel_bg=darkgray
+set color_win_sel_fg=black
+
+# separators in tree view
+set color_separator=darkgray
+
+# current song line (third to last line)
+set color_titleline_bg=darkgray
+set color_titleline_fg=black
+
+# status line (second to last line)
+set color_statusline_bg=black
+set color_statusline_fg=gray
+
+# command line (last line)
+set color_cmdline_bg=default
+set color_cmdline_fg=default
