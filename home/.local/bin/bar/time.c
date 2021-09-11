@@ -25,7 +25,7 @@ main()
 		rawtime = time(NULL);
 		ptm = localtime(&rawtime);
 		strftime(buf, BUFLEN, "%a %F %T", ptm);
-		printf(buf);
+		printf("%s\n", buf);
 		fflush(stdout);
 		gettimeofday(&tv, NULL);
 		ts.tv_nsec = 1010000000 - tv.tv_usec * 1000;
