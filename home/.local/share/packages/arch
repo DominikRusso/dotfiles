@@ -58,6 +58,7 @@ go
 grep
 grub
 gzip
+hsetroot
 htop
 imagemagick
 jdk-openjdk
