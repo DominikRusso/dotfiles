@@ -52,12 +52,14 @@ Plug 'inkarkat/vim-ingo-library'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-peekaboo'
+Plug 'qpkorr/vim-renamer'
 Plug 'sirver/ultisnips'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
+Plug 'vimwiki/vimwiki'
 
 " language support
 Plug 'lervag/vimtex'
@@ -249,6 +251,14 @@ let g:rooter_manual_only = 1
 let g:vimtex_quickfix_mode=0
 " set pdfviewer to zathura
 let g:vimtex_view_method='zathura'
+
+" vimwiki
+" disable the creation of temporary wikis
+let g:vimwiki_global_ext = 0
+" wiki config
+let g:vimwiki_list = [{'path': '~/docs/wiki/',
+                        \ 'syntax': 'markdown', 'ext': '.md',
+                        \ 'links_space_char': '-'}]
 
 " }}}
 
