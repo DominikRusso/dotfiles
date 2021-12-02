@@ -8,6 +8,7 @@ snippet "temp(late)?" "default template" br
 	USenglish
 ]{article}
 
+
 %%%%%%%%%%%%%
 % Essential %
 %%%%%%%%%%%%%
@@ -17,27 +18,30 @@ snippet "temp(late)?" "default template" br
 \usepackage[utf8]{inputenc} % allow UTF-8 characters as input
 \usepackage{microtype} % subliminal refinements towards typographical perfection
 
+
 %%%%%%%%%%%
 % General %
 %%%%%%%%%%%
 \usepackage{array} % improvements to the column specification of array and tabular
 \usepackage{arydshln} % dashed lines in array and tabular
 \usepackage[style=alphabetic]{biblatex} % sophisticated bibliographies
-\usepackage{booktabs} % publication quality tables
+% \usepackage{booktabs} % publication quality tables
 \usepackage{cancel} % diagonal strikethrough
 \usepackage{caption} % customize captions in floating environments
-\usepackage{changepage} % local margin adjustment
+% \usepackage{changepage} % local margin adjustment
+\usepackage{ellipsis} % proper ellipses
 \usepackage{enumitem} % control layout of itemize, enumerate, description
-\usepackage{fancyhdr} % extensive control of page headers and footers
+% \usepackage{fancyhdr} % extensive control of page headers and footers
 \usepackage{float} % improved interface for floating objects
 \usepackage{hyperref} % embedded hypertext links
 \usepackage[iso]{isodate} % non-insane date format
 % \usepackage{multicol} % multicolumn environment
-% \usepackage{parskip} % zero parindent and non-zero parskip
 \usepackage{siunitx} % units and decimal point aware column specification
-\usepackage{tabularx} % more versatile version of tabular*
-\usepackage{titlesec} % customize section titles
+% \usepackage{tabularx} % more versatile version of tabular*
+% \usepackage{titlesec} % customize section titles
 \usepackage[dvipsnames]{xcolor} % driver independent color extension
+
+% \usepackage{parskip} % zero parindent and non-zero parskip
 
 % options for hyperref package
 \hypersetup{
@@ -50,18 +54,29 @@ snippet "temp(late)?" "default template" br
 % options for isodate package
 \isodash{\capitalhyphen}
 
+
 %%%%%%%%
 % Code %
 %%%%%%%%
-\usepackage{algpseudocode} % pseudocode
-\usepackage{cryptocode} % pseudocode and protocols in cryptography
-\usepackage{listings} % source code
+% \usepackage{algpseudocode} % pseudocode
+% \usepackage{cryptocode} % pseudocode and protocols in cryptography
+% \usepackage{listings} % source code
+
 
 %%%%%%%%%%%%
 % Graphics %
 %%%%%%%%%%%%
 \usepackage{graphicx} % insert external graphics
-\usepackage{tikz} % draw graphics
+% \usepackage{tikz} % draw graphics
+
+% options for tikz
+% \usetikzlibrary{
+% 	arrows.meta,
+% 	backgrounds,
+% 	decorations.pathmorphing,
+% 	positioning,
+% 	shapes,
+% }
 
 %%%%%%%%%%%%
 % Language %
@@ -76,6 +91,7 @@ snippet "temp(late)?" "default template" br
 % \usepackage{CJKutf8} % support for various asian scripts in uft8
 % \usepackage{ipaex-type1} % provides superior ipxm font family for japanese
 
+
 %%%%%%%%
 % Math %
 %%%%%%%%
@@ -83,19 +99,20 @@ snippet "temp(late)?" "default template" br
 \usepackage{amssymb} % extra math symbols
 \usepackage{amsthm} % theorems
 \usepackage{bm} % bold symbols in math mode
-\usepackage{bussproofs} % proof trees in the style of the sequent calculus
+% \usepackage{bussproofs} % proof trees in the style of the sequent calculus
 \usepackage{mathdots} % font size respecting dots in math mode
 \usepackage{mathrsfs} % support for ralph smith's formal script in math mode
 \usepackage{pifont} % postscript standard symbols and dingbats
-\usepackage[tableaux]{prooftrees} % proof trees in the style of the semantic tableau
+% \usepackage[tableaux]{prooftrees} % proof trees in the style of the semantic tableau
 \usepackage{stmaryrd} % additional symbols for math and computer science
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % New Commands and Definitions %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % slightly raised and larger hyphen
-\newcommand{\capitalhyphen}{\raisebox{0.22ex}{\resizebox{0.4em}{\height}{-}}\kern-0.07em}
+\newcommand{\capitalhyphen}{\raisebox{0.20ex}{\resizebox{0.4em}{\height}{-}}\kern-0.05em}
 
 % shorthand for siunitx's S column type
 \newcolumntype{d}[1]{S[table-format={#1}]}
@@ -427,8 +444,8 @@ snippet "temp(late)?" "default template" br
 % >>>
 
 
-\author{Dominik Russo}
 \title{$1}
+\author{Dominik Russo}
 \date{\today}
 
 \begin{document}
