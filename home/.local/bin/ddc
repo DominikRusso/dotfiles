@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# user needs to be in the i2c group
+
+CMD="$1"
+VAL="$2"
+
+case "$CMD" in
+	bri)	ddcutil setvcp 10 "$VAL"
+esac
