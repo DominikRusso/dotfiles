@@ -1,0 +1,37 @@
+# TODO: fish like abbreviations
+alias bc='bc -ql'
+alias chmod='chmod -v'
+alias chown='chown -v'
+alias cl='clear'
+alias cp='cp -iv'
+alias ipinfo='curl ipinfo.io'
+alias ll='ls -Al' # list long
+alias lm='ls -1At' # last modified
+alias ls='ls -Fh --color=auto'
+alias mkdir='mkdir -pv'
+alias mv='mv -iv'
+alias myip='curl ipinfo.io/ip'
+alias nb='newsboat -q'
+alias open='xdg-open'
+alias open='xdg-open'
+alias qr='qrencode -m 2 -t ansi'
+alias rm='rm -v'
+alias sdn='sudo shutdown -h now'
+alias sha='sha256sum'
+alias sp='sudo pacman'
+alias sxiv='sxiv -a'
+alias untar='tar -zxvf'
+alias wttr='curl v2.wttr.in'
+alias yt='youtube-dl -i --add-metadata'
+alias yta='youtube-dl -i -x --add-metadata --audio-format mp3'
+
+# aliases
+alias diff='diff --color=auto'
+alias ffmpeg='ffmpeg -hide_banner'
+alias gdb="gdb -q -nh -x $XDG_CONFIG_HOME/gdb/init"
+alias R='R -q'
+alias r='R -q'
+alias startx="startx $XINITRC"
+alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
+alias vim='nvim'
+alias vimdiff='nvim -d'

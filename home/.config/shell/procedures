@@ -1,0 +1,23 @@
+# cd with fzf
+cdf() {
+	dir=$(fd . $HOME -t d --hidden --no-ignore \
+		| rg -v -e '\.git' \
+		| sed "s|$HOME|~|" | fzf | sed "s|~|$HOME|")
+	[ -d "$dir" ] && builtin cd "$dir"
+}
+
+# find file and open in vim
+vf() {
+	file=$(fd . $HOME -t f --hidden --no-ignore \
+		| rg -v \
+			-e '\.git/' \
+			-e '\.jpeg$' \
+			-e '\.jpg$' \
+			-e '\.mkv$' \
+			-e '\.mp3$' \
+			-e '\.mp4$' \
+			-e '\.ogg$' \
+			-e '\.png$' \
+		| sed "s|$HOME|~|" | fzf | sed "s|~|$HOME|")
+	[ -n "$file" ] && "$EDITOR" "$file"
+}

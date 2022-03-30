@@ -1,0 +1,49 @@
+# set lang
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+
+# default programs
+export BROWSER="firefox"
+export EDITOR="nvim"
+export PAGER="less"
+export READER="zathura"
+export SUDO_ASKPASS="$HOME/.local/bin/dmenu_askpass"
+export TERMINAL="alacritty"
+export VISUAL="nvim"
+
+# XDG
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+
+# clean up ~/
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export LESSHISTFILE="-"
+export MYSQL_HISTFILE="$XDG_CACHE_HOME/mysql/history"
+export MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
+export R_LIBS_USER="$XDG_DATA_HOME/r"
+export RANDFILE="$XDG_CACHE_HOME/rnd"
+export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/rgrc"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
+export VIMINIT="source $MYVIMRC"
+export XAUTHORITY="$XDG_RUNTIME_DIR/xauthority"
+export XINITRC="$XDG_CONFIG_HOME/xinitrc"
+export XMONAD_CONFIG_DIR="$XDG_CONFIG_HOME/xmonad"
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export ZSHCACHE="$XDG_CACHE_HOME/zsh"
+
+# program settings
+export DFX_TELEMETRY_DISABLED=1
+export FZF_DEFAULT_OPTS="--reverse --height 25%"
+export LESS="-iQR"
+export LS_COLORS="di=0:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;"
+export MOZ_USE_XINPUT2=1
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export SXHKD_SHELL="dash"
+
+# path
+export PATH="$HOME/.local/bin:$CARGO_HOME/bin:$PATH"
