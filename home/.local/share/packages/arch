@@ -24,8 +24,10 @@ bspwm
 calibre
 chromium
 clang
+cmake
 cmus
 cppcheck
+cpulimit
 cpupower
 cracklib
 cronie
@@ -194,6 +196,7 @@ haskell-zip-archive
 haskell-zlib
 hsetroot
 htop
+httpie
 hugo
 hunspell
 hunspell-de
@@ -203,6 +206,7 @@ isync
 java-environment-common
 java-runtime-common
 jdk-openjdk
+jq
 jre-openjdk
 jre-openjdk-headless
 keepassxc
@@ -213,6 +217,7 @@ libmaxminddb
 libmediainfo
 libmms
 libnet
+libsodium
 libx86
 libxslt
 libyaml
@@ -378,6 +383,7 @@ perl-xml-writer
 physlock
 pkgconf
 pocl
+polybar
 poppler-glib
 portaudio
 powertop
@@ -452,7 +458,7 @@ sshuttle
 strace
 sudo
 sxhkd
-sxiv
+sysbench
 system-config-printer
 tar
 task
@@ -477,6 +483,7 @@ torbrowser-launcher
 torsocks
 transmission-cli
 ttf-joypixels
+typescript
 ufw
 unclutter
 unrar
@@ -542,9 +549,9 @@ xorg-xwininfo
 xorg-xwud
 xournalpp
 xsane
+xsv
 xwallpaper
 yarn
-youtube-dl
 yt-dlp
 z3
 zathura
