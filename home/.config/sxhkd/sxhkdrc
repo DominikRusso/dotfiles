@@ -47,7 +47,7 @@ alt + {_,shift + } p
 
 # brightness up/down
 XF86MonBrightness{Up,Down}
-	light {-A,-U} 10
+	bri {up,down}
 
 # toggle mute
 XF86AudioMute

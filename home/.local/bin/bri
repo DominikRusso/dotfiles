@@ -1,0 +1,53 @@
+#!/bin/sh
+
+# brightness script used by the XF86MonBrightness{Up,Down} keys
+# and as a convenient alternative to using `light` directly
+#
+# the brightness steps reached with the up/down commands are:
+# 1 5 10 15 20 30 40 50 75 100
+# └   +5   ┴  +10   ┴  +25   ┘
+#
+# usage: bri {up|down|<brightness>}
+
+# set minimum brightness
+# to prevent brightness keys from setting brightness to 0
+light -N 1
+
+# round current brightness to nearest 5
+CURRENT=$( echo "($(light)+2.5)/5*5" | bc )
+
+if [ "$CURRENT" -eq 0 ]; then
+  STEP_UP="5"
+  STEP_DOWN="0"
+elif [ "$CURRENT" -lt 20 ]; then
+  # 0 < x < 20
+  STEP_UP="5"
+  STEP_DOWN="5"
+elif [ "$CURRENT" -eq 20 ]; then
+  # x = 20
+  STEP_UP="10"
+  STEP_DOWN="5"
+elif [ "$CURRENT" -eq 50 ]; then
+  # x = 50
+  STEP_UP="25"
+  STEP_DOWN="10"
+elif [ "$CURRENT" -gt 50 ]; then
+  # 50 < x
+  STEP_UP="25"
+  STEP_DOWN="25"
+else
+  # 20 < x < 50
+  STEP_UP="10"
+  STEP_DOWN="10"
+fi
+
+case "$1" in
+  up)   light -S $(echo "$CURRENT + $STEP_UP" | bc) ;;
+  down) light -S $(echo "$CURRENT - $STEP_DOWN" | bc) ;;
+  "")   >&2 echo "bri {up|down|<brightness>}" ;;
+  *)    light -S "$1" ;;
+esac > /dev/null
+
+# set minimum brightness back to 0
+# so brightness can still be set to 0 with `light -S 0`
+light -N 0
