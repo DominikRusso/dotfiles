@@ -1,6 +1,10 @@
-#
-# general bindings
-#
+# NOTES
+# - Make sure `$TERMINAL -e` is the right command.
+#   It is for `alacritty` and `st` at least.
+
+###
+### general
+###
 
 # launch dmenu
 alt + d
@@ -8,32 +12,28 @@ alt + d
 
 # open terminal
 alt + Return
-	alacritty
+	$TERMINAL
 alt + o ; t
-	alacritty
+	$TERMINAL
 
 # open browser
 alt + o ; b
-	qutebrowser
+	$BROWSER
 
 # open {terminal progams}
-alt + o ; {a,c,h,m,n,v}
-	alacritty -e {\
-        alsamixer,\
-        calcurse,\
-        htop,\
-        cmus,\
-        newsboat,\
-        nvim\
-    }
+alt + o ; {a,v}
+	$TERMINAL -e {\
+		alsamixer,\
+		$EDITOR,\ # vim
+	}
 
 # system {commands}
 super + s ; {h, r, s}
 	dmenu_prompt {\
-        "Hibernate?" "systemctl hibernate",\
-        "Reboot?" "sudo -A reboot",\
-        "Shutdown?" "sudo -A shutdown -h now"\
-    }
+		"Hibernate?" "systemctl hibernate",\
+		"Reboot?" "sudo -A reboot",\
+		"Shutdown?" "sudo -A shutdown -h now"\
+	}
 super + s ; z
 	systemctl suspend
 
@@ -42,56 +42,52 @@ super + x
 	physlock -m -s
 
 # screenshot
-alt + p
-	scrot -z ~/media/images/screenshots/screenshot-%Y-%m-%d_%H-%M-%S.png
+alt + {_,shift + } p
+	scrot -z { ,-s} ~/media/images/screenshots/screenshot-%Y-%m-%d_%H-%M-%S.png
+
+# brightness up/down
+XF86MonBrightness{Up,Down}
+	light {-A,-U} 10
 
 # toggle mute
 XF86AudioMute
-	amixer sset Master toggle
+	vol toggle
 
-# volume down
-XF86AudioLowerVolume
-	amixer sset Master 5%-
+# volume up/down
+XF86Audio{Raise,Lower}Volume
+	vol {up,down} 5
 
-# volume up
-XF86AudioRaiseVolume
-	amixer sset Master 5%+
+XF86Calculator
+	$TERMINAL -e bc -ql
 
 
-#
-# sxhkd
-#
+###
+### sxhkd
+###
 
 # reload config
 alt + Escape
 	pkill -USR1 -x sxhkd
 
 
-#
-# polybar
-#
-
-# hide/show
-alt + b
-    polybar-msg cmd {\
-        hide && bspc config bottom_padding 0,\
-        show\
-    }
-
-
-#
-# bspwm
-#
+###
+### bspwm
+###
 
 # exit/restart bspwm
 alt + ctrl + {e, r}
 	bspc {quit, wm -r}
 
+# hide/show polybar
+alt + b
+	polybar-msg cmd {\
+		hide && bspc config bottom_padding 0,\
+		show\
+	}
+
 # close node
-alt + shift + c
-	bspc node -c
-alt + shift + q
-	bspc node -c
+alt + {_,shift} + q
+	bspc node -{c,k}
 
 # set the node state
 alt + s ; {t, f, m}
@@ -105,14 +101,15 @@ alt + f ; {m, l, s, p}
 alt + {h,j,k,l}
 	bspc node -f {west,south,north,east}
 
-# move/swap the node in the given direction
+# swap a tiled node in the given direction
+# move a floating node in the given direction
 alt + shift + {h,j,k,l}
-    { dir=west  dx=-20 dy=0   \
-    , dir=south dx=0   dy=20  \
-    , dir=north dx=0   dy=-20 \
-    , dir=east  dx=20  dy=0   \
-    }; \
-	bspc node -v "$dx" "$dy" || bspc node -s "$dir"
+	{ dir=west  dx=-20 dy=0   \
+	, dir=south dx=0   dy=20  \
+	, dir=north dx=0   dy=-20 \
+	, dir=east  dx=20  dy=0   \
+	}; \
+	bspc node --move "$dx" "$dy" || bspc node --swap "$dir"
 
 # focus the next/previous node on the current desktop
 alt + {_,shift + } n
