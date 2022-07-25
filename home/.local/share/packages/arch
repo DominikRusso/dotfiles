@@ -42,7 +42,6 @@ dmenu
 doxygen
 dust
 efibootmgr
-element-desktop
 entr
 eslint
 exa
@@ -64,6 +63,7 @@ gimp
 git
 glances
 gnuplot
+go
 grub
 gzip
 hashcat
@@ -83,8 +83,6 @@ jq
 jre-openjdk
 jre-openjdk-headless
 keepassxc
-keybase
-keybase-gui
 kmon
 libmaxminddb
 libmediainfo
@@ -105,6 +103,7 @@ llvm
 lmdb
 lshw
 lsof
+lua
 m4
 make
 man-db
@@ -356,6 +355,7 @@ transmission-cli
 transmission-qt
 ttf-joypixels
 typescript
+typescript-language-server
 ufw
 unclutter
 unrar
