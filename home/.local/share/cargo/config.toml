@@ -3,4 +3,5 @@ root = "/home/dom/.local"
 
 [profile.release]
 codegen-units = 1
-lto = true
+lto = "fat"
+strip = "symbols"
