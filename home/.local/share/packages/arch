@@ -39,6 +39,7 @@ deno
 dhcpcd
 dialog
 dmenu
+dos2unix
 doxygen
 dust
 efibootmgr
@@ -64,9 +65,11 @@ git
 glances
 gnuplot
 go
+graphicsmagick
 grub
 gzip
 hashcat
+hplip
 hsetroot
 htop
 httpie
@@ -79,6 +82,7 @@ isync
 java-environment-common
 java-runtime-common
 jdk-openjdk
+jdk11-openjdk
 jq
 jre-openjdk
 jre-openjdk-headless
@@ -129,6 +133,7 @@ noto-fonts-cjk
 npm
 nss-mdns
 numactl
+opencl-mesa
 openssh
 p7zip
 pacman-contrib
@@ -309,6 +314,7 @@ remind
 reptyr
 ripgrep
 rsync
+ruby
 rust-analyzer
 rustup
 screenkey
