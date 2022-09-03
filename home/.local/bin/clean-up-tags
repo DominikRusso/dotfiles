@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# clean useless tags first
+eyeD3 --quiet --to-v2.4 \
+  --remove-all-images \
+  --remove-all-lyrics \
+  --remove-frame COMM \
+  --remove-frame TBPM \
+  --remove-frame TCON \
+  --remove-frame TPUB \
+  --remove-frame TXXX \
+  --remove-frame WCOM \
+  --remove-frame WCOP \
+  --remove-frame WOAF \
+  --remove-frame WOAR \
+  --remove-frame WOAS \
+  --remove-frame WORS \
+  --remove-frame WPAY \
+  --remove-frame WPUB \
+  --remove-frame WXXX -- *.mp3 > /dev/null
+
+# move value from recording date to release date
+export PATTERN="recording date: "
+for file in *.mp3
+do
+  # grep -q results in broken pipe, seems to be a python or eyeD3 issue
+  eyeD3 "$file" | grep -F "$PATTERN" > /dev/null && \
+    eyeD3 "$file" --recording-date "" -Y "$(eyeD3 "$file" | sed --quiet "/$PATTERN/s/$PATTERN//p")"
+done
+
+# TODO
+# I should probably find a (good) id3 library and then write a "real" program for this.
+# Unfortunately eyeD3's documentation is terrible.
