@@ -1,8 +1,9 @@
 # cd with fzf
 cdf() {
 	dir=$(fd . $HOME -t d --hidden --no-ignore \
-		| rg -v -e '\.git' \
-		| sed "s|$HOME|~|" | fzf | sed "s|~|$HOME|")
+		| rg -v \
+			-e '\.git/' \
+		| sed "s|$HOME|~|" | fzf --scheme=path | sed "s|~|$HOME|")
 	[ -d "$dir" ] && builtin cd "$dir"
 }
 
@@ -18,6 +19,6 @@ vf() {
 			-e '\.mp4$' \
 			-e '\.ogg$' \
 			-e '\.png$' \
-		| sed "s|$HOME|~|" | fzf | sed "s|~|$HOME|")
+		| sed "s|$HOME|~|" | fzf --scheme=path | sed "s|~|$HOME|")
 	[ -n "$file" ] && "$EDITOR" "$file"
 }
