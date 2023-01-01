@@ -1,4 +1,4 @@
-snippet "temp(late)?" "default template" br
+snippet "!" "default template" b
 % <<< Preamble
 \RequirePackage[l2tabu, orthodox]{nag} % warnings about obsolete latex commands
 
@@ -24,7 +24,7 @@ snippet "temp(late)?" "default template" br
 %%%%%%%%%%%
 \usepackage{array} % improvements to the column specification of array and tabular
 \usepackage{arydshln} % dashed lines in array and tabular
-\usepackage[style=alphabetic]{biblatex} % sophisticated bibliographies
+\usepackage[style=alphabetic,minalphanames=3,maxbibnames=99]{biblatex} % sophisticated bibliographies
 % \usepackage{booktabs} % publication quality tables
 \usepackage{cancel} % diagonal strikethrough
 \usepackage{caption} % customize captions in floating environments
@@ -33,10 +33,12 @@ snippet "temp(late)?" "default template" br
 \usepackage{enumitem} % control layout of itemize, enumerate, description
 % \usepackage{fancyhdr} % extensive control of page headers and footers
 \usepackage{float} % improved interface for floating objects
+\usepackage[hang,multiple]{footmisc} % for customizing footnotes
 \usepackage{hyperref} % embedded hypertext links
 \usepackage[iso]{isodate} % non-insane date format
 % \usepackage{multicol} % multicolumn environment
 \usepackage{siunitx} % units and decimal point aware column specification
+\usepackage{slantsc} % italic small caps (particularly useful for bibliographies)
 % \usepackage{tabularx} % more versatile version of tabular*
 % \usepackage{titlesec} % customize section titles
 \usepackage[dvipsnames]{xcolor} % driver independent color extension
@@ -59,7 +61,7 @@ snippet "temp(late)?" "default template" br
 % Code %
 %%%%%%%%
 % \usepackage{algpseudocode} % pseudocode
-% \usepackage{cryptocode} % pseudocode and protocols in cryptography
+% \usepackage{cryptocode} % pseudocode and protocols in cryptography [macro sets loaded via package options]
 % \usepackage{listings} % source code
 
 
@@ -105,6 +107,12 @@ snippet "temp(late)?" "default template" br
 \usepackage{pifont} % postscript standard symbols and dingbats
 % \usepackage[tableaux]{prooftrees} % proof trees in the style of the semantic tableau
 \usepackage{stmaryrd} % additional symbols for math and computer science
+
+
+%%%%%%%%%%%%%%%%%%%
+% Order sensitive %
+%%%%%%%%%%%%%%%%%%%
+\usepackage[nameinlink,noabbrev]{cleveref} % intelligent cross-referencing (must be loaded *after* hyperref, amsmath)
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

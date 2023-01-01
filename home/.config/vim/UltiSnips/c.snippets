@@ -1,3 +1,22 @@
+snippet ! "main template" b
+#include <errno.h>
+#include <getopt.h>
+#include <libgen.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/types.h>
+#include <unistd.h>
+
+int
+main(int argc, char *argv[])
+{
+	$0
+}
+endsnippet
+
+##########
+
 snippet "inc(lude)?" "#include generic" br
 #include $0
 endsnippet
@@ -46,6 +65,20 @@ snippet ifndef "ifndef" b
 #ifndef $1
 $0
 #endif /* $1 */
+endsnippet
+
+##########
+
+snippet fn-cleanup "cleanup pointer" b
+void
+cleanup(char **ptr)
+{
+	/* if (*ptr != NULL) { */
+	/* 	explicit_bzero(*ptr, strlen(*ptr)); */
+	/* } */
+	free(*ptr);
+	*ptr = NULL;
+}
 endsnippet
 
 ##########

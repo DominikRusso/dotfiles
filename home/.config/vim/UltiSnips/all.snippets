@@ -4,13 +4,13 @@ priority -1
 
 ##########
 
-snippet date "YYYY-MM-DD" w
+snippet "date|today" "YYYY-MM-DD" rw
 `!v strftime("%Y-%m-%d")`
 endsnippet
 
 ##########
 
-snippet time "hh:mm" w
+snippet "now|time" "hh:mm" rw
 `!v strftime("%H:%M")`
 endsnippet
 
@@ -29,3 +29,5 @@ $0
 endsnippet
 
 ##########
+
+# vim: fdm=syntax fdl=0
