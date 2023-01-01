@@ -59,6 +59,7 @@ fzf
 gawk
 gcc
 gcc-ada
+gcc-fortran
 gdb
 gimp
 git
@@ -77,6 +78,8 @@ hugo
 hunspell
 hunspell-de
 hunspell-en_us
+hyperfine
+inetutils
 iotop
 isync
 java-environment-common
@@ -124,6 +127,7 @@ neovim
 netctl
 nethogs
 newsboat
+ninja
 nmap
 node-gyp
 nodejs
@@ -135,6 +139,7 @@ nss-mdns
 numactl
 opencl-mesa
 openssh
+openssl-1.1
 p7zip
 pacman-contrib
 pastel
@@ -275,7 +280,6 @@ python-attrs
 python-beautifulsoup4
 python-click
 python-decorator
-python-eyed3
 python-flask
 python-flask-cors
 python-future
@@ -438,4 +442,5 @@ zathura-djvu
 zathura-pdf-mupdf
 zathura-ps
 zbar
+zig
 zsh

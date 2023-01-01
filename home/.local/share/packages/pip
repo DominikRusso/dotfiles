@@ -3,6 +3,7 @@ beautifulsoup4
 cloudpickle
 colorama
 eventlet
+eyeD3
 fuckit
 lxml
 matplotlib
