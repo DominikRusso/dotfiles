@@ -13,7 +13,7 @@ set termencoding=utf-8
 " dramatically speeds up macros
 set lazyredraw
 
-" hide, don't close, buffer on abandon
+" hide -- don't close -- buffer on abandon
 set hidden
 
 " no backup files (this does not include swap files)
@@ -31,6 +31,9 @@ set tw=0
 
 filetype plugin indent on
 
+" make sure mouse is disabled
+set mouse=
+
 " yank into system clipboard too
 set clipboard^=unnamedplus
 
@@ -46,6 +49,7 @@ call plug#begin('~/.config/vim/plugged')
 " general enhancements
 Plug '/usr/local/opt/fzf'
 Plug 'airblade/vim-rooter'
+Plug 'bronson/vim-visual-star-search'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'inkarkat/vim-AdvancedSorters'
 Plug 'inkarkat/vim-ingo-library'
@@ -53,18 +57,28 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-peekaboo'
 Plug 'qpkorr/vim-renamer'
-Plug 'sirver/ultisnips'
+Plug 'sirver/ultisnips' " possibly switch to LuaSnips?
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
-Plug 'vimwiki/vimwiki'
+Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 
 " language support
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/nvim-cmp'
 Plug 'lervag/vimtex'
+Plug 'neoclide/jsonc.vim'
 Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/lsp_extensions.nvim'
+Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+Plug 'ray-x/lsp_signature.nvim'
 Plug 'rust-lang/rust.vim'
+" Plug 'simrat39/rust-tools.nvim'
 
 " visual enhancements
 Plug 'itchyny/lightline.vim'
@@ -77,16 +91,59 @@ call plug#end()
 
 " LSP
 lua << EOF
-local nvim_lsp = require('lspconfig')
+-- Setup nvim-cmp.
+local cmp = require'cmp'
+
+cmp.setup({
+  snippet = {
+    -- REQUIRED - you must specify a snippet engine
+    expand = function(args)
+      vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+    end,
+  },
+  mapping = {
+    ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+    ['<C-p>'] = cmp.mapping.select_prev_item(),
+    ['<C-n>'] = cmp.mapping.select_next_item(),
+
+    ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    ['<C-e>'] = cmp.mapping({
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    }),
+  },
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'ultisnips' },
+    { name = 'path' },
+    { name = 'buffer' },
+  },
+  experimental = {
+    ghost_text = true,
+  },
+})
+
+cmp.setup.cmdline('/', {
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
+cmp.setup.cmdline(':', {
+  sources = cmp.config.sources({
+    { name = 'path' }
+  })
+})
+
+local lspconfig = require('lspconfig')
 
 -- use an on_attach function to only map the following keys after the language
 -- server attaches to the current buffer
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-  -- Enable completion triggered by <c-x><c-o>
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
   local opts = { noremap=true, silent=true }
@@ -97,32 +154,67 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', '<space>r', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<space>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+  -- Get signatures (and only signatures) when in argument lists.
+  require "lsp_signature".on_attach({
+    doc_lines = 0,
+    handler_opts = {
+      border = "none"
+    },
+  })
 end
 
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'rust_analyzer' }
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-    on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 150,
-    }
-  }
-end
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+-- c and cpp
+lspconfig.clangd.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+-- html
+lspconfig.html.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+-- python
+lspconfig.pyright.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+-- rust
+lspconfig.rust_analyzer.setup {
+  on_attach = on_attach,
+  settings = {
+    ["rust-analyzer"] = {
+      cargo = {
+        allFeatures = true,
+      },
+    },
+  },
+  capabilities = capabilities,
+}
+
+-- typescript
+lspconfig.tsserver.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
 EOF
+
+" Enable type inlay hints
+autocmd CursorHold,CursorHoldI *.rs :lua require'lsp_extensions'.inlay_hints{ only_current_line = true }
 
 " lightline
 let g:lightline = {
@@ -139,7 +231,7 @@ let g:rustfmt_emit_files = 1
 let g:UltiSnipsSnippetDirectories=[$XDG_CONFIG_HOME.'/vim/UltiSnips']
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<c-j>'
-let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
+let g:UltiSnipsJumpBackwardTrigger = '<nop>'
 
 " vim-rooter
 " stop changing directory automatically
@@ -154,10 +246,13 @@ let g:vimtex_view_method='zathura'
 " vimwiki
 " disable the creation of temporary wikis
 let g:vimwiki_global_ext = 0
+" disable html mappings
+let g:vimwiki_key_mappings = { 'html': 0 }
 " wiki config
 let g:vimwiki_list = [{'path': '~/docs/wiki/',
                         \ 'syntax': 'markdown', 'ext': '.md',
-                        \ 'links_space_char': '-'}]
+                        \ 'links_space_char': '-',
+                        \ 'links_lowercase': 1}]
 
 " }}}
 
@@ -255,8 +350,11 @@ set backspace=indent,eol,start
 
 " => Substituting {{{
 
-" live preview of substitution in progress
-set inccommand=nosplit
+if has('nvim')
+  " live preview of substitution in progress
+  set inccommand=nosplit
+endif
+
 
 " }}}
 
@@ -292,12 +390,6 @@ set shortmess=aI
 " set scroll offset to 3 lines
 set scrolloff=3
 
-" enable wildmenu
-set wildmenu
-
-" complete longest common match and show wildmenu
-set wildmode=longest:full,full
-
 " show matching brackets
 set showmatch
 
@@ -323,6 +415,17 @@ endif
 
 " => Behavior & Commands {{{
 
+" enable wildmenu
+set wildmenu
+
+" List all matches and complete till the longest common string.
+set wildmode=list:longest
+
+" menuone: popup even when there is only 1 match
+" noinsert: don't insert until a selection is made
+" noselect: don't select an entry by default
+set completeopt=menuone,noinsert,noselect
+
 " allow saving files as root when vim not invoked as such
 cmap w!! w !sudo tee >/dev/null %
 
@@ -338,15 +441,18 @@ nnoremap <leader>n :noh<CR>
 nnoremap <leader>se :setlocal spell! spelllang=en_us<CR>
 nnoremap <leader>sg :setlocal spell! spelllang=de_de<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
-nnoremap <leader>w :w<CR>
 
 " delete trailing whitespace on save
 function! StripTrailingWhitespace()
+  " but not on these filetypes
+  if &ft =~ 'diff'
+    return
+  endif
+
   let l:view = winsaveview()
   keepp %s/\s\+$//e
   call winrestview(l:view)
 endfunction
-
 au BufWritePre * silent :call StripTrailingWhitespace()
 
 " no auto-commenting on newline
